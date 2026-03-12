@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(do grep:*)",
+      "Bash(cp:*)",
+      "Bash(source:*)",
+      "Bash(find:*)"
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+# TadReamk ERP Agent
+
+An AI Agent project for interacting with the [TadReamk ERP System](https://erp.tadreamk.com) via natural language commands. The agent leverages Claude Code skills to automate common ERP workflows — writing and publishing articles, managing tasks, generating diagrams, and more.
+
+## Project Structure
+
+```
+api_doc/          # API documentation for all ERP modules
+data/             # Local drafts (articles, tasks) before uploading
+scripts/          # Utility scripts (slide export, branding)
+slides/           # Vite + React slide generator for article diagrams
+.claude/skills/   # Claude Code skills for ERP operations
+```
+
+## Available Skills
+
+The skills below are included as examples to demonstrate how an AI agent can interact with the ERP API. You can modify them or create your own skills under `.claude/skills/` to fit your workflow. Each skill is a folder with a `SKILL.md` file that defines the agent's behavior. See the [Claude Code skills documentation](https://docs.anthropic.com/en/docs/claude-code/skills) for details.
+
+### Articles
+- `/article-draft` — Generate a full article with diagram and translations (EN, zh, zh-TW)
+- `/article-video-draft` — Generate an article with embedded video and translations
+- `/article-upload` — Publish a local draft to GCS and the ERP database
+
+### Tasks
+- `/task-overview` — View active tasks for the configured user
+- `/task-detail <slug>` — View task details by slug
+- `/task-draft` — Create a local task draft
+- `/task-add` — Upload a task draft to the ERP
+- `/task-update <slug>` — Update an existing task
+
+## Setup
+
+### 1. Configure `.env`
+
+Create a `.env` file at the project root with the following variables. All three are required for the Claude Code skills to work:
+
+```
+WEBAPP_ACCESS_TOKEN=<your ERP API token>
+ARTICLE_AUTHOR_NAME=<your name>
+TASK_USERNAME=<your ERP username>
+```
+
+| Variable | Used by | Description |
+|----------|---------|-------------|
+| `WEBAPP_ACCESS_TOKEN` | All skills | Bearer token for authenticating with the TadReamk ERP API (`api-erp.tadreamk.com`). Obtain from the ERP admin panel. |
+| `ARTICLE_AUTHOR_NAME` | `/article-draft`, `/article-video-draft` | Author name displayed on published articles (e.g., `"Huu-Thanh Nguyen"`). |
+| `TASK_USERNAME` | `/task-draft`, `/task-overview` | Your ERP username. Used to assign you as task manager and to filter your active tasks. |
+
+### 2. Install Python dependencies (for diagram generation)
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install playwright Pillow diagrams
+playwright install chromium
+```
+
+### 3. Install Node dependencies (for React slides)
+
+```bash
+cd slides && npm install
+```
