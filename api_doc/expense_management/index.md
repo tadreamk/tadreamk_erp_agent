@@ -21,4 +21,5 @@ Track and manage company expenses from multiple sources -- payslips, reimburseme
 | `PUT` | `/expenses/{expense_id}` | Update an existing expense. Only provided fields are updated. | [put_expenses_by_id.md](./put_expenses_by_id.md) |
 | `PUT` | `/expenses/{expense_id}/allocation` | Update the funding allocation for an expense. Specifies which funding sources co | [put_expenses_by_id_allocation.md](./put_expenses_by_id_allocation.md) |
 | `POST` | `/expenses/{expense_id}/finish` | Mark an expense as finished. The expense must be fully allocated before it can b | [post_expenses_by_id_finish.md](./post_expenses_by_id_finish.md) |
+| `POST` | `/expenses/{expense_id}/reject` | CEO rejects a payslip or reimbursement-linked expense. Cascades rejection to th | [post_expenses_by_id_reject.md](./post_expenses_by_id_reject.md) |
 | `DELETE` | `/expenses/{expense_id}` | Soft delete an expense. | [delete_expenses_by_id.md](./delete_expenses_by_id.md) |
