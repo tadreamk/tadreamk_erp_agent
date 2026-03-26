@@ -1,22 +1,20 @@
 # GET /treasury/claims/count
 
-Get count of funder claims matching optional filters.
+Count funder claims with optional filtering. Requires `expense-management` whitelist access.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | funding_source_id | UUID | No | Filter by funding source |
-| status | string | No | Filter by claim status: `draft`, `submitted`, `received` |
+| status | string | No | Filter by claim status |
 
 **Response:**
 ```json
 {
-  "count": 12
+  "count": 15
 }
 ```
 
-**Error Codes:**
-| Code | Description |
-|------|-------------|
-| 401 | Not authenticated |
-| 403 | Not authorized |
+**Errors:**
+- `401` — Not authenticated
+- `403` — Not authorized

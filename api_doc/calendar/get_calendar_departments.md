@@ -1,15 +1,14 @@
 # GET /calendar/departments
 
-
-Get list of departments that have employees, for use as filter options.
+Get unique department names for use in calendar filter dropdowns.
 
 **Response:**
 ```json
 {
-  "departments": ["Engineering", "Design", "HR", "Finance"]
+  "departments": ["Engineering", "Design", "Marketing"]
 }
 ```
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — Employee access required
+- `403` — Not an employee

@@ -1,22 +1,20 @@
 # GET /treasury/transactions/count
 
-Get count of treasury transactions matching optional filters.
+Count treasury transactions with optional filtering. Requires `expense-management` whitelist access.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| direction | string | No | Filter by direction: `inflow`, `outflow` |
+| direction | string | No | Filter by direction |
 | type | string | No | Filter by transaction type |
 
 **Response:**
 ```json
 {
-  "count": 42
+  "count": 150
 }
 ```
 
-**Error Codes:**
-| Code | Description |
-|------|-------------|
-| 401 | Not authenticated |
-| 403 | Not authorized |
+**Errors:**
+- `401` — Not authenticated
+- `403` — Not authorized

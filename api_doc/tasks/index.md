@@ -1,37 +1,45 @@
-# 48. Tasks
+# Tasks API
 
-Collaborative task management with membership-based access control. Users can only see tasks where they are a member (manager or member role). Tasks support timeline views, AI-generated comments, project grouping, and real-time collaboration via WebSocket.
+Base prefixes:
+- `/tasks` — Task CRUD and team member management
+- `/task-projects` — Task project management
 
-**Base path:** `/tasks`
+Authentication: Requires authentication. Most task endpoints also require `task` whitelist access. Task project admin endpoints require `task` whitelist.
 
-**Access control:** All authenticated users can access tasks filtered by their membership. No whitelist required — access is governed by task membership.
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/tasks` | List tasks where user is a member |
+| GET | `/tasks/employees/picker` | Get employee list for task member picker |
+| GET | `/tasks/timeline/range` | Get tasks within a date range for timeline view |
+| GET | `/tasks/{slug}` | Get task by slug |
+| POST | `/tasks/` | Create a new task |
+| PATCH | `/tasks/{slug}` | Update a task |
+| POST | `/tasks/{slug}/members` | Add a member to a task |
+| DELETE | `/tasks/{slug}/members/{username}` | Remove a member from a task (manager only) |
+| DELETE | `/tasks/{slug}` | Delete a task (manager only) |
+| WebSocket | `/tasks/{slug}/ws` | Real-time task comments stream |
+| GET | `/task-projects/active-list` | Get active task projects for dropdown |
+| GET | `/task-projects/` | List task projects (paginated) |
+| GET | `/task-projects/{project_id}` | Get task project by ID |
+| POST | `/task-projects/` | Create a task project |
+| PUT | `/task-projects/{project_id}` | Update a task project |
+| DELETE | `/task-projects/{project_id}` | Soft delete a task project |
 
----
+## Endpoint Documentation
 
----
-
-## Endpoints
-
-| Method | Path | Description | Doc |
-|--------|------|-------------|-----|
-| `GET` | `/tasks` | Get list of tasks where the current user is a member. | [get_tasks.md](./get_tasks.md) |
-| `GET` | `/tasks/employees/picker` | Get employee usernames for the task member picker dropdown. Available to all aut | [get_tasks_employees_picker.md](./get_tasks_employees_picker.md) |
-| `GET` | `/tasks/timeline/range` | Get tasks within a date range for timeline view. | [get_tasks_timeline_range.md](./get_tasks_timeline_range.md) |
-| `GET` | `/tasks/{slug}` | Get a single task by its slug. Requires task membership. | [get_tasks_by_id.md](./get_tasks_by_id.md) |
-| `POST` | `/tasks/` | Create a new task. The creator is automatically added as a manager. Notification | [post_tasks.md](./post_tasks.md) |
-| `PATCH` | `/tasks/{slug}` | Update a task. Requires task membership. Only provided fields are updated. | [patch_tasks_by_id.md](./patch_tasks_by_id.md) |
-| `POST` | `/tasks/{slug}/members` | Add a member to a task. Any existing team member can add new members. | [post_tasks_by_id_members.md](./post_tasks_by_id_members.md) |
-| `DELETE` | `/tasks/{slug}/members/{username}` | Remove a member from a task. Managers only. Cannot remove the last manager. | [delete_tasks_by_id_members_by_id.md](./delete_tasks_by_id_members_by_id.md) |
-| `DELETE` | `/tasks/{slug}` | Delete a task and cascade-delete all comments and members. Managers only. | [delete_tasks_by_id.md](./delete_tasks_by_id.md) |
-| `GET` | `/task-projects/active-list` | Get list of active task projects for dropdown selection. Only requires authentic | [get_task_projects_active_list.md](./get_task_projects_active_list.md) |
-| `GET` | `/task-projects/` | Get list of task projects with filtering and pagination. | [get_task_projects.md](./get_task_projects.md) |
-| `GET` | `/task-projects/{project_id}` | Get a task project by ID. | [get_task_projects_by_id.md](./get_task_projects_by_id.md) |
-| `POST` | `/task-projects/` | Create a new task project. | [post_task_projects.md](./post_task_projects.md) |
-| `PUT` | `/task-projects/{project_id}` | Update an existing task project. Only provided fields are updated. | [put_task_projects_by_id.md](./put_task_projects_by_id.md) |
-| `DELETE` | `/task-projects/{project_id}` | Soft delete a task project by setting `post_active` to `false`. | [delete_task_projects_by_id.md](./delete_task_projects_by_id.md) |
-| `GET` | `/task-ai-instructions/active-list` | Get list of active AI instructions belonging to the current user, for dropdown s | [get_task_ai_instructions_active_list.md](./get_task_ai_instructions_active_list.md) |
-| `GET` | `/task-ai-instructions` | Get list of the current user's task AI instructions with filtering and paginatio | [get_task_ai_instructions.md](./get_task_ai_instructions.md) |
-| `GET` | `/task-ai-instructions/{instruction_id}` | Get a task AI instruction by ID. | [get_task_ai_instructions_by_id.md](./get_task_ai_instructions_by_id.md) |
-| `POST` | `/task-ai-instructions` | Create a new task AI instruction. The instruction is owned by the authenticated  | [post_task_ai_instructions.md](./post_task_ai_instructions.md) |
-| `PUT` | `/task-ai-instructions/{instruction_id}` | Update an existing task AI instruction. Only provided fields are updated. | [put_task_ai_instructions_by_id.md](./put_task_ai_instructions_by_id.md) |
-| `DELETE` | `/task-ai-instructions/{instruction_id}` | Soft delete a task AI instruction by setting `post_active` to `false`. | [delete_task_ai_instructions_by_id.md](./delete_task_ai_instructions_by_id.md) |
+- [GET /tasks](get_tasks.md)
+- [GET /tasks/employees/picker](get_tasks_employees_picker.md)
+- [GET /tasks/timeline/range](get_tasks_timeline_range.md)
+- [GET /tasks/{slug}](get_tasks_{slug}.md)
+- [POST /tasks/](post_tasks.md)
+- [PATCH /tasks/{slug}](patch_tasks_{slug}.md)
+- [POST /tasks/{slug}/members](post_tasks_{slug}_members.md)
+- [DELETE /tasks/{slug}/members/{username}](delete_tasks_{slug}_members_{username}.md)
+- [DELETE /tasks/{slug}](delete_tasks_{slug}.md)
+- [WebSocket /tasks/{slug}/ws](websocket_tasks_{slug}_ws.md)
+- [GET /task-projects/active-list](get_task-projects_active-list.md)
+- [GET /task-projects/](get_task-projects.md)
+- [GET /task-projects/{project_id}](get_task-projects_{project_id}.md)
+- [POST /task-projects/](post_task-projects.md)
+- [PUT /task-projects/{project_id}](put_task-projects_{project_id}.md)
+- [DELETE /task-projects/{project_id}](delete_task-projects_{project_id}.md)

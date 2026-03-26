@@ -1,16 +1,15 @@
 # GET /employees
 
-
-Get all employees with filtering and pagination. Returns employee list enriched with contract details (full name, position, department, start date).
+List all employees with filtering. Requires `employees` whitelist.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| search | string | No | Search filter across employee fields |
+| search | string | No | Search by username or email |
 | include_inactive | bool | No | Include inactive employees (default: false) |
 | department | string | No | Filter by department |
 | page | int | No | Page number (default: 1) |
-| limit | int | No | Items per page (default: 50) |
+| limit | int | No | Max results (default: 50) |
 
 **Response:**
 ```json
@@ -18,19 +17,19 @@ Get all employees with filtering and pagination. Returns employee list enriched 
   "employees": [
     {
       "id": "uuid",
-      "username": "john.doe",
-      "work_email": "john.doe@company.com",
-      "manager_username": "jane.smith",
-      "is_active": true,
-      "created_at": "2025-06-01T00:00:00",
-      "full_name": "DOE John",
+      "username": "alice",
+      "work_email": "alice@company.com",
       "position": "Software Engineer",
       "department": "Engineering",
-      "start_date": "2025-06-01"
+      "is_active": true
     }
   ],
-  "total": 42,
+  "total": 50,
   "page": 1,
   "limit": 50
 }
 ```
+
+**Errors:**
+- `401` — Not authenticated
+- `403` — No employees whitelist access

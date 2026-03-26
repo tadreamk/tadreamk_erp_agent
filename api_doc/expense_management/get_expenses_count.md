@@ -1,14 +1,13 @@
 # GET /expenses/count
 
-
-Get count of expenses matching optional filters.
+Get count of expenses with optional filters. Requires `expense-management` whitelist.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| status | string | No | Filter by status: `pending`, `finished` |
-| expense_category_id | UUID | No | Filter by expense category ID |
-| source_type | string | No | Filter by source: `payslip`, `reimbursement`, `manual` |
+| status | string | No | Filter by status |
+| expense_category_id | UUID | No | Filter by category |
+| source_type | string | No | Filter by source type |
 
 **Response:**
 ```json
@@ -16,3 +15,7 @@ Get count of expenses matching optional filters.
   "count": 42
 }
 ```
+
+**Errors:**
+- `401` — Not authenticated
+- `403` — No expense-management whitelist access

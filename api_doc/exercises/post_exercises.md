@@ -1,32 +1,30 @@
 # POST /exercises/
 
-
-Create a new exercise.
+Create a new exercise. Requires `exercise` whitelist.
 
 **Request Body:**
-| Field | Type | Required | Default | Description |
-|-------|------|----------|---------|-------------|
-| title | string | Yes | -- | Exercise title (1--500 chars) |
-| tags | string[] | No | `[]` | Tags from predefined list |
-| content | string | No | `""` | Markdown content |
-| post_active | bool | No | `true` | Whether the exercise is active |
-| score_instruction_id | string | No | `null` | UUID of a score instruction to attach |
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| title | string | Yes | Exercise title |
+| slug | string | Yes | URL slug (unique) |
+| tags | list[string] | No | Tags from predefined list |
+| content | string | No | Exercise content (Markdown/HTML) |
+| post_active | bool | No | Whether visible to applicants (default: false) |
+| score_instruction_id | string | No | ID of scoring instructions |
 
-**Response (201):**
+**Response:**
 ```json
 {
   "success": true,
   "message": "Exercise created successfully",
   "data": {
     "id": "uuid",
-    "slug": "exercise-title"
+    "slug": "exercise-slug"
   }
 }
 ```
 
 **Errors:**
-- `400` -- Invalid tags (not in predefined list) or invalid score instruction ID format
-- `401` -- Not authenticated
-- `403` -- No whitelist access to exercise section
-- `409` -- Duplicate exercise (slug conflict)
-- `500` -- Internal server error
+- `401` — Not authenticated
+- `403` — No exercise whitelist access
+- `409` — Slug already exists

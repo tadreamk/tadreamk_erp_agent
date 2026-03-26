@@ -1,24 +1,31 @@
-# 59. Templates API
+# Templates API
 
-Read-only API for accessing document templates. Templates are managed by developers via SQL migrations. Supports both static PDF templates and dynamic templates with fillable fields. Integrates with onboarding and payslip workflows to populate field values.
+Base prefix: `/templates`
 
-**Base path:** `/templates`
+Authentication: Required. Most endpoints require `templates` whitelist access. Exceptions: `/{template_id}/onboarding/{document_id}` and `/{template_id}/payslip-workflow/{workflow_id}` require authentication with appropriate workflow access.
 
-**Access control:** Authentication required. Most endpoints require `templates` whitelist access. Onboarding/payslip endpoints use workflow-specific access checks.
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/templates` | List all templates |
+| GET | `/templates/categories` | Get all template categories |
+| POST | `/templates` | Create or update a template (admin) |
+| POST | `/templates/rename` | Rename a template (admin) |
+| GET | `/templates/{template_id}` | Get template by ID |
+| GET | `/templates/{template_id}/onboarding/{document_id}` | Get template with onboarding field values |
+| GET | `/templates/{template_id}/payslip-workflow/{workflow_id}` | Get template with payslip field values |
+| POST | `/templates/{template_id}/preview` | Preview template with field values |
+| POST | `/templates/{template_id}/generate-pdf` | Generate PDF from template |
+| GET | `/templates/{template_id}/download-pdf` | Download PDF for a template |
 
----
+## Endpoint Documentation
 
----
-
-## Endpoints
-
-| Method | Path | Description | Doc |
-|--------|------|-------------|-----|
-| `GET` | `/templates` | List all templates with optional filtering. Returns active templates by default. | [get_templates.md](./get_templates.md) |
-| `GET` | `/templates/categories` | Get list of all unique template categories from active templates. | [get_templates_categories.md](./get_templates_categories.md) |
-| `GET` | `/templates/{template_id}` | Get a single template by ID. | [get_templates_by_id.md](./get_templates_by_id.md) |
-| `GET` | `/templates/{template_id}/onboarding/{document_id}` | Get template with field values populated from an onboarding document. Access is  | [get_templates_by_id_onboarding_by_id.md](./get_templates_by_id_onboarding_by_id.md) |
-| `GET` | `/templates/{template_id}/payslip-workflow/{workflow_id}` | Get template with field values populated from a payslip workflow. Access is gran | [get_templates_by_id_payslip_workflow_by_id.md](./get_templates_by_id_payslip_workflow_by_id.md) |
-| `POST` | `/templates/{template_id}/preview` | Preview a template with field values. Returns rendered HTML for dynamic template | [post_templates_by_id_preview.md](./post_templates_by_id_preview.md) |
-| `POST` | `/templates/{template_id}/generate-pdf` | Generate a PDF from a template with field values. For PDF templates, returns the | [post_templates_by_id_generate_pdf.md](./post_templates_by_id_generate_pdf.md) |
-| `GET` | `/templates/{template_id}/download-pdf` | Download PDF for a template. For PDF templates, returns the direct PDF URL. For  | [get_templates_by_id_download_pdf.md](./get_templates_by_id_download_pdf.md) |
+- [GET /templates](get_templates.md)
+- [GET /templates/categories](get_templates_categories.md)
+- [POST /templates](post_templates.md)
+- [POST /templates/rename](post_templates_rename.md)
+- [GET /templates/{template_id}](get_templates_{template_id}.md)
+- [GET /templates/{template_id}/onboarding/{document_id}](get_templates_{template_id}_onboarding_{document_id}.md)
+- [GET /templates/{template_id}/payslip-workflow/{workflow_id}](get_templates_{template_id}_payslip-workflow_{workflow_id}.md)
+- [POST /templates/{template_id}/preview](post_templates_{template_id}_preview.md)
+- [POST /templates/{template_id}/generate-pdf](post_templates_{template_id}_generate-pdf.md)
+- [GET /templates/{template_id}/download-pdf](get_templates_{template_id}_download-pdf.md)

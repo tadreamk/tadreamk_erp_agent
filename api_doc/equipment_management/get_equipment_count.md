@@ -1,15 +1,14 @@
 # GET /equipment/count
 
-
-Get total count of equipment matching the given filters.
+Get count of equipment with optional filters. Requires `equipment-management` whitelist.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | status | string | No | Filter by status |
 | category | string | No | Filter by category |
-| employee_username | string | No | Filter by assigned employee username |
-| search | string | No | Search across equipment fields |
+| employee_username | string | No | Filter by assigned employee |
+| search | string | No | Search by name or serial number |
 
 **Response:**
 ```json
@@ -20,4 +19,4 @@ Get total count of equipment matching the given filters.
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No access to equipment management
+- `403` — No equipment-management whitelist access

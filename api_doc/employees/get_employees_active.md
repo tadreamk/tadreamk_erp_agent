@@ -1,12 +1,11 @@
 # GET /employees/active
 
-
-Get active employees for picker/dropdown selection. Returns minimal fields plus name from personal particulars.
+Get active employees for a picker dropdown. Requires `employees` whitelist.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| search | string | No | Search filter |
+| search | string | No | Search by username or name |
 | limit | int | No | Max results (default: 50) |
 
 **Response:**
@@ -15,11 +14,15 @@ Get active employees for picker/dropdown selection. Returns minimal fields plus 
   "employees": [
     {
       "id": "uuid",
-      "username": "john.doe",
-      "work_email": "john.doe@company.com",
-      "family_name": "Doe",
-      "given_name": "John"
+      "username": "alice",
+      "work_email": "alice@company.com",
+      "family_name": "Wong",
+      "given_name": "Alice"
     }
   ]
 }
 ```
+
+**Errors:**
+- `401` — Not authenticated
+- `403` — No employees whitelist access

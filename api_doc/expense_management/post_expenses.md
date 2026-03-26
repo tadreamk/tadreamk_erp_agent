@@ -1,18 +1,21 @@
 # POST /expenses
 
-
-Create a new manual expense.
+Create a new manual expense. Requires `expense-management` whitelist.
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| expense_category_id | UUID | Yes | FK to expense category |
-| total_value | decimal | Yes | Total expense amount (>= 0) |
-| note | string | No | Additional notes |
-| file_urls | string[] | No | List of supporting document URLs (default: []) |
+| title | string | Yes | Expense title |
+| amount | decimal | Yes | Expense amount |
+| currency | string | No | Currency (default: HKD) |
+| expense_category_id | UUID | No | Expense category ID |
+| description | string | No | Description |
+| expense_date | date | No | Date of expense |
+| source_type | string | No | Source type (default: manual) |
+| funding_allocation | list | No | Funding source allocations |
 
-**Response:** Full expense object (same shape as GET by ID).
+**Response:** Created expense object
 
 **Errors:**
-- `401` -- Not authenticated
-- `403` -- No access to expense management
+- `401` — Not authenticated
+- `403` — No expense-management whitelist access

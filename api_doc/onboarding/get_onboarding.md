@@ -1,37 +1,33 @@
 # GET /onboarding
 
-
-List onboarding workflows. HR sees all workflows; CEO sees only workflows assigned to them.
+List onboarding workflows. HR staff see all workflows; CEO users see only workflows assigned to them. Requires authentication.
 
 **Query Parameters:**
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| status | string | No | — | Filter by workflow status |
-| hr_username | string | No | — | Filter by assigned HR username |
-| is_active | bool | No | `true` | Filter by active/inactive |
-| limit | int | No | `100` | Results per page (1-500) |
-| offset | int | No | `0` | Pagination offset (>=0) |
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| status | string | No | Filter by workflow status |
+| hr_username | string | No | Filter by HR username (HR only) |
+| is_active | boolean | No | Filter by active status (default: true) |
+| limit | integer | No | Max results (default: 100, max: 500) |
+| offset | integer | No | Pagination offset (default: 0) |
 
-**Response:**
+**Response:** Array of workflow list objects
 ```json
 [
   {
     "id": "uuid",
     "talent_email": "talent@example.com",
-    "talent_username": "jane.doe",
-    "hr_username": "hr.admin",
-    "ceo_username": "ceo.user",
-    "status": "input",
-    "talent_submitted_at": "2026-03-10T08:00:00+00:00",
-    "sent_to_ceo_at": null,
-    "created_at": "2026-03-01T10:00:00+00:00",
-    "updated_at": "2026-03-10T08:00:00+00:00",
+    "talent_username": "string",
+    "hr_username": "string",
+    "ceo_username": "string",
+    "status": "pending",
+    "document_count": 3,
     "is_active": true,
-    "document_count": 3
+    "created_at": "2024-01-01T00:00:00"
   }
 ]
 ```
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No access to contract section (non-HR user with no assigned workflows)
+- `403` — Not an HR user and no CEO workflows found

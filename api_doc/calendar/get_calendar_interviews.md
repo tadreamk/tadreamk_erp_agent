@@ -1,27 +1,24 @@
 # GET /calendar/interviews
 
-
-Get confirmed interviews for calendar display within a date range.
+Get confirmed interviews within a date range for calendar display.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| start_date | date | Yes | Range start date (YYYY-MM-DD) |
-| end_date | date | Yes | Range end date (YYYY-MM-DD) |
-
-**Included interview statuses:** `interview_confirmed`, `interview_finished`, `accepted`, `rejected`
+| start_date | date | Yes | Start of range (YYYY-MM-DD) |
+| end_date | date | Yes | End of range (YYYY-MM-DD) |
 
 **Response:**
 ```json
 {
   "events": [
     {
-      "id": "770e8400-e29b-41d4-a716-446655440000",
-      "candidate": "Jane Smith",
-      "start_time": "2026-03-15T14:00:00",
-      "date": "2026-03-15",
+      "id": "uuid",
+      "candidate": "John Smith",
+      "start_time": "2026-03-20T10:00:00",
+      "date": "2026-03-20",
       "event_type": "interview",
-      "interviewers": ["john.doe", "admin"],
+      "interviewers": ["alice", "bob"],
       "status": "interview_confirmed"
     }
   ]
@@ -30,12 +27,4 @@ Get confirmed interviews for calendar display within a date range.
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — Employee access required
-
----
-
-## 57. Calendar (Admin)
-
-Admin calendar endpoints with expanded access. Requires admin/moderator role and `calendar` whitelist access.
-
-**Access control:** Admin or moderator role + `calendar` whitelist entry required.
+- `403` — Not an employee

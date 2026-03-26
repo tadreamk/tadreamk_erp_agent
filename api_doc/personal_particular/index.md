@@ -1,27 +1,25 @@
 # Personal Particular API
 
-Manages employee personal details (names, identity documents, contact information, emergency contacts, bank details). Split into self-service endpoints (employees managing their own records) and admin/HR endpoints (whitelist-protected, for managing any employee's records).
+Base prefixes:
+- `/personal-particular` — Employee self-service
+- `/admin/personal-particular` — HR admin access (requires `personal-particulars` whitelist)
 
----
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/personal-particular/me` | Get own personal particular data |
+| POST | `/personal-particular/me` | Create own personal particular record |
+| PUT | `/personal-particular/me` | Update own personal particular record |
+| GET | `/admin/personal-particular` | List all personal particulars (HR) |
+| GET | `/admin/personal-particular/{pp_id}` | Get a single personal particular (HR) |
+| POST | `/admin/personal-particular` | Create a personal particular record (HR) |
+| PUT | `/admin/personal-particular/{pp_id}` | Update a personal particular record (HR) |
 
-## 20. Personal Particular (Self-Service)
+## Endpoint Documentation
 
-Base path: `/personal-particular`
-
-**Authentication:** All endpoints require user authentication via request headers.
-
----
-
----
-
-## Endpoints
-
-| Method | Path | Description | Doc |
-|--------|------|-------------|-----|
-| `GET` | `/personal-particular/me` | Get the authenticated user's personal particular data. | [get_personal_particular_me.md](./get_personal_particular_me.md) |
-| `POST` | `/personal-particular/me` | Create personal particular data for the authenticated user. Each user can only h | [post_personal_particular_me.md](./post_personal_particular_me.md) |
-| `PUT` | `/personal-particular/me` | Update personal particular data for the authenticated user. Only fields included | [put_personal_particular_me.md](./put_personal_particular_me.md) |
-| `GET` | `/admin/personal-particular` | Get all personal particular records with search filtering and pagination. Return | [get_admin_personal_particular.md](./get_admin_personal_particular.md) |
-| `GET` | `/admin/personal-particular/{pp_id}` | Get a single personal particular record with full unmasked data. | [get_admin_personal_particular_by_id.md](./get_admin_personal_particular_by_id.md) |
-| `POST` | `/admin/personal-particular` | Create a new personal particular record for a specified user. If the user has an | [post_admin_personal_particular.md](./post_admin_personal_particular.md) |
-| `PUT` | `/admin/personal-particular/{pp_id}` | Update an existing personal particular record. The `updated_by` field is set aut | [put_admin_personal_particular_by_id.md](./put_admin_personal_particular_by_id.md) |
+- [GET /personal-particular/me](get_personal-particular_me.md)
+- [POST /personal-particular/me](post_personal-particular_me.md)
+- [PUT /personal-particular/me](put_personal-particular_me.md)
+- [GET /admin/personal-particular](get_admin_personal-particular.md)
+- [GET /admin/personal-particular/{pp_id}](get_admin_personal-particular_{pp_id}.md)
+- [POST /admin/personal-particular](post_admin_personal-particular.md)
+- [PUT /admin/personal-particular/{pp_id}](put_admin_personal-particular_{pp_id}.md)

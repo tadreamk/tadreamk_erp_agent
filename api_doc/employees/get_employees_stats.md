@@ -1,13 +1,16 @@
 # GET /employees/stats
 
-
-Get employee count statistics.
+Get employee statistics. Requires `employees` whitelist.
 
 **Response:**
 ```json
 {
-  "total": 50,
-  "active": 45,
-  "inactive": 5
+  "total": 100,
+  "active": 90,
+  "inactive": 10
 }
 ```
+
+**Errors:**
+- `401` — Not authenticated
+- `403` — No employees whitelist access

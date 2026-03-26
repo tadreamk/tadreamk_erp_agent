@@ -1,41 +1,21 @@
 # Job Posts API
 
-Job posting system with multilingual support. Supports a status workflow (draft -> published -> closed), AI-powered translation to Chinese, and public listing for candidates.
+Public prefix: `/job-posts` (no auth required)
+Admin prefix: `/job-post` (requires `job_post` whitelist)
 
-**Departments:** Engineering, Design, Marketing, Sales, Human Resources, Finance, Operations, Legal, Customer Support, Product
-
-**Job Types:** full_time, part_time, contract, internship (etc. — values from `JobType` enum)
-
-**Status Workflow:**
-- `draft` -> `published` (via `/publish`)
-- `published` -> `closed` (via `/close`)
-- `closed` -> `published` (via `/republish`)
-
----
-
-## Public Endpoints (No Authentication)
-
----
-
-## Endpoints
-
-| Method | Path | Description | Doc |
-|--------|------|-------------|-----|
-| `GET` | `/job-posts` | List published job posts. No authentication required. | [get_job_posts.md](./get_job_posts.md) |
-| `GET` | `/job-posts/departments` | Get list of unique departments from published job posts. | [get_job_posts_departments.md](./get_job_posts_departments.md) |
-| `GET` | `/job-posts/job-types` | Get available job type options. | [get_job_posts_job_types.md](./get_job_posts_job_types.md) |
-| `GET` | `/job-posts/{job_post_id}` | Get single published job post by ID. Supports language selection for translated  | [get_job_posts_by_id.md](./get_job_posts_by_id.md) |
-| `GET` | `/job-post` | List all job posts with optional filtering. | [get_job_post.md](./get_job_post.md) |
-| `GET` | `/job-post/options` | Get available options for job post creation form. | [get_job_post_options.md](./get_job_post_options.md) |
-| `POST` | `/job-post` | Create a new job post. Created with status `draft`. | [post_job_post.md](./post_job_post.md) |
-| `GET` | `/job-post/{job_post_id}` | Get a specific job post by ID. | [get_job_post_by_id.md](./get_job_post_by_id.md) |
-| `PUT` | `/job-post/{job_post_id}` | Update an existing job post. All fields optional. | [put_job_post_by_id.md](./put_job_post_by_id.md) |
-| `DELETE` | `/job-post/{job_post_id}` | Soft delete a job post (sets `is_active=false`). | [delete_job_post_by_id.md](./delete_job_post_by_id.md) |
-| `POST` | `/job-post/{job_post_id}/duplicate` | Duplicate an existing job post. Creates a copy with "[Copy]" prefix in title and | [post_job_post_by_id_duplicate.md](./post_job_post_by_id_duplicate.md) |
-| `POST` | `/job-post/{job_post_id}/publish` | Publish a draft job post. Sets `published_at` timestamp. | [post_job_post_by_id_publish.md](./post_job_post_by_id_publish.md) |
-| `POST` | `/job-post/{job_post_id}/close` | Close a published job post. Sets `closed_at` timestamp. | [post_job_post_by_id_close.md](./post_job_post_by_id_close.md) |
-| `POST` | `/job-post/{job_post_id}/republish` | Republish a closed job post. Updates `published_at` and clears `closed_at`. | [post_job_post_by_id_republish.md](./post_job_post_by_id_republish.md) |
-| `POST` | `/job-post/translate` | Preview translation without saving. Uses Gemini AI to translate to zh and zh-TW. | [post_job_post_translate.md](./post_job_post_translate.md) |
-| `POST` | `/job-post/{job_post_id}/translate` | Trigger background AI translation for a job post. Returns immediately; status ch | [post_job_post_by_id_translate.md](./post_job_post_by_id_translate.md) |
-| `GET` | `/job-post/{job_post_id}/translations` | Get all translations for a job post. | [get_job_post_by_id_translations.md](./get_job_post_by_id_translations.md) |
-| `PUT` | `/job-post/{job_post_id}/translations/{lang}` | Update translation for a specific language. Only `zh` and `zh-TW` are supported. | [put_job_post_by_id_translations_by_id.md](./put_job_post_by_id_translations_by_id.md) |
+| Method | Path | Auth | Description | File |
+|--------|------|------|-------------|------|
+| GET | /job-posts | None | List published job posts | [get_job-posts.md](get_job-posts.md) |
+| GET | /job-posts/departments | None | Get departments from published posts | [get_job-posts_departments.md](get_job-posts_departments.md) |
+| GET | /job-posts/job-types | None | Get available job types | [get_job-posts_job-types.md](get_job-posts_job-types.md) |
+| GET | /job-posts/{job_post_id} | None | Get published job post by ID | [get_job-posts_{job_post_id}.md](get_job-posts_{job_post_id}.md) |
+| GET | /job-post | `job_post` whitelist | List all job posts (admin) | [get_job-post.md](get_job-post.md) |
+| GET | /job-post/options | `job_post` whitelist | Get form options | [get_job-post_options.md](get_job-post_options.md) |
+| POST | /job-post | `job_post` whitelist | Create a job post | [post_job-post.md](post_job-post.md) |
+| GET | /job-post/{job_post_id} | `job_post` whitelist | Get job post by ID | [get_job-post_{job_post_id}.md](get_job-post_{job_post_id}.md) |
+| PUT | /job-post/{job_post_id} | `job_post` whitelist | Update a job post | [put_job-post_{job_post_id}.md](put_job-post_{job_post_id}.md) |
+| DELETE | /job-post/{job_post_id} | `job_post` whitelist | Soft delete a job post | [delete_job-post_{job_post_id}.md](delete_job-post_{job_post_id}.md) |
+| POST | /job-post/{job_post_id}/duplicate | `job_post` whitelist | Duplicate a job post | [post_job-post_{job_post_id}_duplicate.md](post_job-post_{job_post_id}_duplicate.md) |
+| POST | /job-post/{job_post_id}/publish | `job_post` whitelist | Publish a draft post | [post_job-post_{job_post_id}_publish.md](post_job-post_{job_post_id}_publish.md) |
+| POST | /job-post/{job_post_id}/close | `job_post` whitelist | Close a published post | [post_job-post_{job_post_id}_close.md](post_job-post_{job_post_id}_close.md) |
+| POST | /job-post/{job_post_id}/republish | `job_post` whitelist | Republish a closed post | [post_job-post_{job_post_id}_republish.md](post_job-post_{job_post_id}_republish.md) |

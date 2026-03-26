@@ -1,17 +1,11 @@
 # GET /contacts/departments
 
-
-Get list of unique department names for the directory filter dropdown.
+Get unique departments for the contact directory filter. Requires employee authentication.
 
 **Response:**
 ```json
 {
-  "departments": [
-    "Engineering",
-    "Finance",
-    "Human Resources",
-    "Marketing"
-  ]
+  "departments": ["Engineering", "Finance", "HR", "Marketing"]
 }
 ```
 

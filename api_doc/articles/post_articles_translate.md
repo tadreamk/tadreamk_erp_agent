@@ -1,26 +1,33 @@
 # POST /articles/translate
 
-
-Translate article content via Gemini AI. Returns translations without saving.
+Translate article content to target languages via Gemini AI.
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| title | string | Yes | Title to translate |
-| summary | string | No | Summary to translate |
-| content | string | No | Content to translate |
-| target_languages | string[] | No | Language codes (default: `["zh", "zh-TW"]`) |
+| title | string | Yes | Article title to translate |
+| summary | string | No | Article summary to translate |
+| content | string | No | Article content to translate |
+| target_languages | list[string] | Yes | Languages to translate to (e.g., `["zh", "zh-TW"]`) |
 
 **Response:**
 ```json
 {
   "translations": {
-    "zh": { "title": "...", "summary": "...", "content": "..." },
-    "zh-TW": { "title": "...", "summary": "...", "content": "..." }
+    "zh": {
+      "title": "string",
+      "summary": "string",
+      "content": "string"
+    },
+    "zh-TW": {
+      "title": "string",
+      "summary": "string",
+      "content": "string"
+    }
   }
 }
 ```
 
----
-
-## Public Endpoints (No Authentication)
+**Errors:**
+- `401` — Not authenticated
+- `403` — No access to articles

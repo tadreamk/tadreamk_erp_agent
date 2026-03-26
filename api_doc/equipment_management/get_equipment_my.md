@@ -1,19 +1,18 @@
 # GET /equipment/my
 
-
-Get equipment assigned to the currently authenticated user. No whitelist required — any authenticated user can call this.
+Get equipment assigned to the currently authenticated user. Requires authentication.
 
 **Response:**
 ```json
 [
   {
     "id": "uuid",
-    "name": "MacBook Pro 16\"",
+    "name": "MacBook Pro 14\"",
     "category": "Laptops",
-    "serial_number": "C02X1234ABCD",
-    "assigned_date": "2025-06-15",
+    "serial_number": "SN12345",
+    "assigned_date": "2024-01-01",
     "status": "assigned",
-    "location": "Office A",
+    "location": "HQ",
     "license_key": null,
     "renewal_date": null
   }

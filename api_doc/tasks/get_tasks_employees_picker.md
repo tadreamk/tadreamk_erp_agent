@@ -1,19 +1,20 @@
 # GET /tasks/employees/picker
 
-
-Get employee usernames for the task member picker dropdown. Available to all authenticated users.
+Get a list of active employees for the task member picker. All authenticated users can access this endpoint.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| search | string | No | Search by username |
+| search | string | No | Search by username (up to 50 results) |
 
 **Response:**
 ```json
 {
   "employees": [
-    { "username": "john.doe", "work_email": "john@company.com" },
-    { "username": "jane.smith", "work_email": "jane@company.com" }
+    {
+      "username": "alice",
+      "work_email": "alice@company.com"
+    }
   ]
 }
 ```

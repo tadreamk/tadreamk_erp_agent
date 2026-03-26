@@ -1,36 +1,27 @@
 # POST /employees
 
-
-Create a new employee record.
+Create a new employee. Requires `employees` whitelist.
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| work_email | string (email) | Yes | Employee work email address |
-| username | string | No | Username (max 100 chars) |
+| work_email | string | Yes | Work email address |
+| username | string | Yes | Username |
 
-**Request Example:**
-```json
-{
-  "work_email": "john.doe@company.com",
-  "username": "john.doe"
-}
-```
-
-**Response (201):**
+**Response:**
 ```json
 {
   "message": "Employee created",
   "employee": {
     "id": "uuid",
-    "username": "john.doe",
-    "work_email": "john.doe@company.com",
+    "username": "alice",
+    "work_email": "alice@company.com",
     "manager_username": null,
     "contract_id": null,
     "personal_particular_id": null,
     "onboarding_id": null,
-    "created_at": "2025-06-01T00:00:00",
-    "updated_at": null,
+    "created_at": "datetime",
+    "updated_at": "datetime",
     "updated_by": null,
     "is_active": true
   }
@@ -38,4 +29,6 @@ Create a new employee record.
 ```
 
 **Errors:**
-- `400` -- Employee with this work email already exists
+- `400` — Employee with this work email already exists
+- `401` — Not authenticated
+- `403` — No employees whitelist access

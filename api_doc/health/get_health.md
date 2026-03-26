@@ -1,9 +1,10 @@
 # GET /health
 
-
-Health check endpoint.
+Health check endpoint. No authentication required.
 
 **Response:**
 ```json
-{ "status": "healthy", "service": "TadReamk ERP API" }
+{
+  "status": "healthy"
+}
 ```

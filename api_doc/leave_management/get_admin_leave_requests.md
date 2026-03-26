@@ -1,50 +1,31 @@
 # GET /admin/leave/requests
 
-
-Get all leave requests with filtering and pagination.
-
-**Access control:** Whitelist `leave-management` required.
+List all leave requests with optional filters. Requires `leave-management` whitelist.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| status_filter | string | No | Filter by status (`pending`, `approved`, `rejected`, `cancelled`) |
+| status_filter | string | No | Filter by status (pending, approved, rejected, cancelled) |
 | leave_type | string | No | Filter by leave type |
-| from_date | date | No | Filter requests from this date (YYYY-MM-DD) |
-| to_date | date | No | Filter requests up to this date (YYYY-MM-DD) |
+| from_date | date | No | Filter by start date |
+| to_date | date | No | Filter by end date |
 | page | int | No | Page number (default: 1) |
-| limit | int | No | Items per page (default: 50) |
+| limit | int | No | Max results (default: 50) |
 
 **Response:**
 ```json
 {
   "requests": [
     {
-      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-      "employee_username": "john.doe",
-      "manager_username": "jane.smith",
+      "id": "uuid",
+      "employee_username": "alice",
       "leave_type": "annual",
-      "leave_periods": [
-        {
-          "start_date": "2026-04-01",
-          "start_apm": "AM",
-          "end_date": "2026-04-03",
-          "end_apm": "PM"
-        }
-      ],
-      "swap_work_periods": null,
-      "total_days": 3.0,
-      "leave_reason": "Family vacation",
-      "supporting_document_urls": [],
       "status": "pending",
-      "reviewed_by_username": null,
-      "reviewed_at": null,
-      "created_at": "2026-03-10T08:00:00+00:00",
-      "updated_at": null,
-      "has_pending_amendment": false
+      "leave_periods": [],
+      "created_at": "datetime"
     }
   ],
-  "total": 25,
+  "total": 20,
   "page": 1,
   "limit": 50
 }
@@ -52,4 +33,4 @@ Get all leave requests with filtering and pagination.
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — Not whitelisted for `leave-management`
+- `403` — No leave-management whitelist access

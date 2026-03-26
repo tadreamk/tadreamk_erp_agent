@@ -1,26 +1,27 @@
 # POST /whitelist/bulk
 
-
-Bulk-create whitelist entries for a single user across multiple endpoints.
+Create multiple whitelist entries for a single user across multiple endpoints. Skips endpoints where the user already has access. Requires `whitelist` admin access.
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| username | string | Yes | Username (1-100 chars) |
-| erp_endpoints | string[] | Yes | List of ERP endpoints to grant (min 1) |
+| username | string | Yes | Username to grant access to |
+| erp_endpoints | list[string] | Yes | List of ERP endpoint names |
 
-**Response (201):**
+**Response:** `201 Created`
 ```json
 {
   "success": true,
   "message": "Created 3 entries, skipped 1 existing",
   "data": {
-    "username": "john.doe",
-    "created": ["task", "job-posts", "exercise"],
-    "skipped": ["whitelist"]
+    "username": "alice",
+    "created": ["leave-management", "tasks", "employees"],
+    "skipped": ["expense-management"]
   }
 }
 ```
 
 **Errors:**
-- `400` — One or more invalid endpoints
+- `400` — One or more invalid endpoint names
+- `401` — Not authenticated
+- `403` — Not on whitelist admin access

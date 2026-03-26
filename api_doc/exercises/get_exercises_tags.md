@@ -1,26 +1,14 @@
 # GET /exercises/tags
 
-
-Get the predefined list of valid tags.
+Get list of predefined tags available for exercises. Requires `exercise` whitelist.
 
 **Response:**
 ```json
 {
-  "tags": [
-    "frontend",
-    "backend",
-    "database",
-    "machine-learning",
-    "computer-vision",
-    "nlp",
-    "llm",
-    "algorithms",
-    "system-design",
-    "generative-ai"
-  ]
+  "tags": ["JavaScript", "Python", "React", "SQL", "Communication"]
 }
 ```
 
 **Errors:**
-- `401` -- Not authenticated
-- `403` -- No whitelist access to exercise section
+- `401` — Not authenticated
+- `403` — No exercise whitelist access

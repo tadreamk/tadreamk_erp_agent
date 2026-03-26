@@ -1,17 +1,14 @@
 # GET /calendar/team
 
-
-Get team calendar with approved leaves for a given month. Defaults to the current month if no parameters are provided.
+Get team calendar events (approved leaves) for a given month. Defaults to the current month.
 
 **Query Parameters:**
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| year | int | No | Current year | Calendar year |
-| month | int | No | Current month | Calendar month (1-12) |
-| department | string | No | null | Filter by department |
-| leave_type | string | No | null | Filter by leave type |
-
-**Leave type values:** `annual`, `sick`, `no_pay`, `maternal`, `swap_off`, `swap_work`, `remote_work`
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| year | int | No | Year (defaults to current year) |
+| month | int | No | Month 1–12 (defaults to current month) |
+| department | string | No | Filter by department name |
+| leave_type | string | No | Filter by leave type |
 
 **Response:**
 ```json
@@ -22,35 +19,23 @@ Get team calendar with approved leaves for a given month. Defaults to the curren
   "end_date": "2026-03-31",
   "events": [
     {
-      "id": "leave-550e8400-2026-03-15",
-      "title": "(AM) John Doe",
+      "id": "leave-uuid-2026-03-15",
+      "title": "Alice Wong - Annual Leave",
       "date": "2026-03-15",
       "event_type": "leave",
-      "leave_type": "annual",
-      "is_full_day": false,
-      "period": "AM",
+      "is_full_day": true,
+      "period": "full",
       "color": "#3b82f6",
-      "employee_username": "john.doe",
-      "employee_name": "John Doe",
-      "department": "Engineering"
+      "talent_email": "alice",
+      "talent_name": "Alice Wong",
+      "status": "approved"
     }
   ],
-  "departments": ["Engineering", "Design", "HR"]
+  "departments": ["Engineering", "Design"]
 }
 ```
 
-**Leave type color mapping:**
-| Leave Type | Color |
-|------------|-------|
-| annual | `#3b82f6` (Blue) |
-| sick | `#f59e0b` (Amber) |
-| no_pay | `#6b7280` (Gray) |
-| maternal | `#ec4899` (Pink) |
-| swap_off | `#8b5cf6` (Purple) |
-| swap_work | `#06b6d4` (Cyan) |
-| remote_work | `#ef4444` (Red) |
-
 **Errors:**
-- `400` — Invalid month
+- `400` — Invalid month value
 - `401` — Not authenticated
-- `403` — Employee access required
+- `403` — Not an employee

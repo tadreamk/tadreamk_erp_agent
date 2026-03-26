@@ -1,24 +1,29 @@
-# 60. Technical Reports API
+# Technical Reports API
 
-Employee-facing system for submitting and tracking technical/IT support reports. Employees submit reports with optional file attachments; technical administrators (users with `technical-reports` whitelist) can view all reports and mark them as resolved. Notifications are sent to the Head of IT on submission and to the reporter on resolution.
+Base prefix: `/technical-reports`
 
-**Base path:** `/technical-reports`
+Authentication: Required. Employee endpoints require employee authentication. Admin/list endpoints require `technical-reports` whitelist access.
 
-**Access control:** All endpoints require authentication. Employee endpoints require the user to exist in the employees table. Admin-level endpoints require `technical-reports` whitelist access.
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/technical-reports/my-reports` | Get technical reports for the authenticated employee |
+| GET | `/technical-reports/my-reports/count` | Count technical reports for the authenticated employee |
+| GET | `/technical-reports` | List all technical reports (whitelist required) |
+| GET | `/technical-reports/count` | Count all technical reports (whitelist required) |
+| POST | `/technical-reports` | Submit a new technical report (employee) |
+| POST | `/technical-reports/upload` | Upload a supporting file to GCS |
+| GET | `/technical-reports/{report_id}` | Get technical report details |
+| PUT | `/technical-reports/{report_id}` | Update a submitted report (owner only) |
+| POST | `/technical-reports/{report_id}/resolve` | Mark a report as resolved (whitelist required) |
 
----
+## Endpoint Documentation
 
----
-
-## Endpoints
-
-| Method | Path | Description | Doc |
-|--------|------|-------------|-----|
-| `GET` | `/technical-reports/my-reports` | Get technical reports submitted by the authenticated employee. | [get_technical_reports_my_reports.md](./get_technical_reports_my_reports.md) |
-| `GET` | `/technical-reports/my-reports/count` | Get count of technical reports submitted by the authenticated employee. | [get_technical_reports_my_reports_count.md](./get_technical_reports_my_reports_count.md) |
-| `GET` | `/technical-reports` | List all technical reports across all employees. Requires `technical-reports` wh | [get_technical_reports.md](./get_technical_reports.md) |
-| `GET` | `/technical-reports/count` | Get count of all technical reports. Requires `technical-reports` whitelist. | [get_technical_reports_count.md](./get_technical_reports_count.md) |
-| `POST` | `/technical-reports` | Create a new technical report. The authenticated employee is recorded as the rep | [post_technical_reports.md](./post_technical_reports.md) |
-| `POST` | `/technical-reports/upload` | Upload a supporting file to Google Cloud Storage. Returns the file URL for use i | [post_technical_reports_upload.md](./post_technical_reports_upload.md) |
-| `GET` | `/technical-reports/{report_id}` | Get detailed view of a technical report. The report owner sees it with `employee | [get_technical_reports_by_id.md](./get_technical_reports_by_id.md) |
-| `POST` | `/technical-reports/{report_id}/resolve` | Mark a technical report as resolved. Requires `technical-reports` whitelist. Onl | [post_technical_reports_by_id_resolve.md](./post_technical_reports_by_id_resolve.md) |
+- [GET /technical-reports/my-reports](get_technical-reports_my-reports.md)
+- [GET /technical-reports/my-reports/count](get_technical-reports_my-reports_count.md)
+- [GET /technical-reports](get_technical-reports.md)
+- [GET /technical-reports/count](get_technical-reports_count.md)
+- [POST /technical-reports](post_technical-reports.md)
+- [POST /technical-reports/upload](post_technical-reports_upload.md)
+- [GET /technical-reports/{report_id}](get_technical-reports_{report_id}.md)
+- [PUT /technical-reports/{report_id}](put_technical-reports_{report_id}.md)
+- [POST /technical-reports/{report_id}/resolve](post_technical-reports_{report_id}_resolve.md)

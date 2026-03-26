@@ -1,11 +1,14 @@
 # GET /employees/departments
 
-
-Get unique department names from all employee contracts, for use in filter dropdowns.
+Get unique departments for filter dropdown. Requires `employees` whitelist.
 
 **Response:**
 ```json
 {
-  "departments": ["Engineering", "Finance", "Human Resources", "Marketing"]
+  "departments": ["Engineering", "Finance", "HR"]
 }
 ```
+
+**Errors:**
+- `401` — Not authenticated
+- `403` — No employees whitelist access

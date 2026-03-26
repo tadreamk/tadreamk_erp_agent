@@ -1,35 +1,32 @@
 # GET /expenses
 
-
-List all expenses with optional filters and pagination.
+List all expenses with optional filters. Requires `expense-management` whitelist or CEO role.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| status | string | No | Filter by status: `pending`, `finished` |
-| expense_category_id | UUID | No | Filter by expense category ID |
-| source_type | string | No | Filter by source: `payslip`, `reimbursement`, `manual` |
-| skip | int | No | Offset for pagination (default: 0, min: 0) |
-| limit | int | No | Items per page (default: 50, min: 1, max: 100) |
+| status | string | No | Filter by status |
+| expense_category_id | UUID | No | Filter by category |
+| source_type | string | No | Filter by source type (payslip, reimbursement, timesheet, manual) |
+| skip | int | No | Offset (default: 0) |
+| limit | int | No | Max results (default: 50, max: 100) |
 
 **Response:**
 ```json
 [
   {
     "id": "uuid",
-    "expense_category_id": "uuid",
-    "expense_category_name": "Salaries & Wages",
-    "total_value": 5000.00,
+    "title": "string",
+    "amount": 1000.0,
+    "currency": "HKD",
     "status": "pending",
-    "source_type": "payslip",
-    "is_fully_allocated": false,
-    "created_at": "2026-03-01T10:00:00",
-    "payroll_employee": "john.doe",
-    "reimbursement_employee": null
+    "expense_category_id": "uuid",
+    "source_type": "manual",
+    "created_at": "datetime"
   }
 ]
 ```
 
 **Errors:**
-- `401` -- Not authenticated
-- `403` -- No access to expense management
+- `401` — Not authenticated
+- `403` — No expense-management whitelist access

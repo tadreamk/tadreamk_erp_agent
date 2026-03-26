@@ -1,7 +1,6 @@
 # GET /templates/categories
 
-
-Get list of all unique template categories from active templates.
+Get a list of all unique template categories. Returns categories from active templates only. Requires `templates` whitelist access.
 
 **Response:**
 ```json
@@ -13,4 +12,4 @@ Get list of all unique template categories from active templates.
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No templates whitelist access
+- `403` — Not on templates whitelist

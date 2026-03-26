@@ -1,14 +1,13 @@
 # GET /employee/me
 
-
-Get the current authenticated employee's profile.
+Get the current employee's own profile. Requires authentication.
 
 **Response:**
 ```json
 {
   "id": "uuid",
-  "username": "john.doe",
-  "work_email": "john.doe@company.com",
+  "username": "alice",
+  "work_email": "alice@company.com",
   "contract_id": "uuid",
   "personal_particular_id": "uuid",
   "onboarding_id": "uuid",
@@ -17,5 +16,5 @@ Get the current authenticated employee's profile.
 ```
 
 **Errors:**
-- `401` -- Not authenticated
-- `404` -- Employee profile not found
+- `401` — Not authenticated
+- `404` — Employee profile not found

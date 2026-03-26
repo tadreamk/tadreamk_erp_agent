@@ -1,17 +1,13 @@
 # Expense Categories API
 
-Manage expense categories used for classifying expenses and funding allocations. Supports soft deactivation/reactivation instead of hard deletion.
+Base prefix: `/expense-categories`
 
-**Access control:** Whitelist `expense-management` required for all endpoints.
+All endpoints require `expense-management` whitelist.
 
----
-
-## Endpoints
-
-| Method | Path | Description | Doc |
-|--------|------|-------------|-----|
-| `GET` | `/expense-categories` | List expense categories. Optionally include inactive categories. | [get_expense_categories.md](./get_expense_categories.md) |
-| `POST` | `/expense-categories` | Create a new expense category. Title must be unique. | [post_expense_categories.md](./post_expense_categories.md) |
-| `PUT` | `/expense-categories/{category_id}` | Update an existing expense category. | [put_expense_categories_by_id.md](./put_expense_categories_by_id.md) |
-| `PUT` | `/expense-categories/{category_id}/deactivate` | Deactivate an expense category (soft delete). | [put_expense_categories_by_id_deactivate.md](./put_expense_categories_by_id_deactivate.md) |
-| `PUT` | `/expense-categories/{category_id}/reactivate` | Reactivate a previously deactivated expense category. | [put_expense_categories_by_id_reactivate.md](./put_expense_categories_by_id_reactivate.md) |
+| Method | Path | Description | File |
+|--------|------|-------------|------|
+| GET | /expense-categories | List expense categories | [get_expense-categories.md](get_expense-categories.md) |
+| POST | /expense-categories | Create an expense category | [post_expense-categories.md](post_expense-categories.md) |
+| PUT | /expense-categories/{category_id} | Update an expense category | [put_expense-categories_{category_id}.md](put_expense-categories_{category_id}.md) |
+| PUT | /expense-categories/{category_id}/deactivate | Deactivate a category | [put_expense-categories_{category_id}_deactivate.md](put_expense-categories_{category_id}_deactivate.md) |
+| PUT | /expense-categories/{category_id}/reactivate | Reactivate a category | [put_expense-categories_{category_id}_reactivate.md](put_expense-categories_{category_id}_reactivate.md) |

@@ -1,14 +1,8 @@
-# Health & Root API
+# Health API
 
-Basic health check and root info endpoints. No authentication required.
+No authentication required.
 
----
-
----
-
-## Endpoints
-
-| Method | Path | Description | Doc |
-|--------|------|-------------|-----|
-| `GET` | `/` | API root message. | [get_.md](./get_.md) |
-| `GET` | `/health` | Health check endpoint. | [get_health.md](./get_health.md) |
+| Method | Path | Description | File |
+|--------|------|-------------|------|
+| GET | /health | Health check | [get_health.md](get_health.md) |
+| GET | / | Root endpoint | [get_root.md](get_root.md) |

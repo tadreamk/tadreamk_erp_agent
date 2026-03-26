@@ -1,13 +1,12 @@
 # GET /admin/calendar/team
 
-
-Get team calendar with approved leaves for a given month (admin view). Defaults to the current month if no parameters are provided.
+Get team calendar with approved leaves (admin view). Requires admin/moderator role and `calendar` whitelist.
 
 **Query Parameters:**
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| year | int | No | Current year | Calendar year |
-| month | int | No | Current month | Calendar month (1-12) |
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| year | int | No | Year (defaults to current year) |
+| month | int | No | Month 1–12 (defaults to current month) |
 
 **Response:**
 ```json
@@ -16,15 +15,15 @@ Get team calendar with approved leaves for a given month (admin view). Defaults 
   "end_date": "2026-04-01",
   "events": [
     {
-      "id": "leave-550e8400-2026-03-15",
-      "title": "John Doe - annual",
-      "date": "2026-03-15",
+      "id": "leave-uuid-2026-03-10",
+      "title": "Bob Lee - Sick Leave",
+      "date": "2026-03-10",
       "event_type": "leave",
       "is_full_day": true,
-      "period": null,
+      "period": "full",
       "color": "#3b82f6",
-      "talent_email": "john.doe",
-      "talent_name": "John Doe",
+      "talent_email": "bob",
+      "talent_name": "Bob Lee",
       "status": "approved"
     }
   ]
@@ -33,4 +32,4 @@ Get team calendar with approved leaves for a given month (admin view). Defaults 
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — Admin or moderator access required / No whitelist access to calendar section
+- `403` — Not admin/moderator or missing calendar whitelist

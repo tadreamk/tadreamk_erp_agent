@@ -1,37 +1,36 @@
 # GET /equipment
 
-
-List all equipment with optional filters.
+List all equipment with optional filters. Requires `equipment-management` whitelist.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| status | string | No | Filter by status: `available`, `assigned`, `in_repair`, `reserved`, `retired`, `lost` |
-| category | string | No | Filter by category: `Laptops`, `Phones`, `Keys`, `Parking`, `Monitors`, `Furniture`, `Software`, `Other` |
-| employee_username | string | No | Filter by assigned employee username |
-| search | string | No | Search across equipment fields |
-| skip | int | No | Offset for pagination (default: 0, min: 0) |
-| limit | int | No | Max items to return (default: 50, min: 1, max: 100) |
+| status | string | No | Filter by status (available, assigned, in_repair, reserved, retired, lost) |
+| category | string | No | Filter by category (Laptops, Phones, Keys, Parking, Monitors, Furniture, Software, Other) |
+| employee_username | string | No | Filter by assigned employee |
+| search | string | No | Search by name or serial number |
+| skip | int | No | Offset (default: 0) |
+| limit | int | No | Max results (default: 50, max: 100) |
 
 **Response:**
 ```json
 [
   {
     "id": "uuid",
-    "name": "MacBook Pro 16\"",
+    "name": "MacBook Pro 14\"",
     "category": "Laptops",
-    "serial_number": "C02X1234ABCD",
-    "employee_username": "john.doe",
-    "employee_full_name": null,
-    "assigned_date": "2025-06-15",
+    "serial_number": "SN12345",
+    "employee_username": "alice",
+    "employee_full_name": "Alice Wong",
+    "assigned_date": "2024-01-01",
     "status": "assigned",
-    "location": "Office A",
+    "location": "HQ",
     "renewal_date": null,
-    "created_at": "2025-06-01T10:00:00Z"
+    "created_at": "datetime"
   }
 ]
 ```
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No access to equipment management
+- `403` — No equipment-management whitelist access

@@ -1,23 +1,19 @@
 # GET /treasury/dashboard
 
-Get treasury dashboard summary including current balance, totals, burn rate, runway, and pending receivables.
+Get the treasury dashboard summary including balance, burn rate, runway, and pending receivables. Requires `expense-management` whitelist access.
 
 **Response:**
 ```json
 {
-  "current_balance": 150000.00,
-  "total_injections": 500000.00,
-  "total_withdrawals": 50000.00,
-  "total_expense_payments": 280000.00,
-  "total_reimbursements_received": 30000.00,
+  "total_balance": 500000.00,
+  "total_inflow": 800000.00,
+  "total_outflow": 300000.00,
   "burn_rate_monthly": 25000.00,
-  "runway_months": 6.0,
-  "pending_receivables": 45000.00
+  "runway_months": 20,
+  "pending_receivables": 50000.00
 }
 ```
 
-**Error Codes:**
-| Code | Description |
-|------|-------------|
-| 401 | Not authenticated |
-| 403 | Not authorized (requires `expense-management` whitelist) |
+**Errors:**
+- `401` — Not authenticated
+- `403` — Not authorized
