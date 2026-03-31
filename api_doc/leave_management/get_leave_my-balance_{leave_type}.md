@@ -12,7 +12,7 @@ Get the current user's leave balance for a specific leave type. Requires authent
 |-----------|------|----------|-------------|
 | reference_date | date | No | Reference date for calculation (default: today) |
 
-**Response:**
+**Response (standard leave types):**
 ```json
 {
   "employee_username": "alice",
@@ -20,6 +20,23 @@ Get the current user's leave balance for a specific leave type. Requires authent
   "entitled": 14,
   "used": 4,
   "available": 10
+}
+```
+
+**Response (sick leave — monthly limit):**
+```json
+{
+  "employee_username": "alice",
+  "leave_type": "sick",
+  "monthly_limit": 4,
+  "entitled": 4,
+  "used": 1,
+  "pending": 0,
+  "available": 3,
+  "is_monthly_limit": true,
+  "contract_months": 24,
+  "from_date": "2026-03-01",
+  "end_date": "2026-03-31"
 }
 ```
 

@@ -19,3 +19,7 @@ Admin prefix: `/job-post` (requires `job_post` whitelist)
 | POST | /job-post/{job_post_id}/publish | `job_post` whitelist | Publish a draft post | [post_job-post_{job_post_id}_publish.md](post_job-post_{job_post_id}_publish.md) |
 | POST | /job-post/{job_post_id}/close | `job_post` whitelist | Close a published post | [post_job-post_{job_post_id}_close.md](post_job-post_{job_post_id}_close.md) |
 | POST | /job-post/{job_post_id}/republish | `job_post` whitelist | Republish a closed post | [post_job-post_{job_post_id}_republish.md](post_job-post_{job_post_id}_republish.md) |
+| POST | /job-post/translate | `job_post` whitelist | Translate content (preview) | [post_job-post_translate.md](post_job-post_translate.md) |
+| POST | /job-post/{job_post_id}/translate | `job_post` whitelist | Trigger background translation | [post_job-post_{job_post_id}_translate.md](post_job-post_{job_post_id}_translate.md) |
+| GET | /job-post/{job_post_id}/translations | `job_post` whitelist | Get translations | [get_job-post_{job_post_id}_translations.md](get_job-post_{job_post_id}_translations.md) |
+| PUT | /job-post/{job_post_id}/translations/{lang} | `job_post` whitelist | Update translation for lang | [put_job-post_{job_post_id}_translations_{lang}.md](put_job-post_{job_post_id}_translations_{lang}.md) |

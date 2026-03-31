@@ -17,10 +17,24 @@ Get the current user's leave balances for all leave types (only returns types wi
       "entitled": 14,
       "used": 4,
       "available": 10
+    },
+    {
+      "leave_type": "sick",
+      "monthly_limit": 4,
+      "entitled": 4,
+      "used": 1,
+      "pending": 0,
+      "available": 3,
+      "is_monthly_limit": true,
+      "contract_months": 24,
+      "from_date": "2026-03-01",
+      "end_date": "2026-03-31"
     }
   ]
 }
 ```
+
+**Note:** Sick leave balance uses `is_monthly_limit: true` with `monthly_limit` instead of flat entitlement. The limit is auto-calculated from contract duration: 2 days/month (first 12 months), 4 days/month (after 12 months).
 
 **Errors:**
 - `401` — Not authenticated

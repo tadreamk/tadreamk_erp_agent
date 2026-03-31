@@ -12,3 +12,4 @@ Admin prefix: `/admin/employee-contract`
 | GET | /admin/employee-contract/{contract_id} | `employee-contracts` whitelist | Get contract by ID | [get_admin_employee-contract_{contract_id}.md](get_admin_employee-contract_{contract_id}.md) |
 | POST | /admin/employee-contract | `employee-contracts` whitelist | Create contract for user | [post_admin_employee-contract.md](post_admin_employee-contract.md) |
 | PUT | /admin/employee-contract/{contract_id} | `employee-contracts` whitelist | Update contract by ID | [put_admin_employee-contract_{contract_id}.md](put_admin_employee-contract_{contract_id}.md) |
+| GET | /admin/employee-contract/{username}/history | `employee-contracts` whitelist | Get contract history | [get_admin_employee-contract_{username}_history.md](get_admin_employee-contract_{username}_history.md) |

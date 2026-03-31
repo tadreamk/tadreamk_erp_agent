@@ -15,6 +15,7 @@ Authentication: HR/Finance endpoints require `payslip` whitelist access. Employe
 | GET | `/payslip-workflow/my-payslips` | Get payslips for the authenticated employee |
 | POST | `/payslip-workflow/{workflow_id}/sign` | Employee signs/acknowledges a payslip |
 | POST | `/payslip-workflow/{workflow_id}/confirm` | Confirm payslip and send to CEO for approval (HR) |
+| POST | `/payslip-workflow/{workflow_id}/reject` | Finance rejects payslip with reason (Finance) |
 
 ## Endpoint Documentation
 
@@ -27,3 +28,4 @@ Authentication: HR/Finance endpoints require `payslip` whitelist access. Employe
 - [GET /payslip-workflow/my-payslips](get_payslip-workflow_my-payslips.md)
 - [POST /payslip-workflow/{workflow_id}/sign](post_payslip-workflow_{workflow_id}_sign.md)
 - [POST /payslip-workflow/{workflow_id}/confirm](post_payslip-workflow_{workflow_id}_confirm.md)
+- [POST /payslip-workflow/{workflow_id}/reject](post_payslip-workflow_{workflow_id}_reject.md)

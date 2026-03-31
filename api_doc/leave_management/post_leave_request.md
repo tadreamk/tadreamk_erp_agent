@@ -27,6 +27,13 @@ Each `leave_period`:
 ```
 
 **Errors:**
-- `400` — Cannot request leave for past dates, or insufficient balance
+- `400` — Cannot request leave for past dates, or insufficient balance (annual), or exceeded monthly sick leave limit
 - `401` — Not authenticated
 - `403` — Not an employee
+
+**Sick leave monthly limit error example:**
+```json
+{
+  "detail": "Exceeded monthly paid sick leave limit of 4 days for March 2026. You have already used 3 days this month and requested 2 more (total: 5). Please apply for no-pay leave for the additional days."
+}
+```

@@ -11,6 +11,7 @@ Authentication: Requires authentication. Most task endpoints also require `task`
 | GET | `/tasks` | List tasks where user is a member |
 | GET | `/tasks/employees/picker` | Get employee list for task member picker |
 | GET | `/tasks/timeline/range` | Get tasks within a date range for timeline view |
+| GET | `/tasks/team-overview` | Get tasks of subordinates via manager hierarchy |
 | GET | `/tasks/{slug}` | Get task by slug |
 | POST | `/tasks/` | Create a new task |
 | PATCH | `/tasks/{slug}` | Update a task |
@@ -30,6 +31,7 @@ Authentication: Requires authentication. Most task endpoints also require `task`
 - [GET /tasks](get_tasks.md)
 - [GET /tasks/employees/picker](get_tasks_employees_picker.md)
 - [GET /tasks/timeline/range](get_tasks_timeline_range.md)
+- [GET /tasks/team-overview](get_tasks_team-overview.md)
 - [GET /tasks/{slug}](get_tasks_{slug}.md)
 - [POST /tasks/](post_tasks.md)
 - [PATCH /tasks/{slug}](patch_tasks_{slug}.md)
