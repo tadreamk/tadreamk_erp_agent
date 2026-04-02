@@ -13,6 +13,7 @@ Get timesheets for the authenticated user. Requires authentication.
   {
     "id": "uuid",
     "employee_username": "john_doe",
+    "employee_name": "John Doe",
     "period_month": "2026-01",
     "status": "pending_submission",
     "total_hours": 160.0,

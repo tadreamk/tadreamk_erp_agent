@@ -5,7 +5,7 @@ Submit a new leave request. Requires authentication. Validates balance for annua
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| leave_type | string | Yes | Leave type (annual, sick, no_pay, maternal, swap) |
+| leave_type | string | Yes | Leave type: `annual`, `sick`, `no_pay`, `maternal`, `swap_off`, `swap_work`, `remote_work` |
 | leave_periods | list | Yes | List of leave date periods |
 | leave_reason | string | No | Reason for leave |
 | manager_username | string | No | Manager to notify (defaults to employee's manager) |
@@ -15,8 +15,9 @@ Each `leave_period`:
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | start_date | date | Yes | Period start date |
-| end_date | date | Yes | Period end date |
-| period_type | string | No | full_day, morning, afternoon |
+| start_apm | string | No | `AM` (default) or `PM` — start half-day marker |
+| end_date | date | Yes | Period end date (must be >= start_date) |
+| end_apm | string | No | `AM` or `PM` (default) — end half-day marker |
 
 **Response:**
 ```json

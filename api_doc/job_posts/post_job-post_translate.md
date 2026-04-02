@@ -1,6 +1,6 @@
 # POST /job-post/translate
 
-Translate job post content from English to Chinese (preview without saving). Requires `job_post` whitelist. Uses Gemini AI.
+Translate job post content from English to Chinese (preview without saving). Requires `job-posts` whitelist. Uses Gemini AI.
 
 **Request Body:**
 | Field | Type | Required | Description |
@@ -33,5 +33,5 @@ Translate job post content from English to Chinese (preview without saving). Req
 **Errors:**
 - `400` — Translation validation failed
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access
 - `500` — AI translation service error

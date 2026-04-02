@@ -21,9 +21,14 @@ List all exercises with filtering and pagination. Requires `exercise` whitelist.
       "id": "uuid",
       "slug": "exercise-slug",
       "title": "Exercise Title",
+      "content": "string",
       "tags": ["JavaScript"],
       "post_active": true,
-      "created_at": "datetime"
+      "score_instruction_id": "uuid|null",
+      "created_by": "string",
+      "updated_by": "string|null",
+      "created_at": "datetime",
+      "updated_at": "datetime"
     }
   ],
   "pagination": {

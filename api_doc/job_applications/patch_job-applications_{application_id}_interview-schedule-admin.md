@@ -10,9 +10,8 @@ Set the interview schedule for a job application. Requires admin or moderator ro
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| interview_date | datetime | No | Proposed interview date/time |
-| interview_location | string | No | Interview location or meeting link |
-| interview_notes | string | No | Additional notes for the candidate |
+| time_slots | list[string] | Yes | List of proposed interview times (UTC datetime strings, 1-5 slots) |
+| duration_minutes | integer | No | Interview duration in minutes (default: 30) |
 
 **Response:** Updated application object
 

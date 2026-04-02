@@ -12,6 +12,7 @@ Get timesheet workflow details. Accessible by the employee (owner), their manage
 {
   "id": "uuid",
   "employee_username": "john_doe",
+  "employee_name": "John Doe",
   "manager_username": "manager_user",
   "period_month": "2026-01",
   "status": "submitted",
@@ -21,7 +22,15 @@ Get timesheet workflow details. Accessible by the employee (owner), their manage
   "submission_deadline": "2026-01-31",
   "timesheet_entries": [],
   "created_at": "datetime",
-  "updated_at": "datetime"
+  "updated_at": "datetime",
+  "created_by": "john_doe",
+  "is_active": true,
+  "linked_payslip_id": null,
+  "can_edit_entries": false,
+  "can_submit": false,
+  "can_approve": true,
+  "can_reject": true,
+  "can_delete": false
 }
 ```
 

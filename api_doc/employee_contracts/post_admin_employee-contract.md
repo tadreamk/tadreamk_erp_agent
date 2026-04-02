@@ -18,6 +18,5 @@ Create a new employee contract for a specified user. Requires `employee-contract
 ```
 
 **Errors:**
-- `400` — Contract already exists for this username. Use PUT to update.
 - `401` — Not authenticated
 - `403` — No employee-contracts whitelist access

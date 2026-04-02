@@ -1,6 +1,6 @@
 # GET /job-post/{job_post_id}/translations
 
-Get all translations for a job post. Requires `job_post` whitelist.
+Get all translations for a job post. Requires `job-posts` whitelist.
 
 **Path Parameters:**
 | Parameter | Type | Required | Description |
@@ -27,5 +27,5 @@ Get all translations for a job post. Requires `job_post` whitelist.
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access
 - `404` — Job post not found

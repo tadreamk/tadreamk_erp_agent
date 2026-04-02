@@ -10,7 +10,9 @@ Upload a supporting file to Google Cloud Storage and return the file URL. Requir
 **Response:**
 ```json
 {
-  "url": "https://storage.googleapis.com/bucket/filename.pdf"
+  "url": "https://storage.googleapis.com/bucket/filename.pdf",
+  "filename": "filename.pdf",
+  "size": 102400
 }
 ```
 

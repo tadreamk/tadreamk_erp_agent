@@ -10,8 +10,7 @@ Finalize the interview schedule for a job application. Requires admin or moderat
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| interview_date | datetime | No | Confirmed interview date/time |
-| interview_location | string | No | Confirmed interview location |
+| selected_time | string | Yes | Selected interview time from proposed slots (UTC datetime string) |
 
 **Response:** Updated application object with confirmed schedule
 

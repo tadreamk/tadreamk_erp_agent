@@ -38,8 +38,11 @@
       "hr_username": "alan",
       "status": "pending_input",
       "field_values": {},
+      "pdf_url": "https://storage.googleapis.com/bucket/workflow.pdf",
       "submitted_at": null,
-      "created_at": "2026-03-31T10:00:00Z"
+      "created_at": "2026-03-31T10:00:00Z",
+      "updated_at": "2026-03-31T10:00:00Z",
+      "is_active": true
     }
   ],
   "total": 1

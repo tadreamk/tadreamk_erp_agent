@@ -10,7 +10,9 @@ Upload a supporting document to OneDrive and return the file URL. Requires authe
 **Response:**
 ```json
 {
-  "url": "https://onedrive.example.com/files/document.pdf"
+  "url": "https://onedrive.example.com/files/document.pdf",
+  "filename": "document.pdf",
+  "size": 102400
 }
 ```
 

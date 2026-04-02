@@ -1,6 +1,6 @@
 # POST /technical-reports/{report_id}/resolve
 
-Mark a technical report as resolved. Report must be in `submitted` status. Sends a resolution notification to the submitter. Requires `technical-reports` whitelist access.
+Mark a technical report as resolved. Report must be in `submitted` or `in_progress` status. Sends a resolution notification to the submitter. Requires `technical-reports` whitelist access.
 
 **Path Parameters:**
 | Parameter | Type | Description |
@@ -16,7 +16,7 @@ Mark a technical report as resolved. Report must be in `submitted` status. Sends
 ```
 
 **Errors:**
-- `400` — Report is not in `submitted` status
+- `400` — Report is not in `submitted` or `in_progress` status
 - `401` — Not authenticated
 - `403` — Not on technical-reports whitelist
 - `404` — Technical report not found

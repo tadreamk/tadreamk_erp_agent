@@ -17,6 +17,7 @@ List all timesheets (Finance/manager view). Requires `timesheet` whitelist.
   {
     "id": "uuid",
     "employee_username": "john_doe",
+    "employee_name": "John Doe",
     "period_month": "2026-01",
     "status": "submitted",
     "total_hours": 160.0,

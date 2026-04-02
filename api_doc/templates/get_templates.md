@@ -16,7 +16,7 @@ List all templates with optional filtering. Returns active templates by default.
   "templates": [
     {
       "id": "uuid",
-      "name": "string",
+      "title": "string",
       "category": "string",
       "is_active": true,
       "template_type": "dynamic"

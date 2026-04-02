@@ -18,6 +18,8 @@ List all exercise score instructions with filtering and pagination. Requires `ex
       "title": "Standard Scoring",
       "content": "Score based on...",
       "post_active": true,
+      "created_by": "string",
+      "updated_by": "string|null",
       "created_at": "datetime",
       "updated_at": "datetime"
     }

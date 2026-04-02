@@ -7,6 +7,8 @@ List all employee contracts with optional filters. Requires `employee-contracts`
 |-----------|------|----------|-------------|
 | search | string | No | Search by username or name |
 | department | string | No | Filter by department |
+| show_duplicates | boolean | No | If true, returns all contracts per employee (default: false = one per employee) |
+| show_inactive | boolean | No | If true, includes inactive employees' contracts (default: false = active only) |
 | offset | int | No | Offset (default: 0) |
 | limit | int | No | Max results (default: 50, max: 200) |
 

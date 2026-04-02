@@ -6,7 +6,7 @@ Create a new employee. Requires `employees` whitelist.
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | work_email | string | Yes | Work email address |
-| username | string | Yes | Username |
+| username | string | No | Username (optional, max 100 chars) |
 
 **Response:**
 ```json

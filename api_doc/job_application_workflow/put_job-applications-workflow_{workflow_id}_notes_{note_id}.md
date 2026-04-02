@@ -12,7 +12,6 @@ Update a workflow note. Only the note author can update. Requires `job-applicati
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | content | string | No | Updated note content |
-| mentioned_users | list[string] | No | Updated mentioned users |
 
 **Response:** Updated note object
 

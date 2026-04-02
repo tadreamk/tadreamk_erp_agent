@@ -20,6 +20,11 @@ List published articles. No authentication required. Returns only articles with 
       "summary": "string",
       "category": "string",
       "status": "published",
+      "author": "string",
+      "cover_image_url": "string|null",
+      "read_time": 5,
+      "translations": {},
+      "updated_by": "string|null",
       "publish_date": "datetime"
     }
   ],

@@ -10,7 +10,7 @@ Update only the status of an article.
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| status | string | Yes | New status value (e.g., `draft`, `published`) |
+| status | string | Yes | New status value: `draft`, `published`, `archived` |
 
 **Response:** Updated article object.
 

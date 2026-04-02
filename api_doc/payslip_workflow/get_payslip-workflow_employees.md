@@ -7,9 +7,16 @@ Get active employees with contract data for the batch payslip creation page. Req
 [
   {
     "username": "string",
+    "title": "string",
+    "family_name": "string",
+    "given_name": "string",
+    "position": "string",
     "work_email": "string",
-    "contract_type": "string",
-    "monthly_salary": 10000.00
+    "contract_pay_type": "string",
+    "monthly_salary": 10000.00,
+    "living_allowance": 0.00,
+    "hkid": "string",
+    "hourly_rate": 0.00
   }
 ]
 ```

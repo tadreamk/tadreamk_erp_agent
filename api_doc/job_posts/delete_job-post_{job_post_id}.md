@@ -1,6 +1,6 @@
 # DELETE /job-post/{job_post_id}
 
-Soft delete a job post (sets is_active=False). Requires `job_post` whitelist.
+Soft delete a job post (sets is_active=False). Requires `job-posts` whitelist.
 
 **Path Parameters:**
 | Parameter | Type | Description |
@@ -16,5 +16,5 @@ Soft delete a job post (sets is_active=False). Requires `job_post` whitelist.
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access
 - `404` — Job post not found

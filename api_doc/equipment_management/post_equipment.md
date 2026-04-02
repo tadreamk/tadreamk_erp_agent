@@ -30,4 +30,4 @@ If the category is "Software" and `renewal_date` is provided, a calendar event i
 **Errors:**
 - `401` — Not authenticated
 - `403` — No equipment-management whitelist access
-- `404` — Employee not found (if employee_username provided)
+- `400` — Employee not found (if employee_username provided)

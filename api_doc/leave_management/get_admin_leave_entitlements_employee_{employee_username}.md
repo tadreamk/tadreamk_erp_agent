@@ -24,7 +24,8 @@ Get entitlements for a specific employee. Requires admin authentication (head_of
     "from_date": "2026-01-01",
     "end_date": "2026-12-31",
     "notes": null,
-    "created_at": "datetime"
+    "created_at": "datetime",
+    "updated_at": "datetime"
   }
 ]
 ```

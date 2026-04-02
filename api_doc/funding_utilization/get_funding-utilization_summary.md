@@ -6,11 +6,9 @@ Get overall funding utilization summary. Requires `funding-sources` whitelist.
 ```json
 {
   "total_approved": 500000.0,
-  "total_utilized": 200000.0,
-  "total_remaining": 300000.0,
-  "utilization_rate": 40.0,
-  "sources_count": 5,
-  "categories_count": 3
+  "utilized": 200000.0,
+  "remaining": 300000.0,
+  "utilization_percentage": 40.0
 }
 ```
 

@@ -19,9 +19,8 @@ List all funding opportunities with optional filters. Requires `funding-opportun
     "opportunity_name": "Grant ABC",
     "funding_type": "Grant",
     "status": "open",
-    "amount": 50000.0,
-    "currency": "HKD",
-    "deadline": "2026-06-30",
+    "estimated_amount": 50000.0,
+    "application_deadline": "2026-06-30",
     "created_at": "datetime"
   }
 ]

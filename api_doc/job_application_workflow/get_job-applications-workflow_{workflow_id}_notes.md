@@ -15,8 +15,7 @@ List internal staff notes for a workflow. Notes are not visible to talent/candid
       "id": "uuid",
       "workflow_id": "uuid",
       "content": "Note content...",
-      "mentioned_users": ["alice"],
-      "created_by": "bob",
+      "username": "bob",
       "created_at": "datetime",
       "updated_at": "datetime"
     }

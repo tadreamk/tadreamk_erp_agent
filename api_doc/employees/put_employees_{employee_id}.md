@@ -14,7 +14,8 @@ Update an employee. Requires `employees` whitelist.
 | manager_username | string | Manager's username |
 | contract_id | UUID | Contract ID |
 | personal_particular_id | UUID | Personal particular ID |
-| onboarding_id | UUID | Onboarding ID |
+| username | string | Username |
+| is_active | boolean | Whether employee is active |
 
 **Response:**
 ```json

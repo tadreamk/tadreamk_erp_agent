@@ -1,6 +1,6 @@
 # DELETE /timesheet-workflow/{workflow_id}
 
-Soft delete a timesheet. Requires `timesheet` whitelist. Only `pending_submission` timesheets can be deleted.
+Soft delete a timesheet. Requires `timesheet-workflow` whitelist. Only `pending_submission` timesheets can be deleted.
 
 **Path Parameters:**
 | Parameter | Type | Required | Description |

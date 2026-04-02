@@ -26,9 +26,10 @@ Get team calendar events (approved leaves) for a given month. Defaults to the cu
       "is_full_day": true,
       "period": "full",
       "color": "#3b82f6",
-      "talent_email": "alice",
-      "talent_name": "Alice Wong",
-      "status": "approved"
+      "employee_username": "alice",
+      "employee_name": "Alice Wong",
+      "leave_type": "Annual Leave",
+      "department": "Engineering"
     }
   ],
   "departments": ["Engineering", "Design"]

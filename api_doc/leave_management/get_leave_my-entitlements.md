@@ -15,9 +15,12 @@ Get the current user's leave entitlements. Requires authentication.
     "id": "uuid",
     "employee_username": "alice",
     "leave_type": "annual",
-    "days": 14,
-    "effective_date": "2025-01-01",
-    "expiry_date": "2025-12-31"
+    "amount": 14,
+    "from_date": "2025-01-01",
+    "end_date": "2025-12-31",
+    "notes": "Annual leave entitlement",
+    "created_at": "2025-01-01T00:00:00",
+    "updated_at": "2025-01-01T00:00:00"
   }
 ]
 ```

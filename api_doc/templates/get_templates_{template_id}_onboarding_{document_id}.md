@@ -12,7 +12,7 @@ Get a template with field values pre-filled from an onboarding document. User mu
 ```json
 {
   "id": "uuid",
-  "name": "string",
+  "title": "string",
   "field_values": {},
   "onboarding_document_id": "uuid",
   "onboarding_id": "uuid",

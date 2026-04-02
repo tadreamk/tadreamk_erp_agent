@@ -7,7 +7,7 @@ Create a new exercise score instruction. Requires `exercise` whitelist.
 |-------|------|----------|-------------|
 | title | string | Yes | Instruction title |
 | content | string | Yes | Scoring instruction content |
-| post_active | bool | No | Whether active (default: false) |
+| post_active | bool | No | Whether active (default: true) |
 
 **Response:**
 ```json

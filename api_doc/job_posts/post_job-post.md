@@ -1,6 +1,6 @@
 # POST /job-post
 
-Create a new job post. Created with status "draft". Requires `job_post` whitelist.
+Create a new job post. Created with status "draft". Requires `job-posts` whitelist.
 
 **Request Body:**
 | Field | Type | Required | Description |
@@ -24,4 +24,4 @@ Create a new job post. Created with status "draft". Requires `job_post` whitelis
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access

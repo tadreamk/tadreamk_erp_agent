@@ -10,8 +10,9 @@ Update a comment. Only the comment author can update it.
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| content | string | Yes | Updated comment text |
-| mentioned_users | list[string] | No | Updated mentioned usernames |
+| content | string | No | Updated comment text |
+| image_url | string | No | URL of an attached image |
+| audio_url | string | No | URL of an attached audio file |
 
 **Response:** Updated comment object.
 

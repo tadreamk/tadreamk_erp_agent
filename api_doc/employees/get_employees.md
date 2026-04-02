@@ -20,8 +20,12 @@ List all employees with filtering. Requires `employees` whitelist.
       "username": "alice",
       "work_email": "alice@company.com",
       "position": "Software Engineer",
+      "full_name": "Alice Smith",
       "department": "Engineering",
-      "is_active": true
+      "manager_username": "bob",
+      "is_active": true,
+      "start_date": "date",
+      "created_at": "datetime"
     }
   ],
   "total": 50,

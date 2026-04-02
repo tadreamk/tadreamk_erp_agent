@@ -23,7 +23,7 @@ Submit an answer to a guide quiz question. One attempt only per question. Requir
 ```
 
 **Errors:**
-- `400` — Already answered this question
+- `409` — Already answered this question
 - `401` — Not authenticated
 - `403` — Only employees can access quizzes
 - `404` — Question not found

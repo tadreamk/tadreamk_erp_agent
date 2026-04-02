@@ -10,15 +10,15 @@ Get detailed utilization for a specific funding source, including breakdown by c
 **Response:**
 ```json
 {
-  "source_id": "uuid",
+  "id": "uuid",
   "source_name": "Grant ABC",
   "total_approved": 100000.0,
-  "total_utilized": 40000.0,
-  "total_remaining": 60000.0,
-  "utilization_rate": 40.0,
+  "utilized": 40000.0,
+  "remaining": 60000.0,
+  "utilization_percentage": 40.0,
   "by_category": [
     {
-      "category_title": "Travel",
+      "category_name": "Travel",
       "allocated": 20000.0,
       "utilized": 10000.0
     }

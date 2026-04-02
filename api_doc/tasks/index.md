@@ -3,6 +3,7 @@
 Base prefixes:
 - `/tasks` — Task CRUD and team member management
 - `/task-projects` — Task project management
+- `/tasks/recurrences` — Recurring task templates
 
 Authentication: Requires authentication. Most task endpoints also require `task` whitelist access. Task project admin endpoints require `task` whitelist.
 
@@ -25,6 +26,10 @@ Authentication: Requires authentication. Most task endpoints also require `task`
 | POST | `/task-projects/` | Create a task project |
 | PUT | `/task-projects/{project_id}` | Update a task project |
 | DELETE | `/task-projects/{project_id}` | Soft delete a task project |
+| POST | `/tasks/recurrences` | Create a recurrence template |
+| GET | `/tasks/recurrences` | List recurrences managed by user |
+| PATCH | `/tasks/recurrences/{recurrence_id}` | Update a recurrence (manager only) |
+| DELETE | `/tasks/recurrences/{recurrence_id}` | Delete a recurrence (manager only) |
 
 ## Endpoint Documentation
 
@@ -45,3 +50,7 @@ Authentication: Requires authentication. Most task endpoints also require `task`
 - [POST /task-projects/](post_task-projects.md)
 - [PUT /task-projects/{project_id}](put_task-projects_{project_id}.md)
 - [DELETE /task-projects/{project_id}](delete_task-projects_{project_id}.md)
+- [POST /tasks/recurrences](post_tasks_recurrences.md)
+- [GET /tasks/recurrences](get_tasks_recurrences.md)
+- [PATCH /tasks/recurrences/{recurrence_id}](patch_tasks_recurrences_{recurrence_id}.md)
+- [DELETE /tasks/recurrences/{recurrence_id}](delete_tasks_recurrences_{recurrence_id}.md)

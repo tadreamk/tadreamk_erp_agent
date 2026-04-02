@@ -7,8 +7,10 @@ Create a new funder claim in `draft` status. Requires `expense-management` white
 |-------|------|----------|-------------|
 | funding_source_id | UUID | Yes | The funding source to claim from |
 | expense_ids | list[UUID] | Yes | List of finished expense IDs to include |
-| claim_date | date | No | Claim submission date |
-| notes | string | No | Additional notes |
+| total_amount | number | Yes | Total claim amount |
+| expected_date | date | No | Expected claim date |
+| note | string | No | Additional note |
+| claim_reference | string | No | External claim reference |
 
 **Response:** `201 Created` — Funder claim object
 

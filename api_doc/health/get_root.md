@@ -5,6 +5,6 @@ Root endpoint. No authentication required.
 **Response:**
 ```json
 {
-  "message": "ERP API"
+  "message": "TadReamk ERP API"
 }
 ```

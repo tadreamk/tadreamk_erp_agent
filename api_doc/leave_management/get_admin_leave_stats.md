@@ -5,10 +5,9 @@ Get leave dashboard statistics. Requires `leave-management` whitelist.
 **Response:**
 ```json
 {
-  "total_pending": 5,
-  "total_approved": 50,
-  "total_rejected": 10,
-  "employees_on_leave_today": 3
+  "pending_requests": 5,
+  "on_leave_today": 3,
+  "swap_pending": 2
 }
 ```
 

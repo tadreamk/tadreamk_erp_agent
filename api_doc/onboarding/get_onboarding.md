@@ -23,7 +23,10 @@ List onboarding workflows. HR staff see all workflows; CEO users see only workfl
     "status": "pending",
     "document_count": 3,
     "is_active": true,
-    "created_at": "2024-01-01T00:00:00"
+    "talent_submitted_at": "2024-01-02T00:00:00",
+    "sent_to_ceo_at": "2024-01-03T00:00:00",
+    "created_at": "2024-01-01T00:00:00",
+    "updated_at": "2024-01-03T00:00:00"
   }
 ]
 ```

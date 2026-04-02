@@ -10,7 +10,8 @@ Submit exercise submission URLs for an application. Requires authentication (app
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| exercise_urls | list[string] | Yes | URLs of submitted exercise materials |
+| exercise_github_url | string | No | GitHub repository URL for exercise submission (max 2048 chars) |
+| exercise_report_url | string | No | Report/document URL for exercise submission (max 2048 chars) |
 
 **Response:** Updated application object
 

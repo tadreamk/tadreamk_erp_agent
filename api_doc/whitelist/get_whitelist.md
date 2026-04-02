@@ -20,7 +20,11 @@ List whitelist entries with filtering and pagination. Requires `whitelist` admin
       "username": "alice",
       "is_active": true,
       "created_by": "admin",
-      "created_at": "2024-01-01T00:00:00"
+      "created_at": "2024-01-01T00:00:00",
+      "updated_by": "admin",
+      "updated_at": "2024-01-02T00:00:00",
+      "deactivated_by": null,
+      "deactivated_at": null
     }
   ],
   "total": 50,

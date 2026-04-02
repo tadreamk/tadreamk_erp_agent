@@ -7,7 +7,7 @@ Create a new task AI instruction. Requires `task` whitelist. The instruction is 
 |-------|------|----------|-------------|
 | title | string | Yes | Instruction title |
 | content | string | Yes | AI instruction content |
-| post_active | bool | No | Whether active (default: false) |
+| post_active | bool | No | Whether active (default: true) |
 
 **Response:**
 ```json

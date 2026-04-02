@@ -8,9 +8,8 @@ Create a new funding opportunity. Requires `funding-opportunities` whitelist.
 | opportunity_name | string | Yes | Opportunity name (must be unique) |
 | funding_type | string | No | Funding type |
 | status | string | No | Status |
-| amount | decimal | No | Funding amount |
-| currency | string | No | Currency |
-| deadline | date | No | Application deadline |
+| estimated_amount | decimal | No | Funding amount |
+| application_deadline | date | No | Application deadline |
 | description | string | No | Description |
 
 **Response:** Created funding opportunity object

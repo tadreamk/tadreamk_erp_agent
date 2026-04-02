@@ -1,6 +1,6 @@
 # DELETE /reimbursement-workflow/{workflow_id}
 
-Soft delete a reimbursement workflow. Only the submitting employee can delete, and only when status is `submitted`. Requires authentication.
+Soft delete a reimbursement workflow. Only the submitting employee can delete, and only when status is `pending_pre_approval` or `submitted`. Requires authentication.
 
 **Path Parameters:**
 | Parameter | Type | Description |

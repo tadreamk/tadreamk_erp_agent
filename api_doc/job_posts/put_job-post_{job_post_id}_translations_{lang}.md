@@ -1,6 +1,6 @@
 # PUT /job-post/{job_post_id}/translations/{lang}
 
-Update translation for a specific language. Requires `job_post` whitelist. Allows manual editing of AI-generated translations.
+Update translation for a specific language. Requires `job-posts` whitelist. Allows manual editing of AI-generated translations.
 
 **Path Parameters:**
 | Parameter | Type | Required | Description |
@@ -22,5 +22,5 @@ Translation fields as a JSON object (e.g., `{"title": "...", "description": "...
 **Errors:**
 - `400` — Invalid language code (only `zh` and `zh-TW` supported)
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access
 - `404` — Job post not found

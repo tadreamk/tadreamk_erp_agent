@@ -10,11 +10,9 @@ Update an onboarding workflow. Validates status transitions. Requires `onboardin
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| talent_email | string | No | Updated talent email |
-| talent_username | string | No | Updated talent username |
+| status | string | No | New status (must be valid transition) |
 | hr_username | string | No | Updated HR username |
 | ceo_username | string | No | Updated CEO username |
-| status | string | No | New status (must be valid transition) |
 
 **Response:**
 ```json

@@ -7,7 +7,7 @@ Get all active expense categories. Requires authentication.
 [
   {
     "id": "uuid",
-    "name": "Travel",
+    "title": "Travel",
     "is_active": true
   }
 ]

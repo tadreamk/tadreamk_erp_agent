@@ -18,7 +18,7 @@ Add a member to a task. Any existing team member can add new members. Sends a no
 {
   "status": 201,
   "message": "Member added successfully",
-  "data": { "username": "alice", "task_role": "member" }
+  "data": { "id": "uuid", "task_id": "uuid", "task_member_username": "alice", "task_role": "member", "added_at": "datetime", "added_by": "string" }
 }
 ```
 

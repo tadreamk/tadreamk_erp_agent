@@ -10,7 +10,8 @@ Approve a candidate for a specific position. Creates onboarding workflow automat
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| job_post_id | UUID | Yes | The job post ID to approve for |
+| job_post_id | string | Yes | The job post ID to approve for |
+| reason | string | No | Reason for approval |
 
 **Response:**
 ```json

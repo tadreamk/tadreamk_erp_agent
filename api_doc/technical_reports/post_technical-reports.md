@@ -14,11 +14,19 @@ Submit a new technical report. Sends a submission notification. Requires employe
 {
   "id": "uuid",
   "employee_username": "string",
+  "employee_name": "string",
   "title": "string",
   "description": "string",
   "status": "submitted",
   "file_urls": [],
-  "created_at": "2024-01-01T00:00:00"
+  "technical_admin": "string",
+  "technical_admin_name": "string",
+  "resolved_at": null,
+  "created_at": "2024-01-01T00:00:00",
+  "updated_at": "2024-01-01T00:00:00",
+  "is_active": true,
+  "can_resolve": false,
+  "can_edit": true
 }
 ```
 

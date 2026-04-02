@@ -1,6 +1,6 @@
 # GET /job-post/{job_post_id}
 
-Get a specific job post by ID (all statuses). Requires `job_post` whitelist.
+Get a specific job post by ID (all statuses). Requires `job-posts` whitelist.
 
 **Path Parameters:**
 | Parameter | Type | Description |
@@ -11,5 +11,5 @@ Get a specific job post by ID (all statuses). Requires `job_post` whitelist.
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access
 - `404` — Job post not found

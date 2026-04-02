@@ -1,6 +1,6 @@
 # GET /job-post
 
-List all job posts (including drafts and closed) with optional filtering. Requires `job_post` whitelist.
+List all job posts (including drafts and closed) with optional filtering. Requires `job-posts` whitelist.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
@@ -23,4 +23,4 @@ List all job posts (including drafts and closed) with optional filtering. Requir
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access

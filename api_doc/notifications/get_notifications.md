@@ -22,7 +22,7 @@ List notifications for the authenticated user. Supports pagination, filtering, a
       "entity_type": "string",
       "entity_id": "uuid",
       "title": "string",
-      "body": "string",
+      "message": "string",
       "is_read": false,
       "is_dismissed": false,
       "created_at": "2024-01-01T00:00:00"
@@ -42,7 +42,9 @@ List notifications for the authenticated user. Supports pagination, filtering, a
     {
       "entity_type": "string",
       "entity_id": "uuid",
-      "notifications": [],
+      "entity_title": "string",
+      "latest": {},
+      "total_count": 1,
       "unread_count": 3
     }
   ],

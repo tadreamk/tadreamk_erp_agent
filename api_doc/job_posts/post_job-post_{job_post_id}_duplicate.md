@@ -1,6 +1,6 @@
 # POST /job-post/{job_post_id}/duplicate
 
-Duplicate a job post. Creates a copy with "[Copy]" prefix in the title and status set to draft. Requires `job_post` whitelist.
+Duplicate a job post. Creates a copy with "[Copy]" prefix in the title and status set to draft. Requires `job-posts` whitelist.
 
 **Path Parameters:**
 | Parameter | Type | Description |
@@ -17,5 +17,5 @@ Duplicate a job post. Creates a copy with "[Copy]" prefix in the title and statu
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access
 - `404` — Job post not found

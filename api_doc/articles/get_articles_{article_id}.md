@@ -17,7 +17,12 @@ Get a single article by its UUID.
   "content": "string",
   "category": "string",
   "status": "draft|published",
+  "author": "string",
+  "cover_image_url": "string|null",
+  "read_time": 5,
+  "translations": {},
   "created_by": "string",
+  "updated_by": "string|null",
   "publish_date": "datetime",
   "created_at": "datetime",
   "updated_at": "datetime"

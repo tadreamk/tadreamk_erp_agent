@@ -17,8 +17,9 @@ List all active comments for a specific entity.
       "entity_type": "task",
       "entity_id": "uuid",
       "content": "string",
+      "image_url": "string|null",
+      "audio_url": "string|null",
       "username": "alice",
-      "mentioned_users": ["bob"],
       "is_deleted": false,
       "created_at": "datetime",
       "updated_at": "datetime"

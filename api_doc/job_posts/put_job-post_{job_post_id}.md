@@ -1,6 +1,6 @@
 # PUT /job-post/{job_post_id}
 
-Update an existing job post. Requires `job_post` whitelist.
+Update an existing job post. Requires `job-posts` whitelist.
 
 **Path Parameters:**
 | Parameter | Type | Description |
@@ -36,5 +36,5 @@ Update an existing job post. Requires `job_post` whitelist.
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access
 - `404` — Job post not found

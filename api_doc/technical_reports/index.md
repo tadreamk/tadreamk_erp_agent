@@ -14,6 +14,7 @@ Authentication: Required. Employee endpoints require employee authentication. Ad
 | POST | `/technical-reports/upload` | Upload a supporting file to GCS |
 | GET | `/technical-reports/{report_id}` | Get technical report details |
 | PUT | `/technical-reports/{report_id}` | Update a submitted report (owner only) |
+| POST | `/technical-reports/{report_id}/assign` | Assign report to IT engineer (whitelist required) |
 | POST | `/technical-reports/{report_id}/resolve` | Mark a report as resolved (whitelist required) |
 
 ## Endpoint Documentation
@@ -26,4 +27,5 @@ Authentication: Required. Employee endpoints require employee authentication. Ad
 - [POST /technical-reports/upload](post_technical-reports_upload.md)
 - [GET /technical-reports/{report_id}](get_technical-reports_{report_id}.md)
 - [PUT /technical-reports/{report_id}](put_technical-reports_{report_id}.md)
+- [POST /technical-reports/{report_id}/assign](post_technical-reports_{report_id}_assign.md)
 - [POST /technical-reports/{report_id}/resolve](post_technical-reports_{report_id}_resolve.md)

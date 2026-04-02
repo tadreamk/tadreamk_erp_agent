@@ -14,6 +14,8 @@ Get exercise score instruction by ID. Requires `exercise` whitelist.
   "title": "Standard Scoring",
   "content": "Score based on...",
   "post_active": true,
+  "created_by": "string",
+  "updated_by": "string|null",
   "created_at": "datetime",
   "updated_at": "datetime"
 }

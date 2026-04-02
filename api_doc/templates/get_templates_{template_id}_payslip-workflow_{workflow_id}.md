@@ -12,7 +12,7 @@ Get a template with field values pre-filled from a payslip workflow. Accessible 
 ```json
 {
   "id": "uuid",
-  "name": "string",
+  "title": "string",
   "field_values": {},
   "payslip_workflow_id": "uuid",
   "payroll_month": "2024-01",

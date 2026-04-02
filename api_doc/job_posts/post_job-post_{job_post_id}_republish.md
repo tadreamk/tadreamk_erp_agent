@@ -1,6 +1,6 @@
 # POST /job-post/{job_post_id}/republish
 
-Republish a closed job post. Changes status from closed back to published. Requires `job_post` whitelist.
+Republish a closed job post. Changes status from closed back to published. Requires `job-posts` whitelist.
 
 **Path Parameters:**
 | Parameter | Type | Description |
@@ -18,5 +18,5 @@ Republish a closed job post. Changes status from closed back to published. Requi
 **Errors:**
 - `400` — Only closed job posts can be republished
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access
 - `404` — Job post not found

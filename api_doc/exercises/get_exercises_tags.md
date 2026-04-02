@@ -5,7 +5,7 @@ Get list of predefined tags available for exercises. Requires `exercise` whiteli
 **Response:**
 ```json
 {
-  "tags": ["JavaScript", "Python", "React", "SQL", "Communication"]
+  "tags": ["frontend", "backend", "database", "machine-learning", "computer-vision", "nlp", "llm", "algorithms", "system-design", "generative-ai"]
 }
 ```
 

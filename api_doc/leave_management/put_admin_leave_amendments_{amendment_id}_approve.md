@@ -13,9 +13,16 @@ Approve a leave amendment request. Requires `leave-management` whitelist. Amendm
   "message": "Amendment cancel approved",
   "amendment": {
     "id": "uuid",
+    "leave_request_id": "uuid",
+    "amendment_type": "cancel",
+    "new_leave_periods": null,
+    "new_swap_work_periods": null,
+    "reason": "Plans changed",
     "status": "approved",
+    "requested_by": "john_doe",
     "reviewed_by": "admin_user",
-    "amendment_type": "cancel"
+    "reviewed_at": "datetime",
+    "created_at": "datetime"
   }
 }
 ```

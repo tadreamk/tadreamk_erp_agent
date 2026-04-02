@@ -2,15 +2,13 @@
 
 Get workflow statistics for the authenticated user. Requires authentication.
 
-**Response:**
+**Response:** Flat dict with `total` and per-status counts as top-level keys.
 ```json
 {
   "total": 3,
-  "by_status": {
-    "new": 1,
-    "interview": 1,
-    "approved": 1
-  }
+  "new": 1,
+  "interview": 1,
+  "approved": 1
 }
 ```
 

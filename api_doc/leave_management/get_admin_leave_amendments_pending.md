@@ -16,9 +16,13 @@ Get pending leave amendment requests. Requires `leave-management` whitelist.
       "id": "uuid",
       "leave_request_id": "uuid",
       "amendment_type": "cancel",
+      "new_leave_periods": null,
+      "new_swap_work_periods": null,
       "reason": "Plans changed",
       "status": "pending",
       "requested_by": "john_doe",
+      "reviewed_by": null,
+      "reviewed_at": null,
       "created_at": "datetime"
     }
   ],

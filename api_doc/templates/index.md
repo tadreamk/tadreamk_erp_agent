@@ -16,6 +16,7 @@ Authentication: Required. Most endpoints require `templates` whitelist access. E
 | POST | `/templates/{template_id}/preview` | Preview template with field values |
 | POST | `/templates/{template_id}/generate-pdf` | Generate PDF from template |
 | GET | `/templates/{template_id}/download-pdf` | Download PDF for a template |
+| POST | `/templates/{template_id}/generate-preview-pdf` | Generate preview PDF from HTML |
 
 ## Endpoint Documentation
 
@@ -29,3 +30,4 @@ Authentication: Required. Most endpoints require `templates` whitelist access. E
 - [POST /templates/{template_id}/preview](post_templates_{template_id}_preview.md)
 - [POST /templates/{template_id}/generate-pdf](post_templates_{template_id}_generate-pdf.md)
 - [GET /templates/{template_id}/download-pdf](get_templates_{template_id}_download-pdf.md)
+- [POST /templates/{template_id}/generate-preview-pdf](post_templates_{template_id}_generate-preview-pdf.md)

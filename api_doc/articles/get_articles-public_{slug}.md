@@ -17,6 +17,11 @@ Get a single published article by its slug. No authentication required. Returns 
   "content": "string",
   "category": "string",
   "status": "published",
+  "author": "string",
+  "cover_image_url": "string|null",
+  "read_time": 5,
+  "translations": {},
+  "updated_by": "string|null",
   "publish_date": "datetime"
 }
 ```

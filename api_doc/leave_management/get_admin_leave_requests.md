@@ -19,10 +19,19 @@ List all leave requests with optional filters. Requires `leave-management` white
     {
       "id": "uuid",
       "employee_username": "alice",
+      "manager_username": "manager_user",
       "leave_type": "annual",
-      "status": "pending",
       "leave_periods": [],
-      "created_at": "datetime"
+      "swap_work_periods": [],
+      "total_days": 5.0,
+      "leave_reason": "Family vacation",
+      "supporting_document_urls": [],
+      "status": "pending",
+      "reviewed_by_username": null,
+      "reviewed_at": null,
+      "created_at": "datetime",
+      "updated_at": "datetime",
+      "has_pending_amendment": false
     }
   ],
   "total": 20,

@@ -36,5 +36,5 @@ Create employee contract data for the authenticated user. Requires authenticatio
 ```
 
 **Errors:**
-- `400` — Contract already exists. Use PUT to update.
+- `409` — A contract already exists. Contact HR to update.
 - `401` — Not authenticated

@@ -15,7 +15,7 @@ Get active employees for the participant picker. Requires `company-events` white
   "data": [
     {
       "username": "alice",
-      "full_name": "Alice Wong",
+      "name": "Alice Wong",
       "work_email": "alice@company.com"
     }
   ]

@@ -22,7 +22,12 @@ List articles with optional filters and pagination. Returns articles along with 
       "summary": "string",
       "category": "string",
       "status": "draft|published",
+      "author": "string",
+      "cover_image_url": "string|null",
+      "read_time": 5,
+      "translations": {},
       "created_by": "string",
+      "updated_by": "string|null",
       "created_at": "datetime",
       "updated_at": "datetime"
     }

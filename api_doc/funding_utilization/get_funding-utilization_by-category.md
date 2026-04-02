@@ -8,10 +8,10 @@ Get funding utilization grouped by expense category. Requires `funding-sources` 
   "categories": [
     {
       "category_id": "uuid",
-      "category_title": "Travel",
+      "category_name": "Travel",
       "total_allocated": 50000.0,
-      "total_utilized": 20000.0,
-      "utilization_rate": 40.0
+      "utilized": 20000.0,
+      "utilization_percentage": 40.0
     }
   ]
 }

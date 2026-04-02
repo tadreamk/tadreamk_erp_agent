@@ -20,9 +20,11 @@ List all job application workflows for the dashboard. Requires `job-applications
     {
       "id": "uuid",
       "username": "alice",
+      "candidate_name": "Alice Wong",
       "status": "interview",
       "bookmark": false,
-      "created_at": "datetime",
+      "positions_count": 2,
+      "position_titles": ["Software Engineer", "Backend Developer"],
       "updated_at": "datetime"
     }
   ],

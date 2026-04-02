@@ -6,8 +6,8 @@ Most endpoints require `expense-management` whitelist. Some actions (finish, rej
 
 | Method | Path | Auth | Description | File |
 |--------|------|------|-------------|------|
-| GET | /expenses | `expense-management` whitelist or CEO | List all expenses | [get_expenses.md](get_expenses.md) |
-| GET | /expenses/count | `expense-management` whitelist | Get expense count | [get_expenses_count.md](get_expenses_count.md) |
+| GET | /expenses | `expense-management` whitelist or CEO | List all expenses (supports `?q=` text search) | [get_expenses.md](get_expenses.md) |
+| GET | /expenses/count | `expense-management` whitelist | Get expense count (supports `?q=` text search) | [get_expenses_count.md](get_expenses_count.md) |
 | GET | /expenses/{expense_id} | `expense-management` whitelist or CEO | Get expense by ID | [get_expenses_{expense_id}.md](get_expenses_{expense_id}.md) |
 | POST | /expenses | `expense-management` whitelist | Create an expense | [post_expenses.md](post_expenses.md) |
 | PUT | /expenses/{expense_id} | `expense-management` whitelist | Update an expense | [put_expenses_{expense_id}.md](put_expenses_{expense_id}.md) |

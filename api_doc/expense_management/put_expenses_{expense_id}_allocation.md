@@ -15,8 +15,8 @@ Update funding allocation for an expense. Requires `expense-management` whitelis
 Each allocation item:
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| funding_source_id | UUID | Yes | Funding source ID |
-| amount | decimal | Yes | Amount allocated |
+| funding_sources_id | UUID | Yes | Funding source ID |
+| value | decimal | Yes | Amount allocated |
 
 **Response:** Updated expense object
 

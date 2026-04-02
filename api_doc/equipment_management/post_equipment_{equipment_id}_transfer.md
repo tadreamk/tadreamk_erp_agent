@@ -18,4 +18,5 @@ Transfer equipment to another employee. Sends a notification to the new employee
 **Errors:**
 - `401` — Not authenticated
 - `403` — No equipment-management whitelist access
-- `404` — Equipment not found or employee not found
+- `400` — Employee not found
+- `404` — Equipment not found

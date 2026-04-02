@@ -12,6 +12,8 @@ Create a new comment on an entity. Triggers notifications and AI feedback (for t
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | content | string | Yes | Comment text |
+| image_url | string | No | URL of an attached image |
+| audio_url | string | No | URL of an attached audio file |
 | mentioned_users | list[string] | No | Usernames mentioned in the comment |
 
 **Response:** Created comment object (HTTP 201).

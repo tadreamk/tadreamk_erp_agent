@@ -7,7 +7,7 @@ Get a specific expense by ID. Requires `expense-management` whitelist or CEO rol
 |-----------|------|-------------|
 | expense_id | UUID | The expense's unique identifier |
 
-**Response:** Full expense object including funding allocation details
+**Response:** Full expense object including `title` (string, nullable — auto-generated on creation, editable) and funding allocation details
 
 **Errors:**
 - `401` — Not authenticated

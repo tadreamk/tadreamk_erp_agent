@@ -10,9 +10,15 @@ Reject a job application. Requires admin or moderator role.
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| reason | string | No | Rejection reason |
+| reason | string | Yes | Rejection reason (min 1 char) |
 
-**Response:** Updated application object with status "rejected"
+**Response:**
+```json
+{
+  "message": "Candidate rejected",
+  "application": { "...application object..." }
+}
+```
 
 **Errors:**
 - `401` — Not authenticated

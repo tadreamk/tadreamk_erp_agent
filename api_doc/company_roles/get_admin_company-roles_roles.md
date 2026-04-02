@@ -2,10 +2,14 @@
 
 List all available role titles (distinct). Requires `company-roles` whitelist.
 
-**Response:**
+**Response:** `roles` is an array of objects with `title` and `description`.
 ```json
 {
-  "roles": ["CEO", "HR Manager", "Finance Manager"],
+  "roles": [
+    {"title": "CEO", "description": "Chief Executive Officer"},
+    {"title": "HR Manager", "description": "Human Resources Manager"},
+    {"title": "Finance Manager", "description": "Finance Department Manager"}
+  ],
   "total": 3
 }
 ```

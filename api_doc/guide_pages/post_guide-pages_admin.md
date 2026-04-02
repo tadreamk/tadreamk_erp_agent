@@ -7,7 +7,7 @@ Create a new guide page. Requires `guide-pages` whitelist.
 |-------|------|----------|-------------|
 | slug | string | Yes | URL slug (unique) |
 | title | string | Yes | Page title |
-| section | string | No | Section name |
+| section | string | Yes | Section name (1-100 chars) |
 | content | string | No | Page content (Markdown/HTML) |
 | sort_order | int | No | Sort order within section |
 | is_active | bool | No | Whether page is active (default: true) |

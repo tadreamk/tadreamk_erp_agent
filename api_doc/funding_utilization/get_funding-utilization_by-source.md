@@ -7,12 +7,12 @@ Get utilization breakdown for each funding source. Requires `funding-sources` wh
 {
   "sources": [
     {
-      "source_id": "uuid",
+      "id": "uuid",
       "source_name": "Grant ABC",
       "total_approved": 100000.0,
-      "total_utilized": 40000.0,
-      "total_remaining": 60000.0,
-      "utilization_rate": 40.0
+      "utilized": 40000.0,
+      "remaining": 60000.0,
+      "utilization_percentage": 40.0
     }
   ]
 }

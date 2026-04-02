@@ -1,6 +1,6 @@
 # GET /job-post/options
 
-Get available form options (departments and job types) for creating/editing job posts. Requires `job_post` whitelist.
+Get available form options (departments and job types) for creating/editing job posts. Requires `job-posts` whitelist.
 
 **Response:**
 ```json
@@ -16,4 +16,4 @@ Get available form options (departments and job types) for creating/editing job 
 
 **Errors:**
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access

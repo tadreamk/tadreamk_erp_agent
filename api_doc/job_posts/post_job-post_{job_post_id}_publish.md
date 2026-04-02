@@ -1,6 +1,6 @@
 # POST /job-post/{job_post_id}/publish
 
-Publish a draft job post. Changes status from draft to published. Requires `job_post` whitelist.
+Publish a draft job post. Changes status from draft to published. Requires `job-posts` whitelist.
 
 **Path Parameters:**
 | Parameter | Type | Description |
@@ -18,5 +18,5 @@ Publish a draft job post. Changes status from draft to published. Requires `job_
 **Errors:**
 - `400` — Already published or is closed
 - `401` — Not authenticated
-- `403` — No job_post whitelist access
+- `403` — No job-posts whitelist access
 - `404` — Job post not found

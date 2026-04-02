@@ -17,7 +17,7 @@ List all active comment permissions for an entity. Requires admin or moderator r
       "entity_type": "task",
       "entity_id": "uuid",
       "username": "alice",
-      "granted_by": "admin",
+      "created_by": "admin",
       "is_active": true,
       "created_at": "datetime"
     }
