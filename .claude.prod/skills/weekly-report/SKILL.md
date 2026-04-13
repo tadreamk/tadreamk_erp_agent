@@ -50,25 +50,26 @@ If no tasks are found, tell the user and stop.
 
 ## Step 3: Generate Report
 
-Build a Markdown report with the following structure:
+Build a Markdown report. The note title (set separately) is "Task Report: DD Mon YYYY – DD Mon YYYY", so the content body must **NOT** start with a `# Title` heading — it would be duplicated. Start the content directly with the metadata fields.
 
 ```markdown
-# Task Report: DD Mon YYYY – DD Mon YYYY
-
 **Employee:** <full name or username>
+
 **Period:** <start_date> to <end_date>
+
 **Tasks completed:** <count>
 
 ---
 
 ## <Project Title> (N tasks)
 
-### <Subcategory if applicable>
-- **<Task title>** — <one-sentence description expanded from the title>
+**<Subcategory if applicable>**
+
+- <Task title> — <one-sentence description expanded from the title>
 
 ## Other Tasks (N tasks)
 
-- **<Task title>** — <one-sentence description>
+- <Task title> — <one-sentence description>
 
 ---
 
@@ -76,6 +77,11 @@ Build a Markdown report with the following structure:
 
 <2-3 sentence summary of what was accomplished, highlighting the primary focus areas>
 ```
+
+**Formatting rules:**
+- Each metadata field (`Employee`, `Period`, `Tasks completed`) must be on its own paragraph with a blank line between them — this prevents the renderer from collapsing them into a single line.
+- Use `## Heading` for project groups and `## Summary`. Do NOT use `###` for subcategories — use `**bold text**` on its own line followed by a blank line instead, as `###` may not render well in some viewers.
+- Do NOT wrap task titles in `**bold**` within list items — keep list items as plain text for cleaner rendering.
 
 **Grouping rules:**
 - Group tasks by their `project.title`. Tasks with no project go under "Other Tasks".
