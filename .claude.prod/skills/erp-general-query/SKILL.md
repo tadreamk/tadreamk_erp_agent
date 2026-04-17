@@ -34,7 +34,7 @@ Available modules:
 ```
 articles, bank_accounts, bank_statements, calendar, comments,
 company_events, company_roles, contact_directory, customer_management,
-employee_contracts, employees, equipment_management,
+customer_requirements, employee_contracts, employees, equipment_management,
 exercise_score_instructions, exercises, expense_categories,
 expense_management, funding_opportunities, funding_sources,
 funding_utilization, guide_pages, guide_quiz, health, hr_ops,

@@ -5,11 +5,12 @@ An AI Agent project for interacting with the [TadReamk ERP System](https://erp.t
 ## Project Structure
 
 ```
-.claude.prod/api_doc/   # API documentation for all ERP modules
-.claude.prod/skills/   # Claude Code skills for ERP operations
-.claude.prod/scripts/  # Utility scripts (slide export, branding)
-.claude.prod/slides/   # Vite + React slide generator for article diagrams
-data/             # Local drafts (articles, tasks) before uploading
+.claude.prod/api_doc/        # API documentation for all ERP modules
+.claude.prod/skills/         # Claude Code skills for ERP operations
+.claude.prod/scripts/        # Utility scripts (slide export, branding, Yjs injection)
+.claude.prod/slides/         # Vite + React slide generator for article diagrams
+.claude.prod/requirements.txt  # Python dependencies for all scripts under .claude.prod/scripts/
+data/                        # Local drafts (articles, tasks) before uploading
 ```
 
 ## Available Skills
@@ -46,14 +47,18 @@ TASK_USERNAME=<your ERP username>
 | `ARTICLE_AUTHOR_NAME` | `/article-draft`, `/article-video-draft` | Author name displayed on published articles (e.g., `"Huu-Thanh Nguyen"`). |
 | `TASK_USERNAME` | `/task-draft`, `/task-overview` | Your ERP username. Used to assign you as task manager and to filter your active tasks. |
 
-### 2. Install Python dependencies (for diagram generation)
+### 2. Install Python dependencies
+
+All Python packages required by scripts under `.claude.prod/scripts/` are listed in `.claude.prod/requirements.txt`. Install them with:
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip install playwright Pillow diagrams
+pip install -r .claude.prod/requirements.txt
 playwright install chromium
 ```
+
+> `playwright` is used only for slide export and is not listed in `requirements.txt` since it requires a separate browser install step.
 
 ### 3. Install Node dependencies (for React slides)
 
