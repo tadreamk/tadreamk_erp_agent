@@ -118,9 +118,23 @@ After generating with either method, read the image to display it to the user.
 
 ## Step 3: Translate to Traditional Chinese (zh-TW) and Simplified Chinese (zh)
 
-**Do the translations directly yourself (Claude CLI) — do NOT call any translation API.**
+**Use the Task tool** to spawn a **sub-agent** that performs the translations.
+Do **not** call external translation APIs (Google Translate, DeepL, etc.).
 
-Use the Task tool with a background agent to translate the article's **title**, **summary**, and **content** into both languages. The **content** being translated is the body only (no title H1) — same as what goes in `article_en.md`.
+**Sub-agent model priority** — set the Task `model` using this order; if the
+first slug is unavailable or the sub-agent fails, retry with the next:
+
+1. `gpt-5.4-medium`
+2. `gemini-3.1-pro`
+3. `claude-opus-4-7-thinking-high`
+
+You may use one sub-agent run that outputs both locales, or two runs (one per
+locale) — whichever fits the prompt; keep the same model priority when
+spawning each run.
+
+The sub-agent translates the article's **title**, **summary**, and **content**
+into both languages. The **content** is the body only (no title H1) — same as
+what goes in `article_en.md`.
 
 ### Translation rules:
 - Translate ALL text fully, including headings, sub-headings, and technical terms

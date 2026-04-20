@@ -9,10 +9,28 @@ List all reimbursement workflows (Finance/HR view). Requires `reimbursement-work
 | employee_username | string | No | Filter by employee username |
 | date_from | datetime | No | Filter by submission date from |
 | date_to | datetime | No | Filter by submission date to |
-| limit | integer | No | Max results (default: 50, max: 200) |
-| offset | integer | No | Pagination offset (default: 0) |
+| page | int | No | Page number (default: 1) |
+| limit | int | No | Max results per page (default: 50, max: 200) |
 
-**Response:** Array of reimbursement workflow list objects
+**Response:**
+```json
+{
+  "reimbursements": [
+    {
+      "id": "uuid",
+      "employee_username": "john_doe",
+      "employee_name": "John Doe",
+      "total_value": 500.00,
+      "status": "submitted",
+      "expense_category_title": "Office Supplies",
+      "created_at": "datetime"
+    }
+  ],
+  "total": 8,
+  "page": 1,
+  "limit": 50
+}
+```
 
 **Errors:**
 - `401` — Not authenticated

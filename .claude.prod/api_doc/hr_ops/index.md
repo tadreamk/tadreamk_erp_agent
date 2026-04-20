@@ -24,7 +24,7 @@
 
 **Auth:** `hr-ops` whitelist
 
-**Query params:** `status` (optional), `skip` (default 0), `limit` (default 100)
+**Query params:** `workflow_status` (optional), `page` (default 1), `limit` (default 50)
 
 **Response:**
 ```json
@@ -45,7 +45,9 @@
       "is_active": true
     }
   ],
-  "total": 1
+  "total": 1,
+  "page": 1,
+  "limit": 50
 }
 ```
 
@@ -81,11 +83,15 @@
 
 **Auth:** JWT (cookie-based), returns only workflows where `employee_username == current user`
 
+**Query params:** `page` (default 1), `limit` (default 50, max 200)
+
 **Response:**
 ```json
 {
   "workflows": [...],
-  "total": 2
+  "total": 2,
+  "page": 1,
+  "limit": 50
 }
 ```
 
