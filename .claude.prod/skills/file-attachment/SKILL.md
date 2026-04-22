@@ -51,14 +51,21 @@ For each successfully uploaded file, produce a markdown snippet based on its typ
 
 ### Images
 
-Use an HTML `<img>` tag so the image is **downscaled** to a readable width in markdown preview:
+Always use pure markdown image syntax:
 
 ```markdown
-<img src="<GCS_URL>" alt="<filename without extension>" width="600" />
+![<filename without extension>](<GCS_URL>)
 ```
 
-- `width="600"` gives a comfortable preview size — adjust to `400` for smaller inline visuals or `800` for wide diagrams.
-- If the image is decorative / a screenshot, use `width="600"`.
+Concrete example:
+```markdown
+![diagram](https://storage.googleapis.com/public-tadreamk-media/image-storage/alan_20260422_120931_diagram_600.png)
+```
+
+- Standard CommonMark syntax — renders on every ERP surface (articles, tasks, comments, personal notes, technical reports).
+- **No authoring-time width control.** The rendered size is determined entirely by the target renderer's CSS. If a surface stretches images too wide, that is a renderer/CSS fix, not something the skill should work around.
+- **Do not emit HTML `<img>` tags** — strict CommonMark renderers (e.g., personal notes) show them as literal text, and the ERP surfaces we've validated render markdown correctly without needing HTML.
+- **Do not emit non-standard width extensions** — `![alt](url =600x)`, `![alt](url){width=600}`, `![alt|width=600](url)` are all ignored by the ERP renderers we've tested.
 
 ### PDFs
 
@@ -85,11 +92,11 @@ Uploaded 2 file(s):
 | report.pdf     | pdf   | 1.1 MB | https://storage.googleapis.com/... |
 ```
 
-Then for each file:
+Then for each file, show the single ready-to-paste snippet:
 
 **screenshot.png** — paste this into your content:
 ```markdown
-<img src="https://storage.googleapis.com/..." alt="screenshot" width="600" />
+![screenshot](https://storage.googleapis.com/...)
 ```
 
 **report.pdf** — paste this into your content:
@@ -99,7 +106,8 @@ Then for each file:
 
 ## Notes
 
-- **Image display width**: `width="600"` is the default. The user can ask to change it (e.g., "make it smaller" → `width="400"`, "full width" → `width="800"`).
+- **Only emit pure markdown image syntax** (`![alt](url)`). Do not emit HTML `<img>` tags or non-standard width extensions — they either render as literal text on strict renderers or are silently ignored.
+- **No width control at authoring time.** Image size is controlled by the target renderer's CSS. If an image looks too wide on a given surface, file a frontend change request; do not pre-resize or swap to HTML.
 - **PDF inline preview**: Most markdown renderers do not embed PDF viewers — a labelled link is the correct format.
 - **Supported image types for GCS image endpoint**: `.png` `.jpg` `.jpeg` `.gif` `.webp` only. Other file types (including `.pdf`) must use the technical-reports upload endpoint.
 - **Auth scope**: Both endpoints require a valid employee auth token (`WEBAPP_ACCESS_TOKEN`).
