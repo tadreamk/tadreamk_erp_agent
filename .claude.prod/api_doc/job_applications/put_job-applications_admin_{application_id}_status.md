@@ -1,6 +1,6 @@
-# PATCH /job-applications/{application_id}/interview-schedule-finalize
+# PUT /job-applications/admin/{application_id}/status
 
-Finalize the interview schedule for a job application. Requires admin or moderator role.
+Update an application's status. Requires admin or moderator role.
 
 **Path Parameters:**
 | Parameter | Type | Description |
@@ -10,11 +10,12 @@ Finalize the interview schedule for a job application. Requires admin or moderat
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| selected_time | string | Yes | Selected interview time from proposed slots (UTC datetime string) |
+| status | string | Yes | New application status |
 
-**Response:** Updated application object with confirmed schedule
+**Response:** Updated application object
 
 **Errors:**
 - `401` — Not authenticated
 - `403` — Not admin or moderator
 - `404` — Application not found
+- `500` — Failed to update status

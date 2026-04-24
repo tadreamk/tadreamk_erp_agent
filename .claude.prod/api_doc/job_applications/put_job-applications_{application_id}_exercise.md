@@ -1,4 +1,4 @@
-# PATCH /job-applications/{application_id}/exercise
+# PUT /job-applications/{application_id}/exercise
 
 Assign an exercise to a job application. Sends email notification to applicant. Requires admin or moderator role.
 

@@ -13,5 +13,5 @@ Admin access requires `exercise` whitelist.
 | GET | /exercises/ | `exercise` whitelist | List exercises with filters | [get_exercises_list.md](get_exercises_list.md) |
 | POST | /exercises/ | `exercise` whitelist | Create an exercise | [post_exercises.md](post_exercises.md) |
 | PUT | /exercises/{exercise_id} | `exercise` whitelist | Update an exercise | [put_exercises_{exercise_id}.md](put_exercises_{exercise_id}.md) |
-| PATCH | /exercises/{exercise_id}/status | `exercise` whitelist | Update exercise status | [patch_exercises_{exercise_id}_status.md](patch_exercises_{exercise_id}_status.md) |
+| PUT | /exercises/{exercise_id}/status | `exercise` whitelist | Update exercise status | [put_exercises_{exercise_id}_status.md](put_exercises_{exercise_id}_status.md) |
 | DELETE | /exercises/{exercise_id} | `exercise` whitelist | Delete an exercise | [delete_exercises_{exercise_id}.md](delete_exercises_{exercise_id}.md) |

@@ -1,4 +1,4 @@
-# PATCH /market-research/companies/{slug}/note
+# PUT /market-research/companies/{slug}/note
 
 Update the internal note for a market research company. Requires `market-research` whitelist.
 

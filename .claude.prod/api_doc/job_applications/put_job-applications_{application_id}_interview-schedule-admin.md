@@ -1,6 +1,6 @@
-# PATCH /job-applications/admin/{application_id}/status
+# PUT /job-applications/{application_id}/interview-schedule-admin
 
-Update an application's status. Requires admin or moderator role.
+Set the interview schedule for a job application. Requires admin or moderator role.
 
 **Path Parameters:**
 | Parameter | Type | Description |
@@ -10,7 +10,8 @@ Update an application's status. Requires admin or moderator role.
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| status | string | Yes | New application status |
+| time_slots | list[string] | Yes | List of proposed interview times (UTC datetime strings, 1-5 slots) |
+| duration_minutes | integer | No | Interview duration in minutes (default: 30) |
 
 **Response:** Updated application object
 
@@ -18,4 +19,3 @@ Update an application's status. Requires admin or moderator role.
 - `401` — Not authenticated
 - `403` — Not admin or moderator
 - `404` — Application not found
-- `500` — Failed to update status

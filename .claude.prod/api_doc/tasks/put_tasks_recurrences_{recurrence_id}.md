@@ -1,4 +1,4 @@
-# PATCH /tasks/recurrences/{recurrence_id}
+# PUT /tasks/recurrences/{recurrence_id}
 
 Update a recurrence template. Manager only.
 

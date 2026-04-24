@@ -1,4 +1,4 @@
-# PATCH /articles/{article_id}/status
+# PUT /articles/{article_id}/status
 
 Update only the status of an article.
 

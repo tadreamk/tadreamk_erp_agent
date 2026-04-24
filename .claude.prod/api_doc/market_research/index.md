@@ -12,5 +12,5 @@ All endpoints require `market-research` whitelist access.
 | GET | /market-research/companies/{slug} | Get company by slug | [get_market-research_companies_{slug}.md](get_market-research_companies_{slug}.md) |
 | PUT | /market-research/companies/{slug} | Update a company | [put_market-research_companies_{slug}.md](put_market-research_companies_{slug}.md) |
 | DELETE | /market-research/companies/{slug} | Delete a company | [delete_market-research_companies_{slug}.md](delete_market-research_companies_{slug}.md) |
-| PATCH | /market-research/companies/{slug}/note | Update company note | [patch_market-research_companies_{slug}_note.md](patch_market-research_companies_{slug}_note.md) |
+| PUT | /market-research/companies/{slug}/note | Update company note | [put_market-research_companies_{slug}_note.md](put_market-research_companies_{slug}_note.md) |
 | POST | /market-research/companies/import | Bulk import companies | [post_market-research_companies_import.md](post_market-research_companies_import.md) |

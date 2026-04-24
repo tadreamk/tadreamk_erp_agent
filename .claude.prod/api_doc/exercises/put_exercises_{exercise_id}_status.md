@@ -1,4 +1,4 @@
-# PATCH /exercises/{exercise_id}/status
+# PUT /exercises/{exercise_id}/status
 
 Update an exercise's `post_active` status. Requires `exercise` whitelist.
 

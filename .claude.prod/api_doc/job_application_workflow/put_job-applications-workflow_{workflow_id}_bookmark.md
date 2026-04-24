@@ -1,4 +1,4 @@
-# PATCH /job-applications-workflow/{workflow_id}/bookmark
+# PUT /job-applications-workflow/{workflow_id}/bookmark
 
 Toggle the bookmark flag on a workflow. Requires `job-applications` whitelist.
 

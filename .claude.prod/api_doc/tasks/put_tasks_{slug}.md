@@ -1,4 +1,4 @@
-# PATCH /tasks/{slug}
+# PUT /tasks/{slug}
 
 Update a task's description, status, priority, active_bot_comment, or dates. User must be a member of the task. Requires authentication.
 

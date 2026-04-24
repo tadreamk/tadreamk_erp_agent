@@ -1,4 +1,4 @@
-# PATCH /job-applications/{application_id}/exercise-urls
+# PUT /job-applications/{application_id}/exercise-urls
 
 Submit exercise submission URLs for an application. Requires authentication (application owner).
 

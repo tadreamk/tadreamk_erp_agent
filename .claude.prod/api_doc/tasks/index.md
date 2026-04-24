@@ -15,7 +15,7 @@ Authentication: Requires authentication. Most task endpoints also require `task`
 | GET | `/tasks/team-overview` | Get tasks of subordinates via manager hierarchy |
 | GET | `/tasks/{slug}` | Get task by slug |
 | POST | `/tasks/` | Create a new task |
-| PATCH | `/tasks/{slug}` | Update a task |
+| PUT | `/tasks/{slug}` | Update a task |
 | POST | `/tasks/{slug}/members` | Add a member to a task |
 | DELETE | `/tasks/{slug}/members/{username}` | Remove a member from a task (manager only) |
 | DELETE | `/tasks/{slug}` | Delete a task (manager only) |
@@ -28,7 +28,7 @@ Authentication: Requires authentication. Most task endpoints also require `task`
 | DELETE | `/task-projects/{project_id}` | Soft delete a task project |
 | POST | `/tasks/recurrences` | Create a recurrence template |
 | GET | `/tasks/recurrences` | List recurrences managed by user |
-| PATCH | `/tasks/recurrences/{recurrence_id}` | Update a recurrence (manager only) |
+| PUT | `/tasks/recurrences/{recurrence_id}` | Update a recurrence (manager only) |
 | DELETE | `/tasks/recurrences/{recurrence_id}` | Delete a recurrence (manager only) |
 
 ## Endpoint Documentation
@@ -39,7 +39,7 @@ Authentication: Requires authentication. Most task endpoints also require `task`
 - [GET /tasks/team-overview](get_tasks_team-overview.md)
 - [GET /tasks/{slug}](get_tasks_{slug}.md)
 - [POST /tasks/](post_tasks.md)
-- [PATCH /tasks/{slug}](patch_tasks_{slug}.md)
+- [PUT /tasks/{slug}](put_tasks_{slug}.md)
 - [POST /tasks/{slug}/members](post_tasks_{slug}_members.md)
 - [DELETE /tasks/{slug}/members/{username}](delete_tasks_{slug}_members_{username}.md)
 - [DELETE /tasks/{slug}](delete_tasks_{slug}.md)
@@ -52,5 +52,5 @@ Authentication: Requires authentication. Most task endpoints also require `task`
 - [DELETE /task-projects/{project_id}](delete_task-projects_{project_id}.md)
 - [POST /tasks/recurrences](post_tasks_recurrences.md)
 - [GET /tasks/recurrences](get_tasks_recurrences.md)
-- [PATCH /tasks/recurrences/{recurrence_id}](patch_tasks_recurrences_{recurrence_id}.md)
+- [PUT /tasks/recurrences/{recurrence_id}](put_tasks_recurrences_{recurrence_id}.md)
 - [DELETE /tasks/recurrences/{recurrence_id}](delete_tasks_recurrences_{recurrence_id}.md)

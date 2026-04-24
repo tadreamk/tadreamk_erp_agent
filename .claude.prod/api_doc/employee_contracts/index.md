@@ -3,6 +3,8 @@
 Employee self-service prefix: `/employee-contract`
 Admin prefix: `/admin/employee-contract`
 
+**Related:** structured contract renewals go through the [Renewal Contract Workflow API](../renewal_contract_workflow/index.md).
+
 | Method | Path | Auth | Description | File |
 |--------|------|------|-------------|------|
 | GET | /employee-contract/me | Authenticated | Get own contract | [get_employee-contract_me.md](get_employee-contract_me.md) |

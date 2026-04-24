@@ -1,4 +1,4 @@
-# PATCH /job-applications/{application_id}/interview-accept
+# PUT /job-applications/{application_id}/interview-accept
 
 Accept an interview time from admin's proposal. Candidate only. Sends a confirmation email with meeting details.
 

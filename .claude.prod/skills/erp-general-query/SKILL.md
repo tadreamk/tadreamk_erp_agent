@@ -39,10 +39,10 @@ exercise_score_instructions, exercises, expense_categories,
 expense_management, funding_opportunities, funding_sources,
 funding_utilization, guide_pages, guide_quiz, health, hr_ops,
 job_application_workflow, job_applications, job_posts, leave_management,
-market_research, notifications, onboarding, payslip_workflow,
-personal_notes, personal_particular, rachel_ai, reimbursement_workflow,
-task_ai_instructions, tasks, technical_reports, templates,
-timesheet_workflow, treasury, whitelist
+librarian, market_research, notifications, onboarding, payslip_workflow,
+personal_notes, personal_particular, reimbursement_workflow,
+renewal_contract_workflow, task_ai_instructions, tasks, technical_reports,
+templates, timesheet_workflow, treasury, whitelist
 ```
 
 ## Step 2: Select API Endpoint(s)
