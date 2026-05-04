@@ -11,3 +11,7 @@
 
 # Keep repo essentials
 !.gitignore
+
+# Except .claude.in_progress/
+!.claude.in_progress/
+!.claude.in_progress/**
