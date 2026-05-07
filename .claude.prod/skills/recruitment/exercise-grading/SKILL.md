@@ -9,6 +9,48 @@ description: Grades technical recruitment exercise submissions against the ERP e
 
 Use this skill for **recruitment / technical exercises** stored in `candidate_exercise/<Candidate>/` (or similar) where the canonical brief lives in **TadReamk ERP** (`api_doc` + live `GET /exercises/{slug}`), and scores are recorded via **`POST /job-applications-workflow/{workflow_id}/score-exercise`**.
 
+Diagrams use the **workflow-diagram** convention.
+
+## People Involved
+
+- **Reviewer** (e.g. hiring reviewer) — loads brief, inspects repo, runs checks, scores, writes report, optional ERP posts
+- **System** (ERP) — exercises content, workflow lookup, score-exercise, internal notes
+
+## Workflow overview
+
+```
+Stage 1 - [Reviewer] Load published brief
+  │
+  │   api_doc + GET /exercises/{slug} or active-list — rubric from content
+  │
+  ▼
+Stage 2 - [Reviewer] Inspect candidate folder / submission
+  │
+  │   README, code, data, CI, report.md; note spec mismatches
+  │
+  ▼
+Stage 3 - [Reviewer] Verify locally
+  │
+  │   py_compile, JSON/schema checks, front-end crash paths, CI YAML
+  │
+  ▼
+Stage 4 - [Reviewer] Score 0–100 with deduction reasons
+  │
+  ▼
+Stage 5 - [Reviewer] Optional ERP score-exercise
+  │
+  │   Resolve workflow_id → POST /score-exercise (score + note_content)
+  │
+  ▼
+Stage 6 - [Reviewer] ~100-word reviewer comment + report file
+  │
+  ▼
+Stage 7 - [Reviewer] Optional internal notes (reviewer comment + interview questions)
+  │
+  ▼
+Done — exercise_grading_report.md (+ optional change_log per project rules)
+```
+
 ## Workflow
 
 ### 1. Load the brief
