@@ -1,14 +1,17 @@
 # GET /whitelist/my-endpoints
 
-Get the current user's accessible ERP endpoints. No admin access required — any authenticated user can call this endpoint.
+Get My Endpoints. Requires authentication.
 
 **Response:**
 ```json
 {
-  "username": "alice",
-  "endpoints": ["leave-management", "tasks", "expense-management"]
+  "username": "string",
+  "endpoints": [
+    "string"
+  ]
 }
 ```
 
 **Errors:**
 - `401` — Not authenticated
+- `404` — Not found

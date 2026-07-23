@@ -1,28 +1,26 @@
 # GET /employees/active
 
-Get active employees for a picker dropdown. Requires `employees` whitelist.
+List Active For Picker. Requires `)
+    entries = employee_crud.list_active_employees_for_picker(db, q=q)
+    return {` whitelist.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| search | string | No | Search by username or name |
-| limit | int | No | Max results (default: 50) |
+| q | string | No |  |
 
 **Response:**
 ```json
 {
-  "employees": [
+  "entries": [
     {
-      "id": "uuid",
-      "username": "alice",
-      "work_email": "alice@company.com",
-      "family_name": "Wong",
-      "given_name": "Alice"
+      "username": "string",
+      "preferred_name": "string",
+      "work_email": "string"
     }
   ]
 }
 ```
 
 **Errors:**
-- `401` — Not authenticated
-- `403` — No employees whitelist access
+- `422` — Validation Error

@@ -1,37 +1,66 @@
 # GET /bank-statements
 
-List bank statements with optional filters. Requires `bank-statements` whitelist.
+List Bank Statements. Requires authentication.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| bank_account_id | UUID | No | Filter by bank account |
-| year | int | No | Filter by statement year |
-| month | int | No | Filter by statement month |
-| skip | int | No | Pagination offset (default: 0) |
-| limit | int | No | Max results (default: 50, max: 100) |
+| year | integer | No |  |
+| bank_name | string | No |  |
+| account_number | string | No |  |
+| skip | integer | No |  |
+| limit | integer | No |  |
 
 **Response:**
 ```json
-[
-  {
-    "id": "uuid",
-    "bank_account_id": "uuid",
-    "bank_name": "Hang Seng Bank",
-    "account_number": "242-462307-883",
-    "statement_year": 2025,
-    "statement_month": 8,
-    "statement_date": "2025-08-31",
-    "opening_balance": "10000.00",
-    "closing_balance": "12500.00",
-    "note": null,
-    "created_by": "alannguyen",
-    "created_at": "datetime",
-    "updated_at": null
-  }
-]
+{
+  "items": [
+    {
+      "id": "uuid",
+      "bank_name": "string",
+      "account_number": "string",
+      "statement_year": 0,
+      "statement_month": 0,
+      "statement_date": "date",
+      "opening_balance": "string",
+      "closing_balance": "string",
+      "note": "string",
+      "attachments": [
+        {
+          "file_id": {},
+          "filename": {},
+          "file_url": {},
+          "file_size": {},
+          "content_type": {},
+          "is_active": {}
+        }
+      ],
+      "is_active": false,
+      "created_at": "datetime",
+      "created_by": "string",
+      "created_by_preferred_name": "string",
+      "updated_at": "datetime",
+      "updated_by": "string",
+      "updated_by_preferred_name": "string",
+      "records": [
+        {
+          "id": {},
+          "bank_statement_id": {},
+          "transaction_date": {},
+          "description": {},
+          "deposit_amount": {},
+          "withdrawal_amount": {},
+          "running_balance": {},
+          "record_order": {},
+          "created_at": {},
+          "updated_at": {}
+        }
+      ]
+    }
+  ],
+  "total": 0
+}
 ```
 
 **Errors:**
-- `401` — Not authenticated
-- `403` — No bank-statements whitelist access
+- `422` — Validation Error

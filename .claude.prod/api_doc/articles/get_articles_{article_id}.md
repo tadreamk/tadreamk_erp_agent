@@ -1,35 +1,35 @@
 # GET /articles/{article_id}
 
-Get a single article by its UUID.
+Get Article. Requires authentication.
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| article_id | UUID | The article's unique identifier |
+| article_id | string |  |
 
 **Response:**
 ```json
 {
   "id": "uuid",
-  "title": "string",
   "slug": "string",
-  "summary": "string",
-  "content": "string",
-  "category": "string",
-  "status": "draft|published",
+  "title": "string",
   "author": "string",
-  "cover_image_url": "string|null",
-  "read_time": 5,
-  "translations": {},
-  "created_by": "string",
-  "updated_by": "string|null",
-  "publish_date": "datetime",
+  "category": "string",
+  "cover_image_url": "string",
+  "read_time": 0,
+  "content_by_lang": {},
+  "status": "string",
+  "published_at": "datetime",
+  "archived_at": "datetime",
+  "is_active": false,
   "created_at": "datetime",
-  "updated_at": "datetime"
+  "created_by": "string",
+  "created_by_preferred_name": "string",
+  "updated_at": "datetime",
+  "updated_by": "string",
+  "updated_by_preferred_name": "string"
 }
 ```
 
 **Errors:**
-- `401` — Not authenticated
-- `403` — No access to articles
-- `404` — Article not found
+- `422` — Validation Error

@@ -1,25 +1,45 @@
 # GET /job-posts
 
-List all published job posts with filtering and pagination. No authentication required.
+List Job Posts. Requires authentication.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| department | string | No | Filter by department |
-| job_type | string | No | Filter by job type |
-| search | string | No | Search in title and description |
-| page | int | No | Page number (default: 1) |
-| limit | int | No | Max results (default: 20, max: 100) |
+| status | JobPostStatusEnum | No |  |
+| department | string | No |  |
+| job_type | JobTypeEnum | No |  |
+| search | string | No |  |
+| skip | integer | No |  |
+| limit | integer | No |  |
 
 **Response:**
 ```json
 {
-  "job_posts": [ { "...job post object..." } ],
-  "total": 10,
-  "page": 1,
-  "limit": 20,
-  "total_pages": 1,
-  "has_next": false,
-  "has_prev": false
+  "items": [
+    {
+      "id": "uuid",
+      "title": "string",
+      "department": "string",
+      "job_type": "string",
+      "location": "string",
+      "experience_years": 0,
+      "application_deadline": "date",
+      "content_by_lang": {},
+      "status": "string",
+      "published_at": "datetime",
+      "closed_at": "datetime",
+      "is_active": false,
+      "created_at": "datetime",
+      "created_by": "string",
+      "created_by_preferred_name": "string",
+      "updated_at": "datetime",
+      "updated_by": "string",
+      "updated_by_preferred_name": "string"
+    }
+  ],
+  "total": 0
 }
 ```
+
+**Errors:**
+- `422` — Validation Error

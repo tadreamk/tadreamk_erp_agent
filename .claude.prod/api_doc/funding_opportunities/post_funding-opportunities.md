@@ -1,20 +1,39 @@
 # POST /funding-opportunities
 
-Create a new funding opportunity. Requires `funding-opportunities` whitelist.
+Create Funding Opportunity. Requires authentication.
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| opportunity_name | string | Yes | Opportunity name (must be unique) |
-| funding_type | string | No | Funding type |
-| status | string | No | Status |
-| estimated_amount | decimal | No | Funding amount |
-| application_deadline | date | No | Application deadline |
-| description | string | No | Description |
+| opportunity_name | string | Yes |  |
+| funding_type | FundingTypeEnum | Yes |  |
+| provider | string | Yes |  |
+| expected_amount | number|string | Yes |  |
+| expected_decision_date | string | No |  |
+| notes | string | No |  |
+| stage | _FundingOpportunityStageOnCreateEnum | No |  |
 
-**Response:** Created funding opportunity object
+**Response:**
+```json
+{
+  "id": "uuid",
+  "opportunity_name": "string",
+  "funding_type": "string",
+  "provider": "string",
+  "expected_amount": "string",
+  "expected_decision_date": "date",
+  "notes": "string",
+  "stage": "string",
+  "lost_reason": "string",
+  "is_active": false,
+  "created_at": "datetime",
+  "created_by": "string",
+  "created_by_preferred_name": "string",
+  "updated_at": "datetime",
+  "updated_by": "string",
+  "updated_by_preferred_name": "string"
+}
+```
 
 **Errors:**
-- `400` — A funding opportunity with this name already exists
-- `401` — Not authenticated
-- `403` — No funding-opportunities whitelist access
+- `422` — Validation Error

@@ -105,7 +105,7 @@ If the file already exists, ask the user whether to overwrite or skip.
 Upload the report to the ERP as a personal note:
 
 ```bash
-curl -s -X POST "https://api-erp.tadreamk.com/api/v1/personal-notes" \
+curl -s -X POST "https://api-erp.tadreamk.com/api/v1/personal-note" \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d @<tmp_file>
@@ -115,7 +115,7 @@ Build the request body as a temporary JSON file to avoid shell escaping:
 ```json
 {
   "title": "Task Report: DD Mon YYYY – DD Mon YYYY",
-  "content": "<full markdown content>",
+  "content_md": "<full markdown content>",
   "category": "Work"
 }
 ```

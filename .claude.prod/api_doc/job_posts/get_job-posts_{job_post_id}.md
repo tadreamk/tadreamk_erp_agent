@@ -1,18 +1,35 @@
 # GET /job-posts/{job_post_id}
 
-Get a single published job post by ID. Supports language selection for translated content. No authentication required.
+Get Job Post. Requires authentication.
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| job_post_id | UUID | The job post's unique identifier |
+| job_post_id | string |  |
 
-**Query Parameters:**
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| lang | string | No | Language code (en, zh, zh-TW) — default: en |
-
-**Response:** Full job post object with localized content if available
+**Response:**
+```json
+{
+  "id": "uuid",
+  "title": "string",
+  "department": "string",
+  "job_type": "string",
+  "location": "string",
+  "experience_years": 0,
+  "application_deadline": "date",
+  "content_by_lang": {},
+  "status": "string",
+  "published_at": "datetime",
+  "closed_at": "datetime",
+  "is_active": false,
+  "created_at": "datetime",
+  "created_by": "string",
+  "created_by_preferred_name": "string",
+  "updated_at": "datetime",
+  "updated_by": "string",
+  "updated_by_preferred_name": "string"
+}
+```
 
 **Errors:**
-- `404` — Job post not found or not published
+- `422` — Validation Error

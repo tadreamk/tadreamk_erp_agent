@@ -1,35 +1,43 @@
 # GET /funding-sources
 
-List all funding sources with optional filters. Requires `funding-sources` whitelist.
+List Funding Sources. Requires authentication.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| funding_type | string | No | Filter by funding type |
-| status | string | No | Filter by status |
-| category_id | UUID | No | Filter by expense category |
-| search | string | No | Search by name |
-| skip | int | No | Offset (default: 0) |
-| limit | int | No | Max results (default: 50, max: 100) |
+| funding_type | FundingTypeEnum | No |  |
+| status | FundingStatusEnum | No |  |
+| search | string | No |  |
+| skip | integer | No |  |
+| limit | integer | No |  |
 
 **Response:**
 ```json
-[
-  {
-    "id": "uuid",
-    "source_name": "Grant ABC",
-    "funding_type": "Grant",
-    "provider": "Government",
-    "total_approved": 100000.0,
-    "status": "active",
-    "start_date": "2025-01-01",
-    "end_date": "2026-12-31",
-    "is_active": true,
-    "created_at": "datetime"
-  }
-]
+{
+  "items": [
+    {
+      "id": "uuid",
+      "source_name": "string",
+      "funding_type": "string",
+      "provider": "string",
+      "reference_no": "string",
+      "description": "string",
+      "total_approved": "string",
+      "start_date": "date",
+      "end_date": "date",
+      "status": "string",
+      "is_active": false,
+      "created_at": "datetime",
+      "created_by": "string",
+      "created_by_preferred_name": "string",
+      "updated_at": "datetime",
+      "updated_by": "string",
+      "updated_by_preferred_name": "string"
+    }
+  ],
+  "total": 0
+}
 ```
 
 **Errors:**
-- `401` — Not authenticated
-- `403` — No funding-sources whitelist access
+- `422` — Validation Error

@@ -1,26 +1,36 @@
 # GET /expense-categories
 
-List expense categories. Requires `expense-management` whitelist.
+List Expense Categories. Requires authentication.
 
 **Query Parameters:**
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| include_inactive | bool | No | Include inactive categories (default: false) |
+| is_active | boolean | No |  |
+| page | integer | No |  |
+| limit | integer | No |  |
 
 **Response:**
 ```json
-[
-  {
-    "id": "uuid",
-    "title": "Travel",
-    "description": "Travel expenses",
-    "is_active": true,
-    "created_at": "datetime",
-    "updated_at": "datetime"
-  }
-]
+{
+  "items": [
+    {
+      "id": "uuid",
+      "title": "string",
+      "description": "string",
+      "is_active": false,
+      "created_at": "datetime",
+      "created_by": "string",
+      "created_by_preferred_name": "string",
+      "updated_at": "datetime",
+      "updated_by": "string",
+      "updated_by_preferred_name": "string"
+    }
+  ],
+  "total": 0,
+  "page": 0,
+  "limit": 0
+}
 ```
 
 **Errors:**
-- `401` — Not authenticated
-- `403` — No expense-management whitelist access
+- `422` — Validation Error

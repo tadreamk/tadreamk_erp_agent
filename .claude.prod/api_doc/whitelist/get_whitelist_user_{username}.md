@@ -1,20 +1,21 @@
 # GET /whitelist/user/{username}
 
-Get all accessible endpoints for a specified user. Requires `whitelist` admin access.
+Get User Endpoints. Requires authentication.
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| username | string | The username to look up |
+| username | string |  |
 
 **Response:**
 ```json
 {
-  "username": "alice",
-  "endpoints": ["leave-management", "tasks"]
+  "username": "string",
+  "endpoints": [
+    "string"
+  ]
 }
 ```
 
 **Errors:**
-- `401` — Not authenticated
-- `403` — Not on whitelist admin access
+- `422` — Validation Error

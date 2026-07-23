@@ -1,13 +1,14 @@
 # Expense Categories API
 
-Base prefix: `/expense-categories`
+Base prefixes:
+- `/expense-categories`
 
-All endpoints require `expense-management` whitelist.
+Authentication: See per-endpoint docs. Most endpoints require JWT (`Authorization: Bearer <token>`). Some require an endpoint whitelist.
 
-| Method | Path | Description | File |
-|--------|------|-------------|------|
-| GET | /expense-categories | List expense categories | [get_expense-categories.md](get_expense-categories.md) |
-| POST | /expense-categories | Create an expense category | [post_expense-categories.md](post_expense-categories.md) |
-| PUT | /expense-categories/{category_id} | Update an expense category | [put_expense-categories_{category_id}.md](put_expense-categories_{category_id}.md) |
-| PUT | /expense-categories/{category_id}/deactivate | Deactivate a category | [put_expense-categories_{category_id}_deactivate.md](put_expense-categories_{category_id}_deactivate.md) |
-| PUT | /expense-categories/{category_id}/reactivate | Reactivate a category | [put_expense-categories_{category_id}_reactivate.md](put_expense-categories_{category_id}_reactivate.md) |
+| Method | Path | Auth | Description | File |
+|--------|------|------|-------------|------|
+| GET | /expense-categories | Authenticated employee | List Expense Categories | [get_expense-categories.md](get_expense-categories.md) |
+| POST | /expense-categories | Authenticated employee | Create Expense Category Route | [post_expense-categories.md](post_expense-categories.md) |
+| DELETE | /expense-categories/{category_id} | Authenticated employee | Delete Expense Category | [delete_expense-categories_{category_id}.md](delete_expense-categories_{category_id}.md) |
+| GET | /expense-categories/{category_id} | Authenticated employee | Get Expense Category | [get_expense-categories_{category_id}.md](get_expense-categories_{category_id}.md) |
+| PUT | /expense-categories/{category_id} | Authenticated employee | Update Expense Category Route | [put_expense-categories_{category_id}.md](put_expense-categories_{category_id}.md) |

@@ -1,23 +1,27 @@
 # PUT /comments/{comment_id}
 
-Update a comment. Only the comment author can update it.
+Update Thread Comment. Public endpoint (no auth).
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| comment_id | UUID | The comment's unique identifier |
+| comment_id | string |  |
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| content | string | No | Updated comment text |
-| image_url | string | No | URL of an attached image |
-| audio_url | string | No | URL of an attached audio file |
+| content | string | No |  |
+| mentions | array[string] | No |  |
+| attachments | array[FileUrlRef] | No |  |
 
-**Response:** Updated comment object.
+**Response:**
+```json
+{
+  "success": false,
+  "message": "string",
+  "data": {}
+}
+```
 
 **Errors:**
-- `400` — Invalid comment_id
-- `401` — Not authenticated
-- `403` — Not the comment author
-- `404` — Comment not found
+- `422` — Validation Error

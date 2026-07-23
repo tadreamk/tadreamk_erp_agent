@@ -1,25 +1,59 @@
 # Personal Particular API
 
 Base prefixes:
-- `/personal-particular` — Employee self-service
-- `/admin/personal-particular` — HR admin access (requires `personal-particulars` whitelist)
+- `/personal-particular`
+- `/personal-particulars`
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/personal-particular/me` | Get own personal particular data |
-| POST | `/personal-particular/me` | Create own personal particular record |
-| PUT | `/personal-particular/me` | Update own personal particular record |
-| GET | `/admin/personal-particular` | List all personal particulars (HR) |
-| GET | `/admin/personal-particular/{pp_id}` | Get a single personal particular (HR) |
-| POST | `/admin/personal-particular` | Create a personal particular record (HR) |
-| PUT | `/admin/personal-particular/{pp_id}` | Update a personal particular record (HR) |
+Authentication: See per-endpoint docs. Most endpoints require JWT (`Authorization: Bearer <token>`). Some require an endpoint whitelist.
 
-## Endpoint Documentation
-
-- [GET /personal-particular/me](get_personal-particular_me.md)
-- [POST /personal-particular/me](post_personal-particular_me.md)
-- [PUT /personal-particular/me](put_personal-particular_me.md)
-- [GET /admin/personal-particular](get_admin_personal-particular.md)
-- [GET /admin/personal-particular/{pp_id}](get_admin_personal-particular_{pp_id}.md)
-- [POST /admin/personal-particular](post_admin_personal-particular.md)
-- [PUT /admin/personal-particular/{pp_id}](put_admin_personal-particular_{pp_id}.md)
+| Method | Path | Auth | Description | File |
+|--------|------|------|-------------|------|
+| GET | /personal-particular/me | Authenticated employee | Get Me | [get_personal-particular_me.md](get_personal-particular_me.md) |
+| GET | /personal-particulars/ | `)
+    rows, total = personal_particular_queries.list_personal_particulars_left_join_employee(
+        db,
+        search=search,
+        include_inactive=include_inactive,
+        page=page,
+        limit=limit,
+    )
+    log_sensitive_read(
+        db,
+        caller_username=user.username,
+        endpoint=` whitelist | List Personal Particulars | [get_personal-particulars_.md](get_personal-particulars_.md) |
+| POST | /personal-particulars/ | `)
+    try:
+        entry = personal_particular_write_ops.create_personal_particular(
+            db,
+            username=username,
+            created_by=user.username,
+            fields=payload.model_dump(exclude_unset=True),
+        )
+    except PersonalParticularCreateError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=exc.message) from exc
+    return APIResponse(
+        success=True,
+        message=` whitelist | Create Personal Particular | [post_personal-particulars_.md](post_personal-particulars_.md) |
+| DELETE | /personal-particulars/{username} | `)
+    removed = personal_particular_write_ops.delete_personal_particular(db, username)
+    if not removed:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f` whitelist | Delete Personal Particular | [delete_personal-particulars_{username}.md](delete_personal-particulars_{username}.md) |
+| GET | /personal-particulars/{username} | `)
+    entry = get_personal_particular_or_404_by_username(db, username)
+    log_sensitive_read(
+        db,
+        caller_username=user.username,
+        endpoint=f` whitelist | Get Personal Particular | [get_personal-particulars_{username}.md](get_personal-particulars_{username}.md) |
+| PUT | /personal-particulars/{username} | `)
+    entry = personal_particular_write_ops.update_personal_particular(
+        db,
+        username,
+        updated_by=user.username,
+        fields=payload.model_dump(exclude_unset=True),
+    )
+    if not entry:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f` whitelist | Update Personal Particular | [put_personal-particulars_{username}.md](put_personal-particulars_{username}.md) |

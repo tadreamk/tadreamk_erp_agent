@@ -8,6 +8,8 @@ disable-model-invocation: true
 
 # Guide Page Upload
 
+**Unavailable on ERP v2:** `/guide-pages` was removed. Stop and tell the user this skill cannot run against current production.
+
 Upload a locally drafted guide page to the database.
 
 This command takes no arguments. It auto-detects drafts from `data/guide_pages/`.

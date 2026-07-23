@@ -1,12 +1,17 @@
 # GET /customer-requirements/count
 
-Return the count of active requirements matching the same filters as `GET /customer-requirements`.
+Get Requirements Count. Public endpoint (no auth).
 
-**Query Parameters:** `status`, `search` (same semantics as the list endpoint).
+**Query Parameters:**
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| status | string | No |  |
+| search | string | No |  |
 
 **Response:**
 ```json
-{ "count": 12 }
+{}
 ```
 
-**Errors:** `401`, `403` (same as list).
+**Errors:**
+- `422` — Validation Error

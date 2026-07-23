@@ -1,22 +1,66 @@
 # Employees API
 
-Admin prefix: `/employees` (requires `employees` whitelist)
-Self-service prefix: `/employee` (requires authentication)
+Base prefixes:
+- `/employee`
+- `/employees`
+- `/employees/{username}`
+
+Authentication: See per-endpoint docs. Most endpoints require JWT (`Authorization: Bearer <token>`). Some require an endpoint whitelist.
 
 | Method | Path | Auth | Description | File |
 |--------|------|------|-------------|------|
-| GET | /employees | `employees` whitelist | List all employees | [get_employees.md](get_employees.md) |
-| GET | /employees/departments | `employees` whitelist | List departments | [get_employees_departments.md](get_employees_departments.md) |
-| GET | /employees/active | `employees` whitelist | Get active employees picker | [get_employees_active.md](get_employees_active.md) |
-| GET | /employees/stats | `employees` whitelist | Get employee statistics | [get_employees_stats.md](get_employees_stats.md) |
-| POST | /employees | `employees` whitelist | Create an employee | [post_employees.md](post_employees.md) |
-| GET | /employees/company-roles | `employees` whitelist | List all company roles | [get_employees_company-roles.md](get_employees_company-roles.md) |
-| PUT | /employees/company-roles/{role_title} | `employees` whitelist | Update role assignment | [put_employees_company-roles_{role_title}.md](put_employees_company-roles_{role_title}.md) |
-| GET | /employees/{employee_id} | `employees` whitelist | Get employee by ID | [get_employees_{employee_id}.md](get_employees_{employee_id}.md) |
-| GET | /employees/{employee_id}/full | `employees` whitelist | Get full employee details | [get_employees_{employee_id}_full.md](get_employees_{employee_id}_full.md) |
-| PUT | /employees/{employee_id} | `employees` whitelist | Update an employee | [put_employees_{employee_id}.md](put_employees_{employee_id}.md) |
-| POST | /employees/{employee_id}/deactivate | `employees` whitelist | Deactivate an employee | [post_employees_{employee_id}_deactivate.md](post_employees_{employee_id}_deactivate.md) |
-| POST | /employees/{employee_id}/reactivate | `employees` whitelist | Reactivate an employee | [post_employees_{employee_id}_reactivate.md](post_employees_{employee_id}_reactivate.md) |
-| DELETE | /employees/{employee_id} | `employees` whitelist | Delete an employee | [delete_employees_{employee_id}.md](delete_employees_{employee_id}.md) |
-| GET | /employee/me | Authenticated | Get own employee record | [get_employee_me.md](get_employee_me.md) |
-| GET | /employee/my-company-roles | Authenticated | Get own company roles | [get_employee_my-company-roles.md](get_employee_my-company-roles.md) |
+| GET | /employee/colleagues | Authenticated employee | List Colleagues | [get_employee_colleagues.md](get_employee_colleagues.md) |
+| GET | /employee/me | Authenticated employee | Get Me | [get_employee_me.md](get_employee_me.md) |
+| GET | /employees/ | `)
+    entries, total = employee_crud.search_employees(
+        db, search=search, include_inactive=include_inactive, page=page, limit=limit
+    )
+    audit_names = preferred_names(db, (u for e in entries for u in (e.created_by, e.updated_by)))
+    return {
+        ` whitelist | List Employees | [get_employees_.md](get_employees_.md) |
+| POST | /employees/ | `)
+    if payload.manager_username and payload.manager_username == payload.username:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=` whitelist | Create Employee | [post_employees_.md](post_employees_.md) |
+| GET | /employees/active | `)
+    entries = employee_crud.list_active_employees_for_picker(db, q=q)
+    return {` whitelist | List Active For Picker | [get_employees_active.md](get_employees_active.md) |
+| GET | /employees/stats | `employees` whitelist | Get Stats | [get_employees_stats.md](get_employees_stats.md) |
+| GET | /employees/{username} | `)
+    entry = get_employee_or_404_by_username(db, username)
+    audit_names = resolve_audit_pair_names(
+        db,
+        created_by=entry.created_by,
+        updated_by=entry.updated_by,
+    )
+    return APIResponse(
+        success=True,
+        message=` whitelist | Get Employee | [get_employees_{username}.md](get_employees_{username}.md) |
+| PUT | /employees/{username} | `)
+    try:
+        entry = employee_crud.update_employee(
+            db,
+            username,
+            updated_by=user.username,
+            new_work_email=payload.work_email,
+            new_preferred_name=payload.preferred_name,
+            new_manager_username=payload.manager_username,
+            new_is_active=payload.is_active,
+        )
+    except EmployeeUpdateError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=exc.message) from exc
+    if not entry:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=` whitelist | Update Employee | [put_employees_{username}.md](put_employees_{username}.md) |
+| POST | /employees/{username}/deactivate | `)
+    entry = employee_crud.deactivate_employee(db, username, deactivated_by=user.username)
+    if not entry:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=` whitelist | Deactivate Employee | [post_employees_{username}_deactivate.md](post_employees_{username}_deactivate.md) |
+| POST | /employees/{username}/reactivate | `)
+    entry = employee_crud.reactivate_employee(db, username, reactivated_by=user.username)
+    if not entry:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=` whitelist | Reactivate Employee | [post_employees_{username}_reactivate.md](post_employees_{username}_reactivate.md) |

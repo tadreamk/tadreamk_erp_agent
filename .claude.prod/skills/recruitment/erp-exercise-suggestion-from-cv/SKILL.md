@@ -20,13 +20,13 @@ Diagrams use the **workflow-diagram** convention (plain ` ``` ` fence, stages, P
 ```
 Stage 1 - [Staff] Discover cohort
   │
-  │   GET /job-applications-workflow?status=submitted (paginate limit/skip)
+  │   GET /job-application?status=submitted (paginate limit/skip)
   │   Optional: persist snapshot under collected/ when user wants a reusable id list
   │
   ▼
 Stage 2 - [Staff] Pull fields per workflow_id
   │
-  │   GET /job-applications-workflow/{workflow_id}
+  │   GET /job-application/{workflow_id}
   │   Keep: candidate_name, cover_letter, resume_url, applications[].job_title
   │
   ▼
@@ -45,7 +45,7 @@ Stage 4 - [Staff] Choose one exercise from catalog
   ▼
 Stage 5 - [Staff] Post internal note only
   │
-  │   POST /job-applications-workflow/{workflow_id}/notes
+  │   POST /job-application/{workflow_id}/notes
   │   [Exercise Suggestion] + title + Slug: + Rationale
   │   Do not call assign-exercise or applicant comments unless user expands scope
   │
@@ -55,7 +55,7 @@ Done — hand off to erp-exercise-assignment for POST /assign-exercise.
 
 ## Source of truth
 
-Read `.claude.prod/api_doc/job_application_workflow/` (e.g. `get_job-applications-workflow_{workflow_id}.md`, `post_job-applications-workflow_{workflow_id}_notes.md`, `get_job-applications-workflow.md`) and `exercises/` for list semantics.
+Read `.claude.prod/api_doc/job_application/` (e.g. `get_job-application_{workflow_id}.md`, `post_job-application_{workflow_id}_notes.md`, `get_job-application.md`) and `exercises/` for list semantics.
 
 ## Auth and transport
 
@@ -65,12 +65,12 @@ Read `.claude.prod/api_doc/job_application_workflow/` (e.g. `get_job-application
 
 ## Discover candidates
 
-- Paginate `GET /job-applications-workflow?status=submitted&limit=100&skip=…` until a short page (adjust `status` if the user targets another stage).
+- Paginate `GET /job-application?status=submitted&limit=100&skip=…` until a short page (adjust `status` if the user targets another stage).
 - Optional: persist a snapshot under `collected/` when the user wants a reusable id list.
 
 ## Pull fields per `workflow_id`
 
-`GET /job-applications-workflow/{workflow_id}` — keep at least:
+`GET /job-application/{workflow_id}` — keep at least:
 
 - `candidate_name`, `cover_letter`, `resume_url`, `applications[].job_title` (signals)
 
@@ -106,7 +106,7 @@ If two tracks tie, prefer the one best supported by **resume projects** over key
 
 ## Post internal note (required)
 
-`POST /job-applications-workflow/{workflow_id}/notes`
+`POST /job-application/{workflow_id}/notes`
 
 **Preferred body** (easy for downstream slug parsing):
 

@@ -1,13 +1,13 @@
 ---
 name: exercise-grading
-description: Grades technical recruitment exercise submissions against the ERP exercise brief, runs local verification, scores 0–100 with deduction reasons, optionally posts scores to the job-applications workflow API, and writes a report under the candidate folder. Use when grading candidate exercise repos, scoring LLM take-home work, updating exercise marks in the ERP, or when the user asks for exercise grading or recruitment exercise review.
+description: Grades technical recruitment exercise submissions against the ERP exercise brief, runs local verification, scores 0–100 with deduction reasons, optionally posts scores to the job-application API, and writes a report under the candidate folder. Use when grading candidate exercise repos, scoring LLM take-home work, updating exercise marks in the ERP, or when the user asks for exercise grading or recruitment exercise review.
 ---
 
 # Exercise grading
 
 ## When to apply
 
-Use this skill for **recruitment / technical exercises** stored in `candidate_exercise/<Candidate>/` (or similar) where the canonical brief lives in **TadReamk ERP** (`api_doc` + live `GET /exercises/{slug}`), and scores are recorded via **`POST /job-applications-workflow/{workflow_id}/score-exercise`**.
+Use this skill for **recruitment / technical exercises** stored in `candidate_exercise/<Candidate>/` (or similar) where the canonical brief lives in **TadReamk ERP** (`api_doc` + live `GET /exercises/{slug}`), and scores are recorded via **`POST /job-application/{workflow_id}/score-exercise`**.
 
 Diagrams use the **workflow-diagram** convention.
 
@@ -93,8 +93,8 @@ Record **concrete** findings (file:line when possible).
 
 If `WEBAPP_ACCESS_TOKEN` (or project `.env`) is available and the user wants the system updated:
 
-1. Resolve **workflow_id**: `GET /api/v1/job-applications-workflow?search=<name fragment>&limit=50` and match `candidate_name`.
-2. **POST** `/api/v1/job-applications-workflow/{workflow_id}/score-exercise` with JSON body:
+1. Resolve **workflow_id**: `GET /api/v1/job-application?search=<name fragment>&limit=50` and match `candidate_name`.
+2. **POST** `/api/v1/job-application/{workflow_id}/score-exercise` with JSON body:
    - `score` (integer 1–5, required)
    - `note_content` (string; must be non-empty if the API enforces minimum length)
 
@@ -112,7 +112,7 @@ Write in neutral, professional English. Include it as a **"Reviewer comment"** s
 
 ### 7. Internal discussion notes (optional)
 
-If the user wants the ERP workflow updated for reviewer collaboration, post to **`POST /job-applications-workflow/{workflow_id}/notes`**:
+If the user wants the ERP workflow updated for reviewer collaboration, post to **`POST /job-application/{workflow_id}/notes`**:
 
 - The **reviewer comment** from Step 6 as an internal discussion note.
 - A **second internal discussion note** with **2-3 proposed interview questions** tailored to the candidate's CV, target role, and specific exercise weaknesses.
@@ -175,5 +175,5 @@ Use this structure for `exercise_grading_report.md`:
 ## api_doc pointers
 
 - Exercises module: `api_doc/exercises/`
-- Score exercise: `api_doc/job_application_workflow/post_job-applications-workflow_{workflow_id}_score-exercise.md`
-- List workflows: `api_doc/job_application_workflow/get_job-applications-workflow.md`
+- Score exercise: `api_doc/job_application/post_job-application_{workflow_id}_score-exercise.md`
+- List workflows: `api_doc/job_application/get_job-application.md`

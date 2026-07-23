@@ -1,18 +1,16 @@
 # DELETE /bank-statements/{statement_id}
 
-Delete a bank statement and all its lines (cascade). Requires `bank-statements` whitelist.
+Delete Bank Statement. Requires authentication.
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| statement_id | UUID | Bank statement ID |
+| statement_id | string |  |
 
-**Response:** `200`
+**Response:**
 ```json
-{"message": "Deleted"}
+{}
 ```
 
 **Errors:**
-- `401` — Not authenticated
-- `403` — No bank-statements whitelist access
-- `404` — Statement not found
+- `422` — Validation Error

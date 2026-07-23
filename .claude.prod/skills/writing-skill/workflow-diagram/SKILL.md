@@ -28,4 +28,4 @@ Use whenever the user wants a **multi-step business or system process** document
 
 ## ERP source (optional)
 
-Authoritative text originated as a TadReamk ERP **personal note** (`GET /personal-notes` / shared notes). A repo copy may exist at `docs/how-to-write-a-good-workflow-diagram.md` in `tadreamk_erp_agent`; the bundled [reference.md](reference.md) here is the same guidance for offline use.
+Authoritative text originated as a TadReamk ERP **personal note** (`GET /personal-note` / shared notes). A repo copy may exist at `docs/how-to-write-a-good-workflow-diagram.md` in `tadreamk_erp_agent`; the bundled [reference.md](reference.md) here is the same guidance for offline use.
