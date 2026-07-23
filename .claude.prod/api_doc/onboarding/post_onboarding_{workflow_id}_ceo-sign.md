@@ -1,27 +1,56 @@
 # POST /onboarding/{workflow_id}/ceo-sign
 
-CEO signs the onboarding workflow. Transitions status to `completed` and applies the CEO signature to all documents with a `ceo_signature` field. Requires `onboarding` whitelist access.
+Ceo Sign. Public endpoint (no auth).
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| workflow_id | UUID | The workflow's unique identifier |
+| workflow_id | string |  |
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| ceo_signature | string | Yes | CEO's signature data (base64 or URL) |
+| ceo_signature | string | Yes |  |
 
 **Response:**
 ```json
 {
-  "message": "Workflow signed and completed",
-  "status": "completed"
+  "id": "uuid",
+  "talent_email": "string",
+  "talent_username": "string",
+  "talent_preferred_name": "string",
+  "hr_username": "string",
+  "hr_preferred_name": "string",
+  "ceo_username": "string",
+  "ceo_preferred_name": "string",
+  "status": "string",
+  "talent_submitted_at": "datetime",
+  "sent_to_ceo_at": "datetime",
+  "cancel_reason": "string",
+  "is_active": false,
+  "created_at": "datetime",
+  "updated_at": "datetime",
+  "documents": [
+    {
+      "id": "uuid",
+      "onboarding_id": "uuid",
+      "template_id": "uuid",
+      "template_name": "string",
+      "document_type": "string",
+      "pdf_url": "string",
+      "onedrive_url_employee": "string",
+      "onedrive_url_admin": "string",
+      "field_values": {},
+      "fields": [
+        {}
+      ],
+      "is_locked": false,
+      "created_at": "datetime",
+      "updated_at": "datetime"
+    }
+  ]
 }
 ```
 
 **Errors:**
-- `400` — CEO signature not provided in request body
-- `401` — Not authenticated
-- `403` — Not on onboarding whitelist
-- `404` — Workflow not found
+- `422` — Validation Error

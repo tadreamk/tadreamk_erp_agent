@@ -1,24 +1,52 @@
 # DELETE /onboarding/{workflow_id}/documents/{document_id}
 
-Remove a document from a workflow. Workflow must be in `template_selection` status.
+Remove Document. Public endpoint (no auth).
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| workflow_id | UUID | The workflow's unique identifier |
-| document_id | UUID | The document's unique identifier |
+| workflow_id | string |  |
+| document_id | string |  |
 
-**Auth:** Requires `onboarding` whitelist access (HR only).
-
-**Response:** `200 OK`
+**Response:**
 ```json
 {
-  "message": "Document removed from workflow"
+  "id": "uuid",
+  "talent_email": "string",
+  "talent_username": "string",
+  "talent_preferred_name": "string",
+  "hr_username": "string",
+  "hr_preferred_name": "string",
+  "ceo_username": "string",
+  "ceo_preferred_name": "string",
+  "status": "string",
+  "talent_submitted_at": "datetime",
+  "sent_to_ceo_at": "datetime",
+  "cancel_reason": "string",
+  "is_active": false,
+  "created_at": "datetime",
+  "updated_at": "datetime",
+  "documents": [
+    {
+      "id": "uuid",
+      "onboarding_id": "uuid",
+      "template_id": "uuid",
+      "template_name": "string",
+      "document_type": "string",
+      "pdf_url": "string",
+      "onedrive_url_employee": "string",
+      "onedrive_url_admin": "string",
+      "field_values": {},
+      "fields": [
+        {}
+      ],
+      "is_locked": false,
+      "created_at": "datetime",
+      "updated_at": "datetime"
+    }
+  ]
 }
 ```
 
 **Errors:**
-- `400` — Can only remove documents in template_selection status
-- `401` — Not authenticated
-- `403` — Not on onboarding whitelist
-- `404` — Workflow or document not found
+- `422` — Validation Error

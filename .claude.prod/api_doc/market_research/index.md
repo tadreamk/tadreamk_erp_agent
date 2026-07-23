@@ -1,16 +1,15 @@
 # Market Research API
 
-Base prefix: `/market-research`
+Base prefixes:
+- `/market-research`
 
-All endpoints require `market-research` whitelist access.
+Authentication: See per-endpoint docs. Most endpoints require JWT (`Authorization: Bearer <token>`). Some require an endpoint whitelist.
 
-| Method | Path | Description | File |
-|--------|------|-------------|------|
-| GET | /market-research/companies | List companies | [get_market-research_companies.md](get_market-research_companies.md) |
-| GET | /market-research/companies/count | Get company count | [get_market-research_companies_count.md](get_market-research_companies_count.md) |
-| GET | /market-research/companies/stats | Get dashboard stats | [get_market-research_companies_stats.md](get_market-research_companies_stats.md) |
-| GET | /market-research/companies/{slug} | Get company by slug | [get_market-research_companies_{slug}.md](get_market-research_companies_{slug}.md) |
-| PUT | /market-research/companies/{slug} | Update a company | [put_market-research_companies_{slug}.md](put_market-research_companies_{slug}.md) |
-| DELETE | /market-research/companies/{slug} | Delete a company | [delete_market-research_companies_{slug}.md](delete_market-research_companies_{slug}.md) |
-| PUT | /market-research/companies/{slug}/note | Update company note | [put_market-research_companies_{slug}_note.md](put_market-research_companies_{slug}_note.md) |
-| POST | /market-research/companies/import | Bulk import companies | [post_market-research_companies_import.md](post_market-research_companies_import.md) |
+| Method | Path | Auth | Description | File |
+|--------|------|------|-------------|------|
+| GET | /market-research | Authenticated | List Companies | [get_market-research.md](get_market-research.md) |
+| POST | /market-research | Authenticated | Create Company | [post_market-research.md](post_market-research.md) |
+| GET | /market-research/stats | Authenticated | Get Stats | [get_market-research_stats.md](get_market-research_stats.md) |
+| DELETE | /market-research/{company_id} | Authenticated | Soft Delete Company | [delete_market-research_{company_id}.md](delete_market-research_{company_id}.md) |
+| GET | /market-research/{company_id} | Authenticated | Get Company | [get_market-research_{company_id}.md](get_market-research_{company_id}.md) |
+| PUT | /market-research/{company_id} | Authenticated | Update Company | [put_market-research_{company_id}.md](put_market-research_{company_id}.md) |

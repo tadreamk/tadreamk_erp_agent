@@ -32,17 +32,16 @@ To identify the right module(s), scan the `index.md` file inside the most releva
 
 Available modules:
 ```
-articles, bank_accounts, bank_statements, calendar, comments,
-company_events, company_roles, contact_directory, customer_management,
-customer_requirements, employee_contracts, employees, equipment_management,
-exercise_score_instructions, exercises, expense_categories,
-expense_management, funding_opportunities, funding_sources,
-funding_utilization, guide_pages, guide_quiz, health, hr_ops,
-job_application_workflow, job_applications, job_posts, leave_management,
-librarian, market_research, notifications, onboarding, payslip_workflow,
-personal_notes, personal_particular, reimbursement_workflow,
-renewal_contract_workflow, task_ai_instructions, tasks, technical_reports,
-templates, timesheet_workflow, treasury, whitelist
+articles, audit_log, bank_accounts, bank_statements, comments,
+company_events, company_roles, contracts, customer, customer_requirements,
+document_templates, employees, equipment, exercise_tags, exercises,
+expense_categories, expenses, funding_opportunities, funding_sources,
+grammar, health, hr_ops, hr_requests, job_application, job_posts, leave,
+librarian, market_research, notifications, onboarding, payslips,
+personal_notes, personal_particular, rachel_ai, reimbursement,
+renewal_contract_workflow, task_ai_instructions, task_projects,
+task_recurrences, tasks, technical_reports, timesheets, user_requirements,
+whitelist
 ```
 
 ## Step 2: Select API Endpoint(s)
@@ -55,8 +54,8 @@ Once you identify the relevant module(s):
 
 **Important:** If the user's question is complex and requires data from multiple endpoints or modules, plan the sequence of API calls. For example:
 - "Which department has the most employees?" → fetch employees, then aggregate by department.
-- "Show me Alan's leave balance and active tasks" → call leave management API + tasks API.
-- "What expenses are linked to funding source X?" → call funding sources to get the ID, then call funding utilization or expense management.
+- "Show me Alan's leave balance and active tasks" → call leave API (`/leave/me`, `/leave/team`, `/leave/all`) + tasks API.
+- "What expenses are linked to funding source X?" → call funding sources to get the ID, then call expenses.
 
 ## Step 3: Execute API Call(s)
 

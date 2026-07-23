@@ -1,23 +1,51 @@
 # POST /onboarding/{workflow_id}/ceo-confirm
 
-CEO confirms onboarding documents, transitioning status from `ceo_confirmation` to `talent_input`. Requires CEO role on the workflow.
+Ceo Confirm. Public endpoint (no auth).
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| workflow_id | UUID | The workflow's unique identifier |
+| workflow_id | string |  |
 
-**Auth:** Requires `onboarding` whitelist or CEO owner access.
-
-**Response:** `200 OK`
+**Response:**
 ```json
 {
-  "message": "CEO confirmed onboarding documents",
-  "status": "talent_input"
+  "id": "uuid",
+  "talent_email": "string",
+  "talent_username": "string",
+  "talent_preferred_name": "string",
+  "hr_username": "string",
+  "hr_preferred_name": "string",
+  "ceo_username": "string",
+  "ceo_preferred_name": "string",
+  "status": "string",
+  "talent_submitted_at": "datetime",
+  "sent_to_ceo_at": "datetime",
+  "cancel_reason": "string",
+  "is_active": false,
+  "created_at": "datetime",
+  "updated_at": "datetime",
+  "documents": [
+    {
+      "id": "uuid",
+      "onboarding_id": "uuid",
+      "template_id": "uuid",
+      "template_name": "string",
+      "document_type": "string",
+      "pdf_url": "string",
+      "onedrive_url_employee": "string",
+      "onedrive_url_admin": "string",
+      "field_values": {},
+      "fields": [
+        {}
+      ],
+      "is_locked": false,
+      "created_at": "datetime",
+      "updated_at": "datetime"
+    }
+  ]
 }
 ```
 
 **Errors:**
-- `401` — Not authenticated
-- `403` — Only CEO can confirm documents
-- `404` — Workflow not found
+- `422` — Validation Error

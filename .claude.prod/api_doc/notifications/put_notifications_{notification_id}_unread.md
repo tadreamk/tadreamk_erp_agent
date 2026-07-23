@@ -1,15 +1,20 @@
 # PUT /notifications/{notification_id}/unread
 
-Mark a specific notification as unread (reminder feature). Only the notification recipient can mark it as unread. Requires authentication.
+Mark As Unread. Public endpoint (no auth).
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| notification_id | UUID | The notification's unique identifier |
+| notification_id | string |  |
 
-**Response:** Updated notification object
+**Response:**
+```json
+{
+  "success": false,
+  "message": "string",
+  "data": {}
+}
+```
 
 **Errors:**
-- `400` — Invalid notification_id format
-- `401` — Not authenticated
-- `404` — Notification not found or not accessible by user
+- `422` — Validation Error

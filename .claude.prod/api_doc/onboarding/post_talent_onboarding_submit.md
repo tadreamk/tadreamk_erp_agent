@@ -1,19 +1,47 @@
 # POST /talent/onboarding/submit
 
-Talent confirms all documents are signed and submits for HR review. Transitions status from `talent_input` to `hr_review`. All documents must be signed or have an uploaded PDF. Generates PDFs for eligible documents before submitting.
+Submit My Onboarding. Requires authentication.
 
-**Auth:** Requires authentication. Must be the talent on an active `talent_input` workflow.
-
-**Response:** `200 OK`
+**Response:**
 ```json
 {
-  "message": "All documents signed and submitted. Awaiting HR review.",
-  "status": "hr_review",
-  "talent_submitted_at": "2024-01-01T00:00:00+00:00"
+  "id": "uuid",
+  "talent_email": "string",
+  "talent_username": "string",
+  "talent_preferred_name": "string",
+  "hr_username": "string",
+  "hr_preferred_name": "string",
+  "ceo_username": "string",
+  "ceo_preferred_name": "string",
+  "status": "string",
+  "talent_submitted_at": "datetime",
+  "sent_to_ceo_at": "datetime",
+  "cancel_reason": "string",
+  "is_active": false,
+  "created_at": "datetime",
+  "updated_at": "datetime",
+  "documents": [
+    {
+      "id": "uuid",
+      "onboarding_id": "uuid",
+      "template_id": "uuid",
+      "template_name": "string",
+      "document_type": "string",
+      "pdf_url": "string",
+      "onedrive_url_employee": "string",
+      "onedrive_url_admin": "string",
+      "field_values": {},
+      "fields": [
+        {}
+      ],
+      "is_locked": false,
+      "created_at": "datetime",
+      "updated_at": "datetime"
+    }
+  ]
 }
 ```
 
 **Errors:**
-- `400` — All docs must be signed or have PDF. N incomplete.
 - `401` — Not authenticated
-- `404` — No active onboarding found
+- `404` — Not found

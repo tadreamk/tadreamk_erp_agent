@@ -1,29 +1,35 @@
-# POST /exercises/
+# POST /exercises
 
-Create a new exercise. Requires `exercise` whitelist.
+Create Exercise. Requires authentication.
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| title | string | Yes | Exercise title |
-| tags | list[string] | No | Tags from predefined list |
-| content | string | No | Exercise content (Markdown/HTML) |
-| post_active | bool | No | Whether visible to applicants (default: true) |
-| score_instruction_id | string | No | ID of scoring instructions |
+| title | string | Yes |  |
+| content | string | Yes |  |
+| tag_ids | array[string] | No |  |
 
 **Response:**
 ```json
 {
-  "success": true,
-  "message": "Exercise created successfully",
-  "data": {
-    "id": "uuid",
-    "slug": "exercise-slug"
-  }
+  "id": "uuid",
+  "title": "string",
+  "content": "string",
+  "status": "string",
+  "tags": [
+    {
+      "id": "uuid",
+      "name": "string",
+      "status": "string"
+    }
+  ],
+  "is_active": false,
+  "created_at": "datetime",
+  "created_by": "string",
+  "updated_at": "datetime",
+  "updated_by": "string"
 }
 ```
 
 **Errors:**
-- `401` — Not authenticated
-- `403` — No exercise whitelist access
-- `409` — Slug already exists
+- `422` — Validation Error

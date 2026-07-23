@@ -1,24 +1,42 @@
 # POST /funding-sources
 
-Create a new funding source. Requires `funding-sources` whitelist.
+Create Funding Source. Requires authentication.
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| source_name | string | Yes | Source name (must be unique) |
-| funding_type | string | Yes | Funding type (required, enum) |
-| provider | string | No | Provider/grantor name |
-| reference_no | string | No | Reference number |
-| description | string | No | Description |
-| total_approved | decimal | Yes | Total approved amount (must be > 0) |
-| start_date | date | No | Start date |
-| end_date | date | No | End date (must be >= start_date) |
-| status | string | No | Status |
-| funding_opportunity_id | UUID | No | Linked funding opportunity |
+| source_name | string | Yes |  |
+| funding_type | FundingTypeEnum | Yes |  |
+| provider | string | Yes |  |
+| reference_no | string | No |  |
+| description | string | No |  |
+| total_approved | number|string | Yes |  |
+| start_date | string | Yes |  |
+| end_date | string | No |  |
+| status | _FundingStatusOnCreateEnum | No |  |
 
-**Response:** Created funding source object
+**Response:**
+```json
+{
+  "id": "uuid",
+  "source_name": "string",
+  "funding_type": "string",
+  "provider": "string",
+  "reference_no": "string",
+  "description": "string",
+  "total_approved": "string",
+  "start_date": "date",
+  "end_date": "date",
+  "status": "string",
+  "is_active": false,
+  "created_at": "datetime",
+  "created_by": "string",
+  "created_by_preferred_name": "string",
+  "updated_at": "datetime",
+  "updated_by": "string",
+  "updated_by_preferred_name": "string"
+}
+```
 
 **Errors:**
-- `400` — Funding source with this name already exists
-- `401` — Not authenticated
-- `403` — No funding-sources whitelist access
+- `422` — Validation Error

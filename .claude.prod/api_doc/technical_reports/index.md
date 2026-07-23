@@ -1,31 +1,22 @@
 # Technical Reports API
 
-Base prefix: `/technical-reports`
+Base prefixes:
+- `/technical-reports`
+- `/technical-reports/all`
+- `/technical-reports/all/{report_id}`
+- `/technical-reports/me`
+- `/technical-reports/me/{report_id}`
 
-Authentication: Required. Employee endpoints require employee authentication. Admin/list endpoints require `technical-reports` whitelist access.
+Authentication: See per-endpoint docs. Most endpoints require JWT (`Authorization: Bearer <token>`). Some require an endpoint whitelist.
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/technical-reports/my-reports` | Get technical reports for the authenticated employee |
-| GET | `/technical-reports/my-reports/count` | Count technical reports for the authenticated employee |
-| GET | `/technical-reports` | List all technical reports (whitelist required) |
-| GET | `/technical-reports/count` | Count all technical reports (whitelist required) |
-| POST | `/technical-reports` | Submit a new technical report (employee) |
-| POST | `/technical-reports/upload` | Upload a supporting file to GCS |
-| GET | `/technical-reports/{report_id}` | Get technical report details |
-| PUT | `/technical-reports/{report_id}` | Update a submitted report (owner only) |
-| POST | `/technical-reports/{report_id}/assign` | Assign report to IT engineer (whitelist required) |
-| POST | `/technical-reports/{report_id}/resolve` | Mark a report as resolved (whitelist required) |
-
-## Endpoint Documentation
-
-- [GET /technical-reports/my-reports](get_technical-reports_my-reports.md)
-- [GET /technical-reports/my-reports/count](get_technical-reports_my-reports_count.md)
-- [GET /technical-reports](get_technical-reports.md)
-- [GET /technical-reports/count](get_technical-reports_count.md)
-- [POST /technical-reports](post_technical-reports.md)
-- [POST /technical-reports/upload](post_technical-reports_upload.md)
-- [GET /technical-reports/{report_id}](get_technical-reports_{report_id}.md)
-- [PUT /technical-reports/{report_id}](put_technical-reports_{report_id}.md)
-- [POST /technical-reports/{report_id}/assign](post_technical-reports_{report_id}_assign.md)
-- [POST /technical-reports/{report_id}/resolve](post_technical-reports_{report_id}_resolve.md)
+| Method | Path | Auth | Description | File |
+|--------|------|------|-------------|------|
+| GET | /technical-reports/all | Authenticated | List All Reports | [get_technical-reports_all.md](get_technical-reports_all.md) |
+| GET | /technical-reports/all/{report_id} | Authenticated | Get Report For Oversight | [get_technical-reports_all_{report_id}.md](get_technical-reports_all_{report_id}.md) |
+| POST | /technical-reports/all/{report_id}/resolve | Authenticated | Mark Resolved Admin | [post_technical-reports_all_{report_id}_resolve.md](post_technical-reports_all_{report_id}_resolve.md) |
+| GET | /technical-reports/me | Authenticated employee | List My Reports | [get_technical-reports_me.md](get_technical-reports_me.md) |
+| POST | /technical-reports/me | Authenticated employee | Submit Report | [post_technical-reports_me.md](post_technical-reports_me.md) |
+| POST | /technical-reports/me/attachments | Authenticated employee | Upload Attachment | [post_technical-reports_me_attachments.md](post_technical-reports_me_attachments.md) |
+| GET | /technical-reports/me/{report_id} | Authenticated employee | Get My Report | [get_technical-reports_me_{report_id}.md](get_technical-reports_me_{report_id}.md) |
+| PUT | /technical-reports/me/{report_id} | Authenticated employee | Edit My Report | [put_technical-reports_me_{report_id}.md](put_technical-reports_me_{report_id}.md) |
+| POST | /technical-reports/me/{report_id}/resolve | Authenticated employee | Mark Resolved Self | [post_technical-reports_me_{report_id}_resolve.md](post_technical-reports_me_{report_id}_resolve.md) |

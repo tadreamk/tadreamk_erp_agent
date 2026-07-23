@@ -1,58 +1,33 @@
 # Renewal Contract Workflow API
 
-Base prefixes: `/renewal-contract-workflow`, `/talent/renewal-contract-workflow`, `/talent/my-documents`.
+Base prefixes:
+- `/renewal-contract-workflow`
+- `/renewal-contract-workflow/{workflow_id}`
+- `/talent`
+- `/talent/renewal-contract-workflow`
 
-Authentication: Required. HR access gated by the `renewal-contract-workflow` whitelist endpoint. The assigned CEO (matched on `ceo_username`) has full access to their workflows. The assigned employee accesses their workflow via the `/talent/` endpoints.
+Authentication: See per-endpoint docs. Most endpoints require JWT (`Authorization: Bearer <token>`). Some require an endpoint whitelist.
 
-## Core CRUD (HR)
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/renewal-contract-workflow` | List workflows (filters: `status`, `hr_username`, `employee_username`) |
-| GET | `/renewal-contract-workflow/count` | Count workflows |
-| GET | `/renewal-contract-workflow/{workflow_id}` | Fetch a workflow (HR, owning employee, or CEO) |
-| POST | `/renewal-contract-workflow` | Create a new renewal workflow |
-| PUT | `/renewal-contract-workflow/{workflow_id}` | Merge partial `field_values` (respects Signature Lock Rule) |
-| DELETE | `/renewal-contract-workflow/{workflow_id}` | Soft-delete |
-
-## Transitions
-
-| Method | Path | Description |
-|--------|------|-------------|
-| POST | `/renewal-contract-workflow/{workflow_id}/send-to-talent` | `hr_input -> talent_input` (HR) |
-| POST | `/renewal-contract-workflow/{workflow_id}/ceo-sign` | Capture CEO signature |
-| POST | `/renewal-contract-workflow/{workflow_id}/ceo-reject` | `ceo_signature -> hr_input` with reason |
-| POST | `/renewal-contract-workflow/{workflow_id}/finalize` | `ceo_signature -> completed` + contract insert + PDF upload + email |
-| POST | `/renewal-contract-workflow/{workflow_id}/cancel` | Any non-completed -> `cancelled` (HR) |
-| POST | `/renewal-contract-workflow/{workflow_id}/reopen` | `cancelled -> hr_input` (HR) |
-
-## Internal Notes (HR + CEO only)
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/renewal-contract-workflow/{workflow_id}/notes` | List internal notes |
-| POST | `/renewal-contract-workflow/{workflow_id}/notes` | Create a note |
-| PUT | `/renewal-contract-workflow/{workflow_id}/notes/{note_id}` | Update (author only) |
-| DELETE | `/renewal-contract-workflow/{workflow_id}/notes/{note_id}` | Delete (author only) |
-
-## Talent Endpoints
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/talent/renewal-contract-workflow` | Active renewal for the logged-in employee (or null) |
-| PUT | `/talent/renewal-contract-workflow` | Merge partial talent-side `field_values` |
-| POST | `/talent/renewal-contract-workflow/sign` | Capture `talent_signature` (locks the document) |
-| POST | `/talent/renewal-contract-workflow/submit` | `talent_input -> ceo_signature` |
-| POST | `/talent/renewal-contract-workflow/decline` | `talent_input -> hr_input` + `[Talent Decline]` note |
-
-## Unified Inbox
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/talent/my-documents` | Aggregator: talent-facing documents for the current user (renewal contracts wired, follow-ups to add onboarding etc.) |
-
-## Conventions
-
-- **Conflict on duplicate active workflow** — `POST /renewal-contract-workflow` returns `409 Conflict` if an active workflow already exists for the employee.
-- **Signature Lock Rule** — once `talent_signature` is non-empty, only `ceo_*` keys (and the talent's own signature) can be merged via `PUT`.
-- **Default roles** — `hr_username` defaults to the first active `head_of_hr`, `ceo_username` to the first active `ceo`, resolved via `company_role`.
+| Method | Path | Auth | Description | File |
+|--------|------|------|-------------|------|
+| GET | /renewal-contract-workflow | Public | List Workflows | [get_renewal-contract-workflow.md](get_renewal-contract-workflow.md) |
+| POST | /renewal-contract-workflow | Public | Create Workflow | [post_renewal-contract-workflow.md](post_renewal-contract-workflow.md) |
+| DELETE | /renewal-contract-workflow/{workflow_id} | Public | Delete Workflow | [delete_renewal-contract-workflow_{workflow_id}.md](delete_renewal-contract-workflow_{workflow_id}.md) |
+| GET | /renewal-contract-workflow/{workflow_id} | Public | Get Workflow | [get_renewal-contract-workflow_{workflow_id}.md](get_renewal-contract-workflow_{workflow_id}.md) |
+| PUT | /renewal-contract-workflow/{workflow_id} | Public | Update Workflow | [put_renewal-contract-workflow_{workflow_id}.md](put_renewal-contract-workflow_{workflow_id}.md) |
+| POST | /renewal-contract-workflow/{workflow_id}/cancel | Public | Cancel Workflow | [post_renewal-contract-workflow_{workflow_id}_cancel.md](post_renewal-contract-workflow_{workflow_id}_cancel.md) |
+| POST | /renewal-contract-workflow/{workflow_id}/ceo-confirm | Public | Ceo Confirm | [post_renewal-contract-workflow_{workflow_id}_ceo-confirm.md](post_renewal-contract-workflow_{workflow_id}_ceo-confirm.md) |
+| POST | /renewal-contract-workflow/{workflow_id}/ceo-reject | Public | Ceo Reject | [post_renewal-contract-workflow_{workflow_id}_ceo-reject.md](post_renewal-contract-workflow_{workflow_id}_ceo-reject.md) |
+| POST | /renewal-contract-workflow/{workflow_id}/ceo-reject-signature | Public | Ceo Reject Signature | [post_renewal-contract-workflow_{workflow_id}_ceo-reject-signature.md](post_renewal-contract-workflow_{workflow_id}_ceo-reject-signature.md) |
+| POST | /renewal-contract-workflow/{workflow_id}/ceo-sign | Public | Ceo Sign | [post_renewal-contract-workflow_{workflow_id}_ceo-sign.md](post_renewal-contract-workflow_{workflow_id}_ceo-sign.md) |
+| POST | /renewal-contract-workflow/{workflow_id}/finalize | Public | Finalize Workflow | [post_renewal-contract-workflow_{workflow_id}_finalize.md](post_renewal-contract-workflow_{workflow_id}_finalize.md) |
+| POST | /renewal-contract-workflow/{workflow_id}/hr-request-revision | Public | Hr Request Revision | [post_renewal-contract-workflow_{workflow_id}_hr-request-revision.md](post_renewal-contract-workflow_{workflow_id}_hr-request-revision.md) |
+| POST | /renewal-contract-workflow/{workflow_id}/hr-send-to-ceo | Public | Hr Send To Ceo | [post_renewal-contract-workflow_{workflow_id}_hr-send-to-ceo.md](post_renewal-contract-workflow_{workflow_id}_hr-send-to-ceo.md) |
+| GET | /renewal-contract-workflow/{workflow_id}/notes | Public | List Workflow Notes | [get_renewal-contract-workflow_{workflow_id}_notes.md](get_renewal-contract-workflow_{workflow_id}_notes.md) |
+| POST | /renewal-contract-workflow/{workflow_id}/reopen | Public | Reopen Workflow | [post_renewal-contract-workflow_{workflow_id}_reopen.md](post_renewal-contract-workflow_{workflow_id}_reopen.md) |
+| POST | /renewal-contract-workflow/{workflow_id}/send-for-ceo-confirmation | Public | Send For Ceo Confirmation | [post_renewal-contract-workflow_{workflow_id}_send-for-ceo-confirmation.md](post_renewal-contract-workflow_{workflow_id}_send-for-ceo-confirmation.md) |
+| GET | /talent/renewal-contract-workflow | Public | Get My Workflow | [get_talent_renewal-contract-workflow.md](get_talent_renewal-contract-workflow.md) |
+| PUT | /talent/renewal-contract-workflow | Public | Update My Workflow | [put_talent_renewal-contract-workflow.md](put_talent_renewal-contract-workflow.md) |
+| POST | /talent/renewal-contract-workflow/decline | Public | Decline My Workflow | [post_talent_renewal-contract-workflow_decline.md](post_talent_renewal-contract-workflow_decline.md) |
+| POST | /talent/renewal-contract-workflow/sign | Public | Sign My Workflow | [post_talent_renewal-contract-workflow_sign.md](post_talent_renewal-contract-workflow_sign.md) |
+| POST | /talent/renewal-contract-workflow/submit | Public | Submit My Workflow | [post_talent_renewal-contract-workflow_submit.md](post_talent_renewal-contract-workflow_submit.md) |

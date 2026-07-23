@@ -1,26 +1,35 @@
 # POST /librarian/chat
 
-Send a message to the Librarian and get a permission-filtered response. The Librarian builds a user context from ReBAC roles, filters the database catalog by table-level and column-level rules, generates SQL with injected row-level WHERE clauses, masks restricted columns, and synthesizes a natural-language answer. Requires `librarian` whitelist access.
-
-**Method:** POST
-
-**Path:** `/api/v1/librarian/chat`
-
-**Authentication:** JWT + whitelist("librarian")
+Chat. Requires authentication.
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| message | string | Yes | The user's natural-language question |
+| message | string | Yes |  |
+| conversation_id | string | No |  |
+| skip_shortlist | boolean | No |  |
 
 **Response:**
 ```json
 {
-  "response": "The Librarian's answer to the query...",
-  "conversation_id": "uuid"
+  "reply": "string",
+  "conversation_id": "uuid",
+  "steps_taken": 0,
+  "proposal": {
+    "proposal_id": "string",
+    "kind": "string",
+    "matched_endpoint": "string",
+    "http_method": "string",
+    "path": "string",
+    "request_body": {},
+    "human_summary": "",
+    "draft_title": "string",
+    "draft_body": "string",
+    "item_url_template": "string",
+    "response_id_field": "string"
+  }
 }
 ```
 
 **Errors:**
-- `401` — Not authenticated
-- `403` — No librarian whitelist access
+- `422` — Validation Error

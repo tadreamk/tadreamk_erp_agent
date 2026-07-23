@@ -1,21 +1,30 @@
 # POST /customer-requirements
 
-Create a new customer requirement. Backend generates the 12-char `share_token`.
+Create New Requirement. Public endpoint (no auth).
 
-**Request body:**
+**Request Body:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| title | string | Yes | Title |
+| summary | string | No | Short summary |
+| status | string | No | Dashboard status |
+| share_mode | string | No | Public share mode |
+
+**Response:**
 ```json
 {
-  "title": "Example Requirement",
-  "summary": "short dashboard description",
-  "status": "Draft",
-  "share_mode": "edit"
+  "id": "uuid",
+  "share_token": "string",
+  "title": "string",
+  "summary": "string",
+  "status": "string",
+  "share_mode": "string",
+  "created_by": "string",
+  "is_active": false,
+  "created_at": "datetime",
+  "updated_at": "datetime"
 }
 ```
 
-`status` ∈ `Draft`, `Active`, `Delivered`, `Archived`. `share_mode` ∈ `edit`, `disabled`.
-
-**Response:** `CustomerRequirementResponse` (see `get_customer-requirements_{id}.md`).
-
 **Errors:**
-- `401`, `403` — auth / whitelist
-- `422` — validation (empty title, invalid enum value)
+- `422` — Validation Error

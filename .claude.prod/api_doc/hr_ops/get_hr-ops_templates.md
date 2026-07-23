@@ -1,22 +1,8 @@
 # GET /hr-ops/templates
 
-List active templates for the Create Workflow modal.
+List Active Templates. Public endpoint (no auth).
 
-**Auth:** Requires `hr-ops` whitelist access.
-
-**Response:** `200 OK`
+**Response:**
 ```json
-{
-  "templates": [
-    {
-      "id": "uuid",
-      "title": "Employee Warning Letter",
-      "category": "disciplinary"
-    }
-  ]
-}
+{}
 ```
-
-**Errors:**
-- `401` — Not authenticated
-- `403` — No access to hr-ops section

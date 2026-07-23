@@ -1,25 +1,55 @@
 # POST /onboarding
 
-Create a new onboarding workflow. Requires `onboarding` whitelist access.
+Create Workflow. Public endpoint (no auth).
 
 **Request Body:**
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| talent_email | string | Yes | Talent's email address |
-| talent_username | string | Yes | Talent's username |
-| hr_username | string | Yes | HR staff username |
-| ceo_username | string | Yes | CEO username |
-| status | string | Yes | Initial status (must be valid OnboardingWorkflowStatus) |
+| talent_email | string | Yes |  |
+| talent_username | string | Yes |  |
+| hr_username | string | Yes |  |
+| ceo_username | string | Yes |  |
+| status | string | No |  |
 
-**Response:** `201 Created`
+**Response:**
 ```json
 {
-  "message": "Onboarding workflow created",
-  "workflow": { "...workflow object..." }
+  "id": "uuid",
+  "talent_email": "string",
+  "talent_username": "string",
+  "talent_preferred_name": "string",
+  "hr_username": "string",
+  "hr_preferred_name": "string",
+  "ceo_username": "string",
+  "ceo_preferred_name": "string",
+  "status": "string",
+  "talent_submitted_at": "datetime",
+  "sent_to_ceo_at": "datetime",
+  "cancel_reason": "string",
+  "is_active": false,
+  "created_at": "datetime",
+  "updated_at": "datetime",
+  "documents": [
+    {
+      "id": "uuid",
+      "onboarding_id": "uuid",
+      "template_id": "uuid",
+      "template_name": "string",
+      "document_type": "string",
+      "pdf_url": "string",
+      "onedrive_url_employee": "string",
+      "onedrive_url_admin": "string",
+      "field_values": {},
+      "fields": [
+        {}
+      ],
+      "is_locked": false,
+      "created_at": "datetime",
+      "updated_at": "datetime"
+    }
+  ]
 }
 ```
 
 **Errors:**
-- `400` — Invalid status value
-- `401` — Not authenticated
-- `403` — Not on onboarding whitelist
+- `422` — Validation Error

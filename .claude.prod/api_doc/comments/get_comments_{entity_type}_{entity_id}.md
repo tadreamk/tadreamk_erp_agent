@@ -1,34 +1,54 @@
 # GET /comments/{entity_type}/{entity_id}
 
-List all active comments for a specific entity.
+List Thread. Requires authentication.
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| entity_type | string | Type of entity (e.g., `task`, `job_application`) |
-| entity_id | UUID | The entity's unique identifier |
+| entity_type | string |  |
+| entity_id | string |  |
+
+**Query Parameters:**
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| page | integer | No |  |
+| limit | integer | No |  |
 
 **Response:**
 ```json
 {
-  "comments": [
+  "entries": [
     {
-      "id": "uuid",
-      "entity_type": "task",
-      "entity_id": "uuid",
+      "id": "string",
+      "entity_type": "string",
+      "entity_id": "string",
       "content": "string",
-      "image_url": "string|null",
-      "audio_url": "string|null",
-      "username": "alice",
+      "author_username": "string",
+      "author_preferred_name": "string",
+      "mentions": [
+        "string"
+      ],
+      "file_urls": [
+        {
+          "file_url": {},
+          "filename": {},
+          "content_type": {},
+          "size_bytes": {}
+        }
+      ],
       "is_deleted": false,
+      "is_edited": false,
       "created_at": "datetime",
-      "updated_at": "datetime"
+      "created_by": "string",
+      "updated_at": "datetime",
+      "updated_by": "string"
     }
   ],
-  "total": 5
+  "total": 0,
+  "page": 0,
+  "limit": 0
 }
 ```
 
 **Errors:**
-- `400` — Invalid entity_id format
-- `401` — Not authenticated
+- `422` — Validation Error

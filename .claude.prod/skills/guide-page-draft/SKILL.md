@@ -8,6 +8,8 @@ disable-model-invocation: true
 
 # Guide Page Draft
 
+**Unavailable on ERP v2:** `/guide-pages` was removed. Local drafts only; do not call ERP upload APIs.
+
 Generate a guide page in Markdown and save it locally as a draft for review before uploading.
 
 The user's request is: $ARGUMENTS

@@ -1,13 +1,43 @@
 # Company Roles API
 
-Base prefix: `/admin/company-roles`
+Base prefixes:
+- `/company-role`
+- `/company-roles`
+- `/company-roles/{role_title}`
 
-All endpoints require `company-roles` whitelist access.
+Authentication: See per-endpoint docs. Most endpoints require JWT (`Authorization: Bearer <token>`). Some require an endpoint whitelist.
 
-| Method | Path | Description | File |
-|--------|------|-------------|------|
-| GET | /admin/company-roles/roles | List all role titles | [get_admin_company-roles_roles.md](get_admin_company-roles_roles.md) |
-| GET | /admin/company-roles/roles/{role_title}/users | List users with a role | [get_admin_company-roles_roles_{role_title}_users.md](get_admin_company-roles_roles_{role_title}_users.md) |
-| GET | /admin/company-roles | List all role assignments | [get_admin_company-roles.md](get_admin_company-roles.md) |
-| POST | /admin/company-roles | Assign a role to a user | [post_admin_company-roles.md](post_admin_company-roles.md) |
-| DELETE | /admin/company-roles/{username}/{role_title} | Revoke a role from a user | [delete_admin_company-roles_{username}_{role_title}.md](delete_admin_company-roles_{username}_{role_title}.md) |
+| Method | Path | Auth | Description | File |
+|--------|------|------|-------------|------|
+| GET | /company-role/me | Authenticated employee | Get My Roles | [get_company-role_me.md](get_company-role_me.md) |
+| GET | /company-roles/ | `)
+    rows = company_role_queries.list_company_roles_with_holders(db)
+    return {
+        ` whitelist | List Company Roles | [get_company-roles_.md](get_company-roles_.md) |
+| GET | /company-roles/role-titles | `)
+    rows = company_role_queries.list_company_roles_with_holders(db)
+    return {
+        ` whitelist | List Role Titles | [get_company-roles_role-titles.md](get_company-roles_role-titles.md) |
+| DELETE | /company-roles/{role_title} | `)
+    assert_known_role_title(role_title)
+
+    entry = company_role_service.revoke_role(db, role_title=role_title, caller=user.username)
+    if entry is None:
+        raise HTTPException(status_code=404, detail=f` whitelist | Revoke Role | [delete_company-roles_{role_title}.md](delete_company-roles_{role_title}.md) |
+| PUT | /company-roles/{role_title}/reassign | `)
+    assert_known_role_title(role_title)
+    try:
+        company_role_service.reassign_role(
+            db,
+            role_title=role_title,
+            new_username=payload.username,
+            caller=user.username,
+        )
+    except CompanyRoleCreateError as exc:
+        raise HTTPException(status_code=exc.status_code, detail=exc.message) from exc
+
+    rows = company_role_queries.list_company_roles_with_holders(db)
+    entries = [serialize_company_role_admin_list_row(rt, cr, emp) for rt, cr, emp in rows]
+    return APIResponse(
+        success=True,
+        message=f` whitelist | Reassign Role | [put_company-roles_{role_title}_reassign.md](put_company-roles_{role_title}_reassign.md) |

@@ -86,7 +86,7 @@ fi
 **Resolve the slug to a UUID and fetch the article body.** The public-by-slug endpoint is the only one that takes a slug, so call it first to obtain the `id`. Pass the bearer token on this call too — the endpoint accepts it, and using the same token everywhere keeps live mode token-scoped end to end:
 
 ```bash
-curl -s "https://api-erp.tadreamk.com/api/v1/articles-public/<slug>" \
+curl -s "https://api-erp.tadreamk.com/api/v1/articles/public/<slug>" \
   -H "Authorization: Bearer $TOKEN"
 ```
 

@@ -1,35 +1,56 @@
 # POST /talent/onboarding/documents/{document_id}/upload-pdf
 
-Talent uploads a PDF or image file to OneDrive for an onboarding document. Workflow must be in `talent_input` status.
+Upload My Document Pdf. Requires authentication.
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| document_id | UUID | The document's unique identifier |
-
-**Auth:** Requires authentication. Must be the talent on the workflow.
+| document_id | string |  |
 
 **Request Body:** `multipart/form-data`
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| file | file | Yes | PDF or image file (.pdf, .jpg, .jpeg, .png, .webp). Max 4MB. |
+| file | string | Yes |  |
 
-**Response:** `200 OK`
+**Response:**
 ```json
 {
-  "message": "File uploaded successfully",
-  "onedrive_url": "https://...",
-  "filename": "workflow_id_template_id.pdf",
-  "document": { "...OnboardingDocumentResponse..." }
+  "id": "uuid",
+  "talent_email": "string",
+  "talent_username": "string",
+  "talent_preferred_name": "string",
+  "hr_username": "string",
+  "hr_preferred_name": "string",
+  "ceo_username": "string",
+  "ceo_preferred_name": "string",
+  "status": "string",
+  "talent_submitted_at": "datetime",
+  "sent_to_ceo_at": "datetime",
+  "cancel_reason": "string",
+  "is_active": false,
+  "created_at": "datetime",
+  "updated_at": "datetime",
+  "documents": [
+    {
+      "id": "uuid",
+      "onboarding_id": "uuid",
+      "template_id": "uuid",
+      "template_name": "string",
+      "document_type": "string",
+      "pdf_url": "string",
+      "onedrive_url_employee": "string",
+      "onedrive_url_admin": "string",
+      "field_values": {},
+      "fields": [
+        {}
+      ],
+      "is_locked": false,
+      "created_at": "datetime",
+      "updated_at": "datetime"
+    }
+  ]
 }
 ```
 
 **Errors:**
-- `400` — Document is locked after signing
-- `400` — Only PDF and image files are allowed
-- `400` — File too large (max 4MB)
-- `400` — Can only perform this action when status is talent_input
-- `401` — Not authenticated
-- `403` — Not authorized
-- `404` — Document or workflow not found
-- `500` — Failed to upload to OneDrive
+- `422` — Validation Error

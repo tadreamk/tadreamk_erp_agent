@@ -1,28 +1,20 @@
 # GET /whitelist/entry/{whitelist_id}
 
-Get a single whitelist entry by ID. Requires `whitelist` admin access.
+Get Whitelist Entry. Requires authentication.
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| whitelist_id | UUID | The whitelist entry's unique identifier |
+| whitelist_id | string |  |
 
 **Response:**
 ```json
 {
-  "success": true,
-  "message": "Entry retrieved",
-  "data": {
-    "id": "uuid",
-    "erp_endpoint": "leave-management",
-    "username": "alice",
-    "is_active": true
-  }
+  "success": false,
+  "message": "string",
+  "data": {}
 }
 ```
 
 **Errors:**
-- `400` — Invalid ID format
-- `401` — Not authenticated
-- `403` — Not on whitelist admin access
-- `404` — Entry not found
+- `422` — Validation Error

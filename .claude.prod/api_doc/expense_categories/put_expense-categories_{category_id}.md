@@ -1,22 +1,34 @@
 # PUT /expense-categories/{category_id}
 
-Update an existing expense category. Requires `expense-management` whitelist.
+Update Expense Category Route. Requires authentication.
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| category_id | UUID | The category's unique identifier |
+| category_id | string |  |
 
-**Request Body:** (all fields optional)
-| Field | Type | Description |
-|-------|------|-------------|
-| title | string | Category title (must be unique) |
-| description | string | Category description |
+**Request Body:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| title | string | No |  |
+| description | string | No |  |
+| is_active | boolean | No |  |
 
-**Response:** Updated expense category object
+**Response:**
+```json
+{
+  "id": "uuid",
+  "title": "string",
+  "description": "string",
+  "is_active": false,
+  "created_at": "datetime",
+  "created_by": "string",
+  "created_by_preferred_name": "string",
+  "updated_at": "datetime",
+  "updated_by": "string",
+  "updated_by_preferred_name": "string"
+}
+```
 
 **Errors:**
-- `400` — A category with this title already exists
-- `401` — Not authenticated
-- `403` — No expense-management whitelist access
-- `404` — Category not found
+- `422` — Validation Error

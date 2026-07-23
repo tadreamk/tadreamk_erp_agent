@@ -1,17 +1,19 @@
 # Bank Statements API
 
-Base prefix: `/bank-statements`
+Base prefixes:
+- `/bank-statements`
+- `/bank-statements/{statement_id}`
+- `/bank-statements/{statement_id}/attachments`
 
-All endpoints require `bank-statements` whitelist.
+Authentication: See per-endpoint docs. Most endpoints require JWT (`Authorization: Bearer <token>`). Some require an endpoint whitelist.
 
-| Method | Path | Description | File |
-|--------|------|-------------|------|
-| GET | /bank-statements | List statements (filter: bank_account_id, year, month) | [get_bank-statements.md](get_bank-statements.md) |
-| GET | /bank-statements/count | Count statements | [get_bank-statements_count.md](get_bank-statements_count.md) |
-| POST | /bank-statements | Create statement header | [post_bank-statements.md](post_bank-statements.md) |
-| GET | /bank-statements/{statement_id} | Get statement with lines | [get_bank-statements_{statement_id}.md](get_bank-statements_{statement_id}.md) |
-| PUT | /bank-statements/{statement_id} | Update statement header | [put_bank-statements_{statement_id}.md](put_bank-statements_{statement_id}.md) |
-| DELETE | /bank-statements/{statement_id} | Delete statement (cascades to lines) | [delete_bank-statements_{statement_id}.md](delete_bank-statements_{statement_id}.md) |
-| POST | /bank-statements/{statement_id}/lines | Add a transaction line | [post_bank-statements_{statement_id}_lines.md](post_bank-statements_{statement_id}_lines.md) |
-| PUT | /bank-statements/{statement_id}/lines/{line_id} | Edit a transaction line | [put_bank-statements_{statement_id}_lines_{line_id}.md](put_bank-statements_{statement_id}_lines_{line_id}.md) |
-| DELETE | /bank-statements/{statement_id}/lines/{line_id} | Delete a transaction line | [delete_bank-statements_{statement_id}_lines_{line_id}.md](delete_bank-statements_{statement_id}_lines_{line_id}.md) |
+| Method | Path | Auth | Description | File |
+|--------|------|------|-------------|------|
+| GET | /bank-statements | Authenticated | List Bank Statements | [get_bank-statements.md](get_bank-statements.md) |
+| POST | /bank-statements | Authenticated | Create Bank Statement | [post_bank-statements.md](post_bank-statements.md) |
+| GET | /bank-statements/bank-accounts | Authenticated | List Distinct Bank Accounts | [get_bank-statements_bank-accounts.md](get_bank-statements_bank-accounts.md) |
+| DELETE | /bank-statements/{statement_id} | Authenticated | Delete Bank Statement | [delete_bank-statements_{statement_id}.md](delete_bank-statements_{statement_id}.md) |
+| GET | /bank-statements/{statement_id} | Authenticated | Get Bank Statement | [get_bank-statements_{statement_id}.md](get_bank-statements_{statement_id}.md) |
+| PUT | /bank-statements/{statement_id} | Authenticated | Save Bank Statement | [put_bank-statements_{statement_id}.md](put_bank-statements_{statement_id}.md) |
+| POST | /bank-statements/{statement_id}/attachments | Authenticated | Upload Bank Statement Attachment | [post_bank-statements_{statement_id}_attachments.md](post_bank-statements_{statement_id}_attachments.md) |
+| DELETE | /bank-statements/{statement_id}/attachments/{file_id} | Authenticated | Detach Bank Statement Attachment | [delete_bank-statements_{statement_id}_attachments_{file_id}.md](delete_bank-statements_{statement_id}_attachments_{file_id}.md) |

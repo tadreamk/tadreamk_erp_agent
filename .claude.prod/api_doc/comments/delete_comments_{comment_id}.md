@@ -1,16 +1,20 @@
 # DELETE /comments/{comment_id}
 
-Soft delete a comment. Only the comment author can delete it. Returns HTTP 204 on success.
+Delete Thread Comment. Public endpoint (no auth).
 
 **Path Parameters:**
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| comment_id | UUID | The comment's unique identifier |
+| comment_id | string |  |
 
-**Response:** HTTP 204 No Content.
+**Response:**
+```json
+{
+  "success": false,
+  "message": "string",
+  "data": {}
+}
+```
 
 **Errors:**
-- `400` — Invalid comment_id
-- `401` — Not authenticated
-- `403` — Not the comment author
-- `404` — Comment not found
+- `422` — Validation Error

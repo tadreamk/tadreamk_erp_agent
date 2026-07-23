@@ -1,10 +1,10 @@
 # GET /health
 
-Health check endpoint. No authentication required.
+Health check. Public endpoint (no auth).
 
 **Response:**
 ```json
 {
-  "status": "healthy"
+  "status": "ok"
 }
 ```

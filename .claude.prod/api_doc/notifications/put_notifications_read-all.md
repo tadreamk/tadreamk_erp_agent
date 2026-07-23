@@ -1,13 +1,16 @@
 # PUT /notifications/read-all
 
-Mark all notifications as read for the authenticated user. Requires authentication.
+Mark All As Read. Requires authentication.
 
 **Response:**
 ```json
 {
-  "marked_count": 12
+  "success": false,
+  "message": "string",
+  "data": {}
 }
 ```
 
 **Errors:**
 - `401` — Not authenticated
+- `404` — Not found
